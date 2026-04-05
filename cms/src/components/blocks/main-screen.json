@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_blocks_main_screens",
+  "info": {
+    "displayName": "MainScreen"
+  },
+  "options": {},
+  "attributes": {
+    "CompanyName": {
+      "type": "string",
+      "required": true
+    },
+    "companySubname": {
+      "type": "string",
+      "required": true
+    },
+    "text": {
+      "type": "text",
+      "required": true
+    }
+  },
+  "config": {}
+}
