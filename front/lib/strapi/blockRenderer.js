@@ -1,4 +1,4 @@
-import MainScreen from "../../components/MainScreen/MainScreen";
+import MainScreen from "../../sections/MainScreen/MainScreen";
 // import Sections from "@/components/Sections/Sections";
 // import Roadmap from "@/components/Roadmap/Roadmap";
 // import Footer from "@/components/Footer/Footer";
