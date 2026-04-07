@@ -2,6 +2,8 @@ import qs from "qs";
 import { notFound } from "next/navigation";
 // import { setRequestLocale } from "next-intl/server";
 import styles from "./page.module.css";
+import MainScreen from "@/sections/MainScreen/MainScreen";
+import About from "@/sections/About/About";
 
 async function getData(path) {
   const baseUrl = process.env.STRAPI_BASE_URL;
@@ -37,9 +39,7 @@ async function getData(path) {
 
     const data = await res.json();
     return data.data;
-  } catch {
-    console.error("Fetch failed:", err.message);
-  }
+  } catch {}
 }
 
 // ===== Рендер блоку =====
@@ -55,20 +55,22 @@ function blockRendered(block) {
 
 export default async function Home({ params }) {
   // const { locale } = params;
-  const strapiData = await getData(process.env.HOME_URL);
+  // const strapiData = await getData(process.env.HOME_URL);
 
-  if (!strapiData) {
-    notFound();
-  }
+  // if (!strapiData) {
+  //   notFound();
+  // }
 
-  const { blocks } = strapiData;
-
-  console.log(strapiData);
+  // const { blocks } = strapiData;
 
   return (
-    <>
-      {blocks.map((block) => blockRendered(block))}
-      {/* <Advantages /> */}
-    </>
+    // <>
+    //   {blocks.map((block) => blockRendered(block))}
+    //   {/* <Advantages /> */}
+    // </>
+    <div className={styles.container}>
+      <MainScreen />
+      <About />
+    </div>
   );
 }
