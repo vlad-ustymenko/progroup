@@ -1,0 +1,24 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1vw 3vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background-color: transparent;
+}
+
+.scrolled {
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(7px);
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+  font-size: 1vw;
+}
