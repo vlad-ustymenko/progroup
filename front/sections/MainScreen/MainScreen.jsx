@@ -7,60 +7,79 @@ import React, { useEffect, useRef } from "react";
 import Preloader from "@/components/Preloader/Preloader";
 
 const MainScreen = () => {
+  const containerRef = useRef(null);
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
   const textRef = useRef(null);
-  const imageRef = useRef(null);
+  const imageWrapperRef = useRef(null);
 
   useEffect(() => {
-    // тимчасово відключаємо плавний скрол
+    // 🔹 reset scroll
     document.documentElement.style.scrollBehavior = "auto";
     window.scrollTo(0, 0);
-    // після скидання включаємо плавний скрол назад
     document.documentElement.style.scrollBehavior = "smooth";
-  }, []);
 
-  useEffect(() => {
-    gsap.from(titleRef.current, {
-      x: -50,
-      opacity: 0,
-      duration: 2,
-      delay: 3.5,
-      ease: "power5.out",
-    });
-    gsap.from(subtitleRef.current, {
-      x: 50,
-      opacity: 0,
-      duration: 2,
-      delay: 3.5,
-      ease: "power5.out",
-    });
-    gsap.from(textRef.current, {
-      y: 30,
-      opacity: 0,
-      duration: 2,
-      delay: 3.5,
-      ease: "power5.out",
-    });
-    gsap.from(imageRef.current, {
-      scale: 1.1,
-      duration: 2,
-      delay: 3,
-      ease: "power5.out",
-    });
+    const ctx = gsap.context(() => {
+      const START_DELAY = 3.5;
+
+      const tl = gsap.timeline({
+        delay: START_DELAY,
+      });
+
+      // 🔹 IMAGE
+      gsap.from(imageWrapperRef.current, {
+        scale: 1.1,
+        duration: 1.2,
+        ease: "power3.out",
+        delay: START_DELAY - 0.5,
+      });
+
+      // 🔹 TEXT ANIMATION
+      tl.from(titleRef.current, {
+        x: -60,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+      })
+        .from(
+          subtitleRef.current,
+          {
+            x: 60,
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out",
+          },
+          "<", // одночасно з title
+        )
+        .from(
+          textRef.current,
+          {
+            y: 40,
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out",
+          },
+          "-=0.6", // трохи пізніше
+        );
+    }, containerRef);
+
+    return () => ctx.revert(); // 🔥 cleanup
   }, []);
 
   return (
-    <div className={styles.main} id="main">
+    <div ref={containerRef} className={styles.main} id="main">
       <Preloader />
       <Header />
+
+      {/* 🔥 обгортка для анімації */}
+
       <Image
         src="/main.jpg"
         fill
         alt="main"
         className={styles.image}
         priority
-        ref={imageRef}
+        ref={imageWrapperRef}
       />
 
       <div className={styles.overlay}></div>
@@ -69,9 +88,11 @@ const MainScreen = () => {
         <h1 ref={titleRef} className={styles.title}>
           ProGroup
         </h1>
+
         <p ref={subtitleRef} className={styles.subtitle}>
           девелопер з будівельним ДНК
         </p>
+
         <p ref={textRef} className={styles.text}>
           Ми знаємо процес — тому керуємо результатом. Створюємо житло, де
           якість можна виміряти, а комфорт — відчути.

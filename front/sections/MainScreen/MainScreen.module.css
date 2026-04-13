@@ -35,7 +35,7 @@
 
 /* Заголовок */
 .title {
-  font-size: clamp(48px, 8vw, 30vw);
+  font-size: clamp(48px, 10vw, 30vw);
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.02em;
@@ -46,7 +46,7 @@
 .subtitle {
   margin-bottom: 16px;
   margin-bottom: 5vw;
-  font-size: clamp(12px, 2.3vw, 30vw);
+  font-size: clamp(12px, 3vw, 30vw);
   font-weight: 700;
 }
 
