@@ -1,0 +1,35 @@
+.card {
+  width: 100%;
+  border-radius: 1vw;
+  position: relative;
+  background-color: var(--accent);
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+}
+
+.content {
+  padding: 2vw;
+}
+
+.title {
+  margin-bottom: 1vw;
+  font-size: 1.5vw;
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: 1.2vw;
+}
+
+.button {
+  width: 3vw;
+  height: 3vw;
+  position: absolute;
+  right: 2vw;
+  bottom: 2vw;
+}
