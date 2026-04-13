@@ -10,6 +10,7 @@ const MainScreen = () => {
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
   const textRef = useRef(null);
+  const imageRef = useRef(null);
 
   useEffect(() => {
     // тимчасово відключаємо плавний скрол
@@ -41,6 +42,12 @@ const MainScreen = () => {
       delay: 3.5,
       ease: "power5.out",
     });
+    gsap.from(imageRef.current, {
+      scale: 1.1,
+      duration: 2,
+      delay: 3,
+      ease: "power5.out",
+    });
   }, []);
 
   return (
@@ -53,6 +60,7 @@ const MainScreen = () => {
         alt="main"
         className={styles.image}
         priority
+        ref={imageRef}
       />
 
       <div className={styles.overlay}></div>
