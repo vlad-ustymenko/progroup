@@ -5,6 +5,7 @@
     "selector-class-pattern": null,
     "custom-property-pattern": null,
     "no-empty-source": null,
+    "comment-empty-line-before": null,
     "order/properties-order": [
       [
         {
