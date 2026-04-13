@@ -36,7 +36,7 @@ const Header = () => {
     <div className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
       <div className={styles.logo}>logo</div>
       <div className={styles.menu}>
-        <a href="#about" className={styles.menuItem} ref={aboutRef}>
+        <a href="#developer" className={styles.menuItem} ref={aboutRef}>
           Про девелопера
         </a>
         <a href="#main" className={styles.menuItem} ref={projectsRef}>
