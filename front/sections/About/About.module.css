@@ -44,6 +44,7 @@
 .title {
   margin-bottom: 1.3vw;
   font-size: 2vw;
+  line-height: 0.4;
 }
 
 .subtitle {
@@ -88,6 +89,8 @@
 .year {
   width: 100%;
   padding: 0 10vw;
+  font-size: 2vw;
+  font-weight: 600;
 }
 
 .contentWrapper {
@@ -99,6 +102,18 @@
 .text {
   width: 100%;
   padding: 0 5vw;
+}
+
+.text p:first-child {
+  margin-bottom: 2vw;
+  font-size: 1.5vw;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.text p:nth-child(2) {
+  font-size: 1.2vw;
+  text-align: left;
 }
 
 .dotsWrapper {
