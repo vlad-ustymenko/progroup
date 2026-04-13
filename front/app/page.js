@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import styles from "./page.module.css";
 import MainScreen from "@/sections/MainScreen/MainScreen";
 import About from "@/sections/About/About";
+import Developer from "@/sections/Developer/Developer";
+import Advantages from "@/sections/Advantages/Advantages";
 
 async function getData(path) {
   const baseUrl = process.env.STRAPI_BASE_URL;
@@ -68,9 +70,11 @@ export default async function Home({ params }) {
     //   {blocks.map((block) => blockRendered(block))}
     //   {/* <Advantages /> */}
     // </>
-    <div className={styles.container}>
+    <>
       <MainScreen />
       <About />
-    </div>
+      <Developer />
+      <Advantages />
+    </>
   );
 }
