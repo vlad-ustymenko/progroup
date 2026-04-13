@@ -1,0 +1,53 @@
+.developer {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  background: linear-gradient(
+    90deg,
+    rgb(26 26 26 / 100%) 0%,
+    rgb(45 45 45 / 100%) 70%
+  );
+}
+
+.quote {
+  width: 5vw;
+  height: 5vw;
+  position: absolute;
+  top: -20%;
+  left: -5%;
+}
+
+.imageWrapper {
+  width: 50vw;
+  height: 90%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60vw;
+  padding-right: 3vw;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.title {
+  margin-bottom: 3vw;
+  font-size: 2.5vw;
+  font-weight: 600;
+}
+
+.title span {
+  color: var(--accent);
+}
+
+.text {
+  font-size: 1.3vw;
+  font-weight: 400;
+}
