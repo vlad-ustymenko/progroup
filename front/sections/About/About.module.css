@@ -1,6 +1,6 @@
 .about {
   width: 100%;
-  height: 300vh;
+  height: 600vh;
   position: relative;
 }
 
@@ -30,14 +30,117 @@
   inset: 0;
 }
 
+.titleWrapper {
+  width: 70vw;
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  text-align: center;
+  color: white;
+}
+
+.title {
+  margin-bottom: 1.3vw;
+  font-size: 2vw;
+}
+
+.subtitle {
+  font-size: 1.5vw;
+  color: var(--accent);
+}
+
 .line {
-  width: 50vw;
+  width: 70vw;
   height: 0.3vw;
   position: absolute;
-  top: 50vh;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   z-index: 2;
   color: #000;
   background-color: var(--foreground);
+}
+
+.yearsWrapper,
+.contentWrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 5vw;
+  width: 100vw;
+  height: 50%;
+  /* padding: 3vw 0; */
+  position: absolute;
+  /* top: 0; */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  text-align: center;
+}
+
+.yearsWrapper {
+  align-items: flex-end;
+  padding: 3vw 0;
+  top: 0;
+}
+
+.year {
+  width: 100%;
+  padding: 0 10vw;
+}
+
+.contentWrapper {
+  align-items: flex-start;
+  padding: 3vw 0;
+  bottom: 0;
+}
+
+.text {
+  width: 100%;
+  padding: 0 5vw;
+}
+
+.dotsWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2vw;
+  width: 71vw;
+  height: 100%;
+  /* padding: 3vw 0; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+}
+
+.dot {
+  position: relative;
+}
+
+.dotInner {
+  display: block;
+  width: 3vw;
+  height: 3vw;
+  border: 0.3vw solid white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+}
+
+.dotOut {
+  display: block;
+  width: 1.5vw;
+  height: 1.5vw;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--accent);
 }
