@@ -6,6 +6,7 @@ import MainScreen from "@/sections/MainScreen/MainScreen";
 import About from "@/sections/About/About";
 import Developer from "@/sections/Developer/Developer";
 import Advantages from "@/sections/Advantages/Advantages";
+import FAQ from "@/sections/FAQ/FAQ";
 
 async function getData(path) {
   const baseUrl = process.env.STRAPI_BASE_URL;
@@ -75,6 +76,7 @@ export default async function Home({ params }) {
       <About />
       <Developer />
       <Advantages />
+      <FAQ />
     </>
   );
 }
