@@ -2,6 +2,7 @@
 import React from "react";
 import { gsap } from "gsap";
 import { useState, useEffect, useRef } from "react";
+import MenuBtn from "../MenuBtn/MenuBtn";
 import styles from "./Header.module.css";
 
 const Header = () => {
@@ -48,6 +49,7 @@ const Header = () => {
         <a href="#" className={styles.menuItem} ref={contactsRef}>
           Контакти
         </a>
+        <MenuBtn></MenuBtn>
       </div>
     </div>
   );
