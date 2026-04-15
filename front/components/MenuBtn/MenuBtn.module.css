@@ -1,0 +1,71 @@
+.menuBtn {
+  display: none;
+  border: none;
+  background-color: transparent;
+  transition: 0.25s ease-in-out;
+  cursor: pointer;
+}
+
+.menuBtn span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  margin: 7px 0;
+  background: white;
+  transition: 0.25s ease-in-out;
+}
+
+.active {
+  transform: rotate(45deg);
+}
+
+.active span:first-child {
+  transform: rotate(90deg) translateX(-3px);
+}
+
+.active span:last-child {
+  transform: rotate(90deg) translateX(3px);
+}
+
+.menuBtn span:first-child {
+  width: 12px;
+  margin-left: auto;
+  transform-origin: left;
+}
+
+.menuBtn span:last-child {
+  width: 12px;
+  transform-origin: right;
+}
+
+@media (width >= 768px) and (width <= 1024px) {
+  .menuBtn {
+    display: block;
+  }
+
+  .menuBtn span {
+    display: block;
+    width: 40px;
+    height: 2px;
+    margin: 15px 0;
+    background: white;
+    transition: 0.25s ease-in-out;
+  }
+
+  .menuBtn span:first-child {
+    width: 20px;
+    margin-left: auto;
+    transform-origin: left;
+  }
+
+  .menuBtn span:last-child {
+    width: 20px;
+    transform-origin: right;
+  }
+}
+
+@media (width <= 767px) {
+  .menuBtn {
+    display: block;
+  }
+}
