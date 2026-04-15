@@ -1,6 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import { ModalProvider } from "@/Context/ModalContext";
 import Modal from "../components/Modal/Modal";
+import { MenuProvider } from "@/Context/MenuContext";
+import Menu from "../components/Menu/Menu";
+import UTMCookieSaver from "@/components/UTMCookieSaver/UTMCookieSaver";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -22,10 +25,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>
-        <ModalProvider>
-          {children}
-          <Modal />
-        </ModalProvider>
+        <UTMCookieSaver>
+          <ModalProvider>
+            <MenuProvider>
+              {children}
+              <Menu />
+              <Modal />
+            </MenuProvider>
+          </ModalProvider>
+        </UTMCookieSaver>
       </body>
     </html>
   );
