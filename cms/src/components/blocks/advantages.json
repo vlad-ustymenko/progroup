@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_blocks_advantages",
+  "info": {
+    "displayName": "Advantages"
+  },
+  "options": {},
+  "attributes": {
+    "new_cards": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::new-card.new-card"
+    }
+  },
+  "config": {}
+}

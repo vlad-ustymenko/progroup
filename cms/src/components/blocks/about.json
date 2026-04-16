@@ -1,0 +1,54 @@
+{
+  "collectionName": "components_blocks_abouts",
+  "info": {
+    "displayName": "About"
+  },
+  "options": {},
+  "attributes": {
+    "sectionTitle": {
+      "type": "string",
+      "required": true
+    },
+    "sectionSubtitle": {
+      "type": "string",
+      "required": true
+    },
+    "year1": {
+      "type": "string",
+      "required": true
+    },
+    "role1": {
+      "type": "string",
+      "required": true
+    },
+    "role1text": {
+      "type": "text",
+      "required": true
+    },
+    "year2": {
+      "type": "string",
+      "required": true
+    },
+    "role2": {
+      "type": "string",
+      "required": true
+    },
+    "role2text": {
+      "type": "text",
+      "required": true
+    },
+    "year3": {
+      "type": "string",
+      "required": true
+    },
+    "role3": {
+      "type": "string",
+      "required": true
+    },
+    "role3text": {
+      "type": "text",
+      "required": true
+    }
+  },
+  "config": {}
+}

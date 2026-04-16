@@ -5,7 +5,7 @@
   },
   "options": {},
   "attributes": {
-    "CompanyName": {
+    "companyName": {
       "type": "string",
       "required": true
     },

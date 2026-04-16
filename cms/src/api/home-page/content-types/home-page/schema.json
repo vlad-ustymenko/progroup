@@ -23,7 +23,10 @@
         }
       },
       "components": [
-        "blocks.main-screen"
+        "blocks.main-screen",
+        "blocks.about",
+        "blocks.developer",
+        "blocks.advantages"
       ]
     }
   }
