@@ -25,15 +25,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>
-        <UTMCookieSaver>
-          <ModalProvider>
-            <MenuProvider>
-              {children}
-              <Menu />
-              <Modal />
-            </MenuProvider>
-          </ModalProvider>
-        </UTMCookieSaver>
+        <UTMCookieSaver />
+        <ModalProvider>
+          <MenuProvider>
+            {children}
+            <Menu />
+            <Modal />
+          </MenuProvider>
+        </ModalProvider>
       </body>
     </html>
   );

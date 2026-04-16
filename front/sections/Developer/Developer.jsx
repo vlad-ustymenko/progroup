@@ -3,12 +3,13 @@ import React, { useEffect, useRef } from "react";
 import styles from "./Developer.module.css";
 import Image from "next/image";
 import { gsap } from "gsap";
+import ReactMarkdown from "react-markdown";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ImQuotesLeft } from "react-icons/im";
-
+import remarkBreaks from "remark-breaks";
 gsap.registerPlugin(ScrollTrigger);
 
-const Developer = () => {
+const Developer = ({ data }) => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -64,34 +65,43 @@ const Developer = () => {
     <div ref={sectionRef} className={styles.developer} id="developer">
       <div className={styles.imageWrapper}>
         <div className={styles.image}>
-          <Image src="/developer.svg" fill alt="developer" />
+          <Image
+            src={`${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${data.image.url}`}
+            fill
+            alt="developer"
+          />
         </div>
       </div>
 
       <div className={styles.content}>
+        <ReactMarkdown
+          remarkPlugins={[remarkBreaks]}
+          components={{
+            p: ({ children }) => (
+              <p className={`${styles.title} title`}>{children}</p>
+            ),
+            strong: ({ children }) => (
+              <span style={{ color: "var(--accent)" }}>{children}</span>
+            ),
+          }}
+        >
+          {data.title}
+        </ReactMarkdown>
+
         <ImQuotesLeft className={styles.quote} color="var(--accent)" />
-        <p className={`${styles.title} title`}>
-          Ми будуємо квадратні метри.
-          <br />
-          <span>Але для нас це не просто площа</span>
-        </p>
-
-        <p className={`${styles.text} text`}>
-          Це — міцний фундамент, на якому тримається ваш спокій.
-        </p>
-
-        <p className={`${styles.text} text`}>
-          Це — стіни, які формують ваш комфорт щодня.
-        </p>
-
-        <p className={`${styles.text} text`}>
-          Це — простір, у якому з’являється життя.
-        </p>
-
-        <p className={`${styles.text} text`}>
-          Ми працюємо з тим, що можна виміряти — але створюємо те, що
-          відчувається.
-        </p>
+        <ReactMarkdown
+          remarkPlugins={[remarkBreaks]}
+          components={{
+            p: ({ children }) => (
+              <p className={`${styles.text} text`}>{children}</p>
+            ),
+            li: ({ children }) => (
+              <li className={`${styles.text} text`}>{children}</li>
+            ),
+          }}
+        >
+          {data.description}
+        </ReactMarkdown>
       </div>
     </div>
   );

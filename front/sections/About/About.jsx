@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const About = () => {
+const About = ({ data }) => {
   const aboutRef = useRef(null);
 
   useEffect(() => {
@@ -163,11 +163,9 @@ const About = () => {
     <div ref={aboutRef} className={styles.about} id="about">
       <div className={`${styles.wrapper} wrapper`}>
         <div className={styles.titleWrapper}>
-          <h2 className={`${styles.title} title`}>
-            Ми пройшли шлях від кожної цеглини до цілих кварталів.
-          </h2>
+          <h2 className={`${styles.title} title`}>{data.sectionTitle}</h2>
           <h3 className={`${styles.subtitle} subtitle`}>
-            Досвід, який формує проєкти
+            {data.sectionSubtitle}
           </h3>
         </div>
 
@@ -178,36 +176,26 @@ const About = () => {
 
         {/* YEARS */}
         <div className={styles.yearsWrapper}>
-          <p className={`${styles.year} year1`}>2015 рік</p>
-          <p className={`${styles.year} year2`}>2016 рік</p>
-          <p className={`${styles.year} year3`}>2025 рік</p>
+          <p className={`${styles.year} year1`}>{data.year1}</p>
+          <p className={`${styles.year} year2`}>{data.year2}</p>
+          <p className={`${styles.year} year3`}>{data.year3}</p>
         </div>
 
         {/* CONTENT */}
         <div className={styles.contentWrapper}>
           <div className={`${styles.text} text1`}>
-            <p>Підрядник</p>
-            <p>
-              реалізація різних об’єктів, що дозволило сформувати глибоке
-              розуміння будівельних процесів, технологій та управління проєктами
-            </p>
+            <p>{data.role1}</p>
+            <p>{data.role1text}</p>
           </div>
 
           <div className={`${styles.text} text2`}>
-            <p>Забудовник</p>
-            <p>
-              реалізація власних проєктів, зокрема житлові комплекси та
-              таунхауси
-            </p>
+            <p>{data.role2}</p>
+            <p>{data.role2text}</p>
           </div>
 
           <div className={`${styles.text} text3`}>
-            <p>Девелопер</p>
-            <p>
-              реалізація об’єктів у Києві та Київській області, а також - в
-              Ужгороді, поєднуємо досвід будівництва з системним підходом до
-              створення житлових проєктів
-            </p>
+            <p>{data.role3}</p>
+            <p>{data.role3text}</p>
           </div>
         </div>
 

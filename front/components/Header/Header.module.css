@@ -7,6 +7,7 @@
   top: 0;
   left: 0;
   z-index: 10;
+  color: var(--textColor);
   background-color: transparent;
   transition: all 0.5s ease;
 }
