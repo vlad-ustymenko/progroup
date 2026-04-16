@@ -6,7 +6,7 @@ import { gsap } from "gsap";
 import React, { useEffect, useRef } from "react";
 import Preloader from "@/components/Preloader/Preloader";
 
-const MainScreen = () => {
+const MainScreen = ({ data }) => {
   const containerRef = useRef(null);
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
@@ -86,16 +86,15 @@ const MainScreen = () => {
 
       <div className={styles.content}>
         <h1 ref={titleRef} className={styles.title}>
-          ProGroup
+          {data.companyName}
         </h1>
 
         <p ref={subtitleRef} className={styles.subtitle}>
-          девелопер з будівельним ДНК
+          {data.companySubname}
         </p>
 
         <p ref={textRef} className={styles.text}>
-          Ми знаємо процес — тому керуємо результатом. Створюємо житло, де
-          якість можна виміряти, а комфорт — відчути.
+          {data.text}
         </p>
       </div>
     </div>
