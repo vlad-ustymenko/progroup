@@ -17,7 +17,7 @@
 
 .tabWrapper {
   width: 90%;
-  padding: 1.5vw;
+  padding: 1.5vw 1.5vw 0;
   margin: 0 auto;
   margin-bottom: 1vw;
   border: 3px solid black;
@@ -26,20 +26,21 @@
 }
 
 .tabTitleWrapper {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  align-items: flex-start;
+  grid-template-columns: 1fr 20px;
 }
 
 .tabTitle {
+  margin-bottom: 1.5vw;
   font-size: 1.5vw;
   font-weight: 700;
-  transition: all 0.5s ease;
 }
 
 .tabDescription {
   display: grid;
   grid-template-rows: 0fr;
-  transition: 0.5s ease-in-out;
+  transition: 0.3s ease;
 }
 
 .tabContent {
@@ -54,4 +55,17 @@
 
 .open {
   grid-template-rows: 1fr;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 1vw;
+  margin-bottom: 2vw;
+  font-size: 1.2vw;
+  font-weight: 600;
+}
+
+.activeFilter {
+  color: var(--accent);
 }
