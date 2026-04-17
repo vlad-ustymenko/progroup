@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useLayoutEffect, useEffect } from "react";
 import ArrowIcon from "@/components/ArrowIcon/ArrowIcon";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -13,15 +13,13 @@ const FAQ = ({ data, categories }) => {
     data.faq_list?.[0]?.faq_category?.slug || "all",
   );
 
-  // refs
+  const sectionRef = useRef(null);
   const titleRef = useRef(null);
-  const filtersContainerRef = useRef(null);
-  const filtersRef = useRef([]);
-  const tabsContainerRef = useRef(null);
-  const tabsRef = useRef([]);
+  const filtersRef = useRef(null);
+  const tabsRef = useRef(null);
 
   const toggleTab = (id) => {
-    setActiveId(activeId === id ? null : id);
+    setActiveId((prev) => (prev === id ? null : id));
   };
 
   const handleFilterChange = (category) => {
@@ -36,17 +34,18 @@ const FAQ = ({ data, categories }) => {
           (item) => item.faq_category?.slug === activeCategory,
         );
 
-  // 🔥 GSAP
-  useEffect(() => {
+  // =========================
+  // STATIC ANIMATION (1 раз)
+  // =========================
+  useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      // TITLE (окремий trigger)
       gsap.fromTo(
         titleRef.current,
         { x: -100, opacity: 0 },
         {
           x: 0,
           opacity: 1,
-          duration: 1,
+          duration: 0.8,
           ease: "power3.out",
           scrollTrigger: {
             trigger: titleRef.current,
@@ -56,62 +55,71 @@ const FAQ = ({ data, categories }) => {
         },
       );
 
-      // FILTERS (один trigger + stagger)
       gsap.fromTo(
-        filtersRef.current,
-        { y: 50, opacity: 0 },
+        filtersRef.current.children,
+        { y: 40, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 1,
-          stagger: 0.15,
+          stagger: 0.12,
+          duration: 0.6,
           ease: "power3.out",
           scrollTrigger: {
-            trigger: filtersContainerRef.current,
+            trigger: filtersRef.current,
             start: "top 85%",
             toggleActions: "play reverse play reverse",
           },
         },
       );
-
-      // TABS (один trigger + stagger + чергування)
-      gsap.fromTo(
-        tabsRef.current,
-        {
-          x: (i) => (i % 2 === 0 ? -100 : 100),
-          opacity: 0,
-        },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 1,
-          stagger: 0.15,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: tabsContainerRef.current,
-            start: "top 85%",
-            toggleActions: "play reverse play reverse",
-          },
-        },
-      );
-    });
+    }, sectionRef);
 
     return () => ctx.revert();
-  }, [filteredData]);
+  }, []);
+
+  // =========================
+  // DYNAMIC TABS ANIMATION
+  // (тільки при зміні категорії)
+  // =========================
+  useEffect(() => {
+    if (!tabsRef.current) return;
+
+    // прибираємо старі анімації
+    gsap.killTweensOf(tabsRef.current.children);
+
+    gsap.fromTo(
+      tabsRef.current.children,
+      {
+        x: (i) => (i % 2 === 0 ? -100 : 100),
+        opacity: 0,
+      },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 0.7,
+        stagger: 0.12,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: tabsRef.current,
+          start: "top 85%",
+          end: "bottom 20%",
+          toggleActions: "play reverse play reverse",
+        },
+      },
+    );
+  }, [activeCategory]); // 🔥 тільки зміна категорії
 
   return (
-    <div className={styles.faq}>
+    <div ref={sectionRef} className={styles.faq}>
       {/* TITLE */}
       <h2 ref={titleRef} className={styles.title}>
         {data.sectionTitle}
       </h2>
 
       {/* FILTERS */}
-      <div ref={filtersContainerRef} className={styles.filters}>
-        {categories.map((item, index) => (
+      <div ref={filtersRef} className={styles.filters}>
+        {categories.map((item) => (
           <button
             key={item.id}
-            ref={(el) => (filtersRef.current[index] = el)}
             onClick={() => handleFilterChange(item.slug)}
             className={`${styles.filter} ${
               activeCategory === item.slug ? styles.activeFilter : ""
@@ -123,13 +131,12 @@ const FAQ = ({ data, categories }) => {
       </div>
 
       {/* TABS */}
-      <div ref={tabsContainerRef}>
-        {filteredData.map((item, index) => (
+      <div ref={tabsRef}>
+        {filteredData.map((item) => (
           <div
             key={item.id}
-            ref={(el) => (tabsRef.current[index] = el)}
             className={styles.tabWrapper}
-            onClick={() => toggleTab(item.id)}
+            onClick={() => toggleTab(item.id)} // ❌ GSAP це ігнорує
           >
             <div className={styles.tabTitleWrapper}>
               <p
@@ -147,9 +154,7 @@ const FAQ = ({ data, categories }) => {
               className={`${styles.tabDescription} ${
                 activeId === item.id ? styles.open : ""
               }`}
-              style={{
-                marginBottom: activeId === item.id ? "1.5vw" : "0px",
-              }}
+              style={{ marginBottom: activeId === item.id ? "1.5vw" : "0px" }}
             >
               <p className={styles.tabContent}>{item.description}</p>
             </div>
