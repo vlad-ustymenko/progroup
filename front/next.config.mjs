@@ -2,10 +2,12 @@
 const nextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
+    domains: ["localhost"],
     remotePatterns: [
       {
         protocol: "http",
         hostname: "localhost", // заміни на реальний домен з STRAPI_BASE_URL
+        port: "1337",
         pathname: "/uploads/**/*",
       },
       {
@@ -13,6 +15,7 @@ const nextConfig = {
         hostname: "placehold.co", // заміни на реальний домен з STRAPI_BASE_URL
       },
     ],
+    dangerouslyAllowLocalIP: true,
   },
 
   async headers() {
