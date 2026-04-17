@@ -3,7 +3,6 @@ import styles from "./Advantages.module.css";
 import Card from "@/components/Card/Card";
 
 const Advantages = ({ data }) => {
-  console.log(data.new_cards);
   const cards = data.new_cards;
   return (
     <div className={styles.advantages}>

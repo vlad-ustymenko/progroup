@@ -7,6 +7,7 @@ import { useModal } from "@/Context/ModalContext";
 
 const Card = ({ image, title, subtitle }) => {
   const { openModal } = useModal();
+
   return (
     <div className={styles.card}>
       <Image
