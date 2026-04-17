@@ -7,7 +7,6 @@ import About from "@/sections/About/About";
 import Developer from "@/sections/Developer/Developer";
 import Advantages from "@/sections/Advantages/Advantages";
 import FAQ from "@/sections/FAQ/FAQ";
-import { FiEdit } from "react-icons/fi";
 
 async function getData(path, locale) {
   const baseUrl = process.env.STRAPI_BASE_URL;
@@ -41,7 +40,18 @@ async function getData(path, locale) {
                 },
               },
             },
-            // "blocks.reviews": { populate: "*" },
+            "blocks.faq": {
+              populate: {
+                faq_list: {
+                  populate: {
+                    fields: ["title", "description"],
+                    faq_category: {
+                      fields: ["title", "slug"],
+                    },
+                  },
+                },
+              },
+            },
             // "blocks.roadmap": { populate: "*" },
             // "blocks.menu": { populate: "*" },
             // "blocks.modal": { populate: "*" },
@@ -70,9 +80,37 @@ async function getData(path, locale) {
   } catch {}
 }
 
+async function getCategories(path, locale) {
+  const baseUrl = process.env.STRAPI_BASE_URL;
+
+  const query = qs.stringify(
+    {
+      locale: locale,
+      populate: "*",
+    },
+    { encodeValuesOnly: true },
+  );
+
+  const url = new URL(path, baseUrl);
+
+  url.search = query;
+
+  try {
+    const res = await fetch(url.href, { cache: "no-store" });
+
+    if (!res.ok) {
+      console.error(`Strapi error: ${res.status} ${res.statusText}`);
+      return;
+    }
+
+    const data = await res.json();
+    return data.data;
+  } catch {}
+}
+
 // ===== Рендер блоку =====
 
-function blockRendered(block) {
+function blockRendered(block, categories) {
   switch (block.__component) {
     case "blocks.main-screen":
       return <MainScreen key={block.id} data={block} />;
@@ -82,8 +120,8 @@ function blockRendered(block) {
       return <Developer key={block.id} data={block} />;
     case "blocks.advantages":
       return <Advantages key={block.id} data={block} />;
-    // case "blocks.faq":
-    // 	return <FAQ key={block.id} data={block} />;
+    case "blocks.faq":
+      return <FAQ key={block.id} data={block} categories={categories} />;
   }
 }
 
@@ -92,6 +130,7 @@ function blockRendered(block) {
 export default async function Home({ params }) {
   const { locale } = await params;
   const strapiData = await getData(process.env.HOME_URL, locale);
+  const categories = await getCategories(process.env.CATEGORIES_URL, locale);
 
   if (!strapiData) {
     notFound();
@@ -99,12 +138,10 @@ export default async function Home({ params }) {
 
   const { blocks } = strapiData;
 
-  console.log(blocks);
-
   return (
     <>
-      {blocks.map((block) => blockRendered(block))}
-      {/* <Advantages /> */}
+      {blocks.map((block) => blockRendered(block, categories))}
+      {/* <FAQ /> */}
     </>
     // <>
     //   <MainScreen />
