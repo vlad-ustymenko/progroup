@@ -25,8 +25,6 @@ const FAQ = ({ data, categories }) => {
           (item) => item.faq_category.slug === activeCategory,
         );
 
-  console.log(data);
-
   return (
     <div className={styles.faq}>
       <h2 className={styles.title}>{data.sectionTitle}</h2>
