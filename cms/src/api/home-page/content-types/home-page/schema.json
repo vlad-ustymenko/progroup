@@ -26,7 +26,8 @@
         "blocks.main-screen",
         "blocks.about",
         "blocks.developer",
-        "blocks.advantages"
+        "blocks.advantages",
+        "blocks.faq"
       ]
     }
   }

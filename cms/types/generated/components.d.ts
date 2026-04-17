@@ -43,6 +43,17 @@ export interface BlocksDeveloper extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksFaq extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_faqs';
+  info: {
+    displayName: 'FAQ';
+  };
+  attributes: {
+    faq_list: Schema.Attribute.Relation<'oneToMany', 'api::faq.faq'>;
+    sectionTitle: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface BlocksMainScreen extends Struct.ComponentSchema {
   collectionName: 'components_blocks_main_screens';
   info: {
@@ -61,6 +72,7 @@ declare module '@strapi/strapi' {
       'blocks.about': BlocksAbout;
       'blocks.advantages': BlocksAdvantages;
       'blocks.developer': BlocksDeveloper;
+      'blocks.faq': BlocksFaq;
       'blocks.main-screen': BlocksMainScreen;
     }
   }

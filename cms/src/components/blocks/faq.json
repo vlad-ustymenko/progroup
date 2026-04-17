@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_blocks_faqs",
+  "info": {
+    "displayName": "FAQ"
+  },
+  "options": {},
+  "attributes": {
+    "sectionTitle": {
+      "type": "string",
+      "required": true
+    },
+    "faq_list": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::faq.faq"
+    }
+  },
+  "config": {}
+}
