@@ -5,6 +5,7 @@ import Header from "@/components/Header/Header";
 import { gsap } from "gsap";
 import React, { useEffect, useRef } from "react";
 import Preloader from "@/components/Preloader/Preloader";
+import ReviewsCarousel from "@/components/ReviewsCarousel/ReviewsCarousel";
 
 const MainScreen = ({ data }) => {
   const containerRef = useRef(null);
@@ -71,31 +72,23 @@ const MainScreen = ({ data }) => {
       <Preloader />
       <Header />
 
-      {/* 🔥 обгортка для анімації */}
-
-      <Image
-        src="/main.jpg"
-        fill
-        alt="main"
-        className={styles.image}
-        priority
-        ref={imageWrapperRef}
-      />
-
       <div className={styles.overlay}></div>
 
-      <div className={styles.content}>
-        <h1 ref={titleRef} className={styles.title}>
-          {data.companyName}
-        </h1>
+      <div className={styles.container}>
+        <div className={styles.content}>
+          <h1 ref={titleRef} className={styles.title}>
+            {data.companyName}
+          </h1>
 
-        <p ref={subtitleRef} className={styles.subtitle}>
-          {data.companySubname}
-        </p>
+          <p ref={subtitleRef} className={styles.subtitle}>
+            {data.companySubname}
+          </p>
 
-        <p ref={textRef} className={styles.text}>
-          {data.text}
-        </p>
+          <p ref={textRef} className={styles.text}>
+            {data.text}
+          </p>
+        </div>
+        <ReviewsCarousel></ReviewsCarousel>
       </div>
     </div>
   );

@@ -2,40 +2,48 @@
   width: 100%;
   height: 100vh;
   position: relative;
+  background: linear-gradient(
+    90deg,
+    rgb(23 31 49 / 100%) 41%,
+    rgb(45 59 82 / 100%) 100%
+  );
   overflow: hidden;
 }
 
 /* Картинка */
-.image {
-  z-index: 1;
-}
 
 /* Градієнт + затемнення */
 .overlay {
   position: absolute;
   z-index: 2;
-  background: linear-gradient(
-    90deg,
-    rgb(0 0 0 / 85%) 0%,
-    rgb(0 0 0 / 60%) 60%,
-    rgb(0 0 0 / 20%) 100%
-  );
+  background-image:
+    linear-gradient(rgba(185, 149, 107, 0.06) 3px, transparent 1px),
+    linear-gradient(90deg, rgba(185, 149, 107, 0.06) 3px, transparent 1px);
+  background-size: 100px 100px;
   inset: 0;
 }
 
-/* Контент */
-.content {
-  padding: 0 3vw;
-  margin: 0 auto;
+.container {
+  width: 1720px;
+  height: 100%;
   position: relative;
-  top: 12vw;
+  margin: 0 auto;
+}
+/* Контент */
+
+.content {
+  height: fit-content;
+  position: absolute;
+  bottom: 0;
+  left: 0;
   z-index: 3;
   color: #fff;
 }
 
 /* Заголовок */
 .title {
-  font-size: clamp(48px, 10vw, 30vw);
+  font-family: MontserratBold, sans-serif;
+  font-size: 96px;
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.02em;
@@ -44,16 +52,20 @@
 
 /* Підзаголовок */
 .subtitle {
-  margin-bottom: 16px;
-  margin-bottom: 5vw;
-  font-size: clamp(12px, 3vw, 30vw);
+  margin-bottom: 2vw;
+  font-family: MontserratBold, sans-serif;
+  font-size: 28px;
   font-weight: 700;
+  color: var(--accent);
 }
 
 /* Текст */
 .text {
-  max-width: 35vw;
-  font-size: clamp(12px, 1vw, 30vw);
+  max-width: 40vw;
+  margin-bottom: 10vw;
+  font-family: MontserratRegular, sans-serif;
+  font-size: 24px;
+  font-weight: 400;
   line-height: 1.6;
   opacity: 0.9;
 }

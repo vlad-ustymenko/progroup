@@ -1,7 +1,8 @@
 :root {
   --textColor: #fff;
   --foreground: #171717;
-  --accent: #ffab6d;
+  --accent: #b9956b;
+  --border: 3px solid #b9956b;
 }
 
 html {

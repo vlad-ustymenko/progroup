@@ -4,16 +4,25 @@ import Modal from "../components/Modal/Modal";
 import { MenuProvider } from "@/Context/MenuContext";
 import Menu from "../components/Menu/Menu";
 import UTMCookieSaver from "@/components/UTMCookieSaver/UTMCookieSaver";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const MontserratBold = localFont({
+  src: "../public/fonts/Montserrat-Bold.ttf",
+  weight: "800",
+  variable: "--font-montserrat",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const MontserratMedium = localFont({
+  src: "../public/fonts/Montserrat-Medium.ttf",
+  weight: "600",
+  variable: "--font-montserrat",
+});
+
+const MontserratRegular = localFont({
+  src: "../public/fonts/Montserrat-Regular.ttf",
+  weight: "400",
+  variable: "--font-montserrat",
 });
 
 export const metadata = {
@@ -23,8 +32,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body>
+    <html lang="en">
+      <body
+        className={`${MontserratRegular.variable} ${MontserratMedium.variable} ${MontserratBold.variable}`}
+      >
         <UTMCookieSaver />
         <ModalProvider>
           <MenuProvider>
