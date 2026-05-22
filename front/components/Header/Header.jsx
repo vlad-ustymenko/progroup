@@ -3,6 +3,7 @@ import React from "react";
 import { gsap } from "gsap";
 import { useState, useEffect, useRef } from "react";
 import MenuBtn from "../MenuBtn/MenuBtn";
+import Image from "next/image";
 import styles from "./Header.module.css";
 
 const Header = () => {
@@ -35,7 +36,9 @@ const Header = () => {
   }, []);
   return (
     <div className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
-      <div className={styles.logo}>logo</div>
+      <div className={styles.logo}>
+        <Image src="/logo.svg" alt="" width={60} height={60}></Image>
+      </div>
       <div className={styles.menu}>
         <a href="#developer" className={styles.menuItem} ref={aboutRef}>
           Про девелопера
