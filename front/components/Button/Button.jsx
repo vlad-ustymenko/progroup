@@ -1,20 +1,25 @@
-import React from "react";
+"use client";
+
+import { forwardRef } from "react";
 import styles from "./Button.module.css";
 
-const Button = ({ title, primary, href, className }) => {
-  if (primary) {
-    return (
-      <a href="#" className={`${styles.button} ${styles.primary} ${className}`}>
-        {title}
-      </a>
-    );
-  } else {
-    return (
-      <a href={href} className={`${styles.button} ${className}`}>
-        {title}
-      </a>
-    );
-  }
-};
+const Button = forwardRef(function Button(
+  { title, primary, href, className = "" },
+  ref,
+) {
+  return (
+    <a
+      ref={ref}
+      href={href}
+      className={`
+        ${styles.button}
+        ${primary ? styles.primary : ""}
+        ${className}
+      `}
+    >
+      {title}
+    </a>
+  );
+});
 
 export default Button;
