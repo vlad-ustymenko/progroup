@@ -37,7 +37,7 @@ const Header = () => {
   return (
     <div className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
       <div className={styles.logo}>
-        <Image src="/logo.svg" alt="" width={60} height={60}></Image>
+        <Image src="/logo.svg" alt="" fill></Image>
       </div>
       <div className={styles.menu}>
         <a href="#developer" className={styles.menuItem} ref={aboutRef}>
