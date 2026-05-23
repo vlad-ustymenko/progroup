@@ -6,7 +6,7 @@ import { gsap } from "gsap";
 
 import Preloader from "@/components/Preloader/Preloader";
 import Header from "@/components/Header/Header";
-import ReviewsCarousel from "@/components/ReviewsCarousel/ReviewsCarousel";
+import MainCarousel from "@/components/MainCarousel/MainCarousel";
 import Button from "@/components/Button/Button";
 
 const MainScreen = ({ data }) => {
@@ -15,6 +15,8 @@ const MainScreen = ({ data }) => {
   const subtitleRef = useRef(null);
   const textRef = useRef(null);
   const imageWrapperRef = useRef(null);
+  const btn1Ref = useRef(null);
+  const btn2Ref = useRef(null);
 
   const [ready, setReady] = useState(false);
 
@@ -32,6 +34,19 @@ const MainScreen = ({ data }) => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         defaults: { ease: "power3.out" },
+      });
+
+      gsap.from(btn1Ref.current, {
+        opacity: 0,
+        x: -40,
+        duration: 0.8,
+      });
+
+      gsap.from(btn2Ref.current, {
+        opacity: 0,
+        x: -40,
+        duration: 0.8,
+        delay: 0.3,
       });
 
       gsap.from(imageWrapperRef.current, {
@@ -85,6 +100,7 @@ const MainScreen = ({ data }) => {
       <Preloader setReady={setReady} ready={ready} />
 
       <Header />
+      <div className={styles.overlay} />
 
       <div className={styles.container}>
         <div className={styles.content}>
@@ -101,13 +117,33 @@ const MainScreen = ({ data }) => {
           </p>
 
           <div className={styles.buttonsWrapper}>
-            <Button title="Проекти" href="#" />
-            <Button title="Консультація" href="#" primary />
+            <Button title="Переглянути проети" href="#" ref={btn1Ref} />
+            <Button
+              title="Отримати консультацію"
+              href="#"
+              primary
+              ref={btn2Ref}
+            />
           </div>
         </div>
 
-        <ReviewsCarousel ref={imageWrapperRef} />
-        <div className={styles.overlay} />
+        <MainCarousel ref={imageWrapperRef} />
+        <div className={styles.infoWrapper}>
+          <div className={styles.info}>
+            <span className={styles.infoTitle}>10</span>
+            <span className={styles.infoSymbol}>+</span>
+            <p className={styles.infoText}>років досвіду</p>
+          </div>
+          <div className={styles.info}>
+            <span className={styles.infoTitle}>2</span>
+            <p className={styles.infoText}>міста</p>
+          </div>
+          <div className={styles.info}>
+            <span className={styles.infoTitle}>100</span>
+            <span className={styles.infoSymbol}>%</span>
+            <p className={styles.infoText}>власний будресурс</p>
+          </div>
+        </div>
       </div>
     </div>
   );
