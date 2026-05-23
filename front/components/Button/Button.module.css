@@ -1,0 +1,14 @@
+.button {
+  padding: 20px 40px;
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  font-family: MontserratMedium, sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: white;
+  background-color: transparent;
+}
+
+.primary {
+  background-color: var(--accent);
+}
