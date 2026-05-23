@@ -2,16 +2,14 @@
 
 import { useState, useEffect, useMemo, useCallback, useRef } from "react";
 import gsap from "gsap";
-import styles from "./ReviewsCarousel.module.css";
+import styles from "./MainCarousel.module.css";
 import Image from "next/image";
 // import Arrow from "../Arrow/Arrow";
 
-export default function ReviewsCarousel({ ref }) {
+export default function MainCarousel({ ref }) {
   const [index, setIndex] = useState(0);
   const [viewWidth, setViewWidth] = useState(0);
   const cardsRef = useRef([]);
-  const startX = useRef(null);
-  const endX = useRef(null);
 
   const list = [
     { image: "/dna.jpg" },
@@ -30,19 +28,19 @@ export default function ReviewsCarousel({ ref }) {
   const positions = useMemo(() => {
     const configs = {
       mobile: [
-        { scale: 0.6, x: -100, opacity: 0, zIndex: 3 },
-        { scale: 1, x: 0, opacity: 1, zIndex: 5 },
-        { scale: 0.8, x: 60, opacity: 0.6, zIndex: 4 },
+        { scale: 0.6, xPercent: -30, opacity: 0.6, zIndex: 3 },
+        { scale: 1, xPercent: 0, opacity: 1, zIndex: 5 },
+        { scale: 0.6, xPercent: 30, opacity: 0.6, zIndex: 4 },
       ],
       desktop: [
-        { scale: 0.8, x: -250, opacity: 0.6, zIndex: 4 },
-        { scale: 1, x: 0, opacity: 1, zIndex: 5 },
-        { scale: 0.8, x: 250, opacity: 0.6, zIndex: 4 },
+        { scale: 0.8, xPercent: -22, opacity: 0.4, zIndex: 4 },
+        { scale: 1, xPercent: 0, opacity: 1, zIndex: 5 },
+        { scale: 0.8, xPercent: 22, opacity: 0.4, zIndex: 4 },
       ],
       tablet: [
-        { scale: 0.8, x: -200, opacity: 0.6, zIndex: 4 },
-        { scale: 1, x: 0, opacity: 1, zIndex: 5 },
-        { scale: 0.8, x: 200, opacity: 0.6, zIndex: 4 },
+        { scale: 0.8, xPercent: -20, opacity: 0.6, zIndex: 4 },
+        { scale: 1, xPercent: 0, opacity: 1, zIndex: 5 },
+        { scale: 0.8, xPercent: 20, opacity: 0.6, zIndex: 4 },
       ],
     };
     return viewWidth < 768
@@ -63,11 +61,11 @@ export default function ReviewsCarousel({ ref }) {
     cardsRef.current.forEach((card, i) => {
       if (!card) return;
       const posIndex = getPosition(i);
-      const { scale, x, opacity, zIndex } = positions[posIndex];
+      const { scale, xPercent, opacity, zIndex } = positions[posIndex];
 
       gsap.to(card, {
         scale,
-        x,
+        xPercent: xPercent,
         opacity,
         duration: 0.6,
         ease: "power2.inOut",
@@ -85,22 +83,6 @@ export default function ReviewsCarousel({ ref }) {
   };
 
   // свайп
-  const handleTouchStart = (e) => {
-    startX.current = e.touches[0].clientX;
-  };
-  const handleTouchEnd = (e) => {
-    endX.current = e.changedTouches[0].clientX;
-    if (startX.current !== null && endX.current !== null) {
-      const diff = startX.current - endX.current;
-      if (diff > 70) {
-        handleNext(); // свайп вліво
-      } else if (diff < -70) {
-        handlePrev(); // свайп вправо
-      }
-    }
-    startX.current = null;
-    endX.current = null;
-  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -111,18 +93,22 @@ export default function ReviewsCarousel({ ref }) {
 
   return (
     <div className={styles.carousel} ref={ref}>
-      {list.map((card, i) => (
-        <div
-          className={styles.card}
-          key={i}
-          ref={(el) => (cardsRef.current[i] = el)}
-        >
-          <Image className={styles.image} fill src={card.image} alt=""></Image>
-        </div>
-      ))}
-      {/* 
-        <Arrow direction="left" onClick={handlePrev} className={styles.prev} />
-        <Arrow direction="right" onClick={handleNext} className={styles.next} /> */}
+      <div className={styles.wrapper}>
+        {list.map((card, i) => (
+          <div
+            className={styles.card}
+            key={i}
+            ref={(el) => (cardsRef.current[i] = el)}
+          >
+            <Image
+              className={styles.image}
+              fill
+              src={card.image}
+              alt=""
+            ></Image>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
