@@ -1,11 +1,13 @@
 "use client";
+
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./MainScreen.module.css";
-import Image from "next/image";
-import Header from "@/components/Header/Header";
 import { gsap } from "gsap";
-import React, { useEffect, useRef } from "react";
+
 import Preloader from "@/components/Preloader/Preloader";
+import Header from "@/components/Header/Header";
 import ReviewsCarousel from "@/components/ReviewsCarousel/ReviewsCarousel";
+import Button from "@/components/Button/Button";
 
 const MainScreen = ({ data }) => {
   const containerRef = useRef(null);
@@ -14,65 +16,75 @@ const MainScreen = ({ data }) => {
   const textRef = useRef(null);
   const imageWrapperRef = useRef(null);
 
+  const [ready, setReady] = useState(false);
+
+  // 🔥 disable native scroll restore (ВАЖЛИВО)
   useEffect(() => {
-    // 🔹 reset scroll
-    document.documentElement.style.scrollBehavior = "auto";
-    window.scrollTo(0, 0);
-    document.documentElement.style.scrollBehavior = "smooth";
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+  }, []);
+
+  // 🔥 STEP 2-3-4 GSAP pipeline
+  useEffect(() => {
+    if (!ready) return;
 
     const ctx = gsap.context(() => {
-      const START_DELAY = 3.5;
-
       const tl = gsap.timeline({
-        delay: START_DELAY,
+        defaults: { ease: "power3.out" },
       });
 
-      // 🔹 IMAGE
       gsap.from(imageWrapperRef.current, {
         scale: 1.1,
-        duration: 1.2,
-        ease: "power3.out",
-        delay: START_DELAY - 0.5,
+        duration: 1,
       });
 
-      // 🔹 TEXT ANIMATION
       tl.from(titleRef.current, {
         x: -60,
         opacity: 0,
-        duration: 1,
-        ease: "power3.out",
+        duration: 1.5,
       })
         .from(
           subtitleRef.current,
           {
             x: 60,
             opacity: 0,
-            duration: 1,
-            ease: "power3.out",
+            duration: 1.5,
           },
-          "<", // одночасно з title
+          "<",
         )
         .from(
           textRef.current,
           {
             y: 40,
             opacity: 0,
-            duration: 1,
-            ease: "power3.out",
+            duration: 1.5,
           },
-          "-=0.6", // трохи пізніше
+          "-=0.6",
         );
     }, containerRef);
 
-    return () => ctx.revert(); // 🔥 cleanup
-  }, []);
+    // 🔥 scroll reset ПІСЛЯ preloader
+    window.scrollTo(0, 0);
+
+    // 🔥 ensure ScrollTrigger correct layout
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        if (window.ScrollTrigger) {
+          window.ScrollTrigger.refresh();
+        }
+      });
+    });
+
+    return () => ctx.revert();
+  }, [ready]);
 
   return (
-    <div ref={containerRef} className={styles.main} id="main">
-      <Preloader />
-      <Header />
+    <div ref={containerRef} className={styles.main}>
+      {/* 🔥 PRELOADER */}
+      <Preloader setReady={setReady} ready={ready} />
 
-      <div className={styles.overlay}></div>
+      <Header />
 
       <div className={styles.container}>
         <div className={styles.content}>
@@ -87,8 +99,15 @@ const MainScreen = ({ data }) => {
           <p ref={textRef} className={styles.text}>
             {data.text}
           </p>
+
+          <div className={styles.buttonsWrapper}>
+            <Button title="Проекти" href="#" />
+            <Button title="Консультація" href="#" primary />
+          </div>
         </div>
-        <ReviewsCarousel></ReviewsCarousel>
+
+        <ReviewsCarousel ref={imageWrapperRef} />
+        <div className={styles.overlay} />
       </div>
     </div>
   );

@@ -118,8 +118,8 @@ function blockRendered(block, categories) {
       return <About key={block.id} data={block} />;
     case "blocks.developer":
       return <Developer key={block.id} data={block} />;
-    case "blocks.advantages":
-      return <Advantages key={block.id} data={block} />;
+    // case "blocks.advantages":
+    //   return <Advantages key={block.id} data={block} />;
     case "blocks.faq":
       return <FAQ key={block.id} data={block} categories={categories} />;
   }

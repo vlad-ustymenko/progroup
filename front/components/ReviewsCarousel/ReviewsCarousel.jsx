@@ -6,7 +6,7 @@ import styles from "./ReviewsCarousel.module.css";
 import Image from "next/image";
 // import Arrow from "../Arrow/Arrow";
 
-export default function ReviewsCarousel() {
+export default function ReviewsCarousel({ ref }) {
   const [index, setIndex] = useState(0);
   const [viewWidth, setViewWidth] = useState(0);
   const cardsRef = useRef([]);
@@ -110,20 +110,14 @@ export default function ReviewsCarousel() {
   }, []);
 
   return (
-    <div className={styles.carousel}>
+    <div className={styles.carousel} ref={ref}>
       {list.map((card, i) => (
         <div
           className={styles.card}
           key={i}
           ref={(el) => (cardsRef.current[i] = el)}
         >
-          <Image
-            className={styles.image}
-            width={200}
-            height={200}
-            src={card.image}
-            alt=""
-          ></Image>
+          <Image className={styles.image} fill src={card.image} alt=""></Image>
         </div>
       ))}
       {/* 

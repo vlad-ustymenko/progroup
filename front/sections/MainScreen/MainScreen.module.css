@@ -17,8 +17,8 @@
   position: absolute;
   z-index: 2;
   background-image:
-    linear-gradient(rgba(185, 149, 107, 0.06) 3px, transparent 1px),
-    linear-gradient(90deg, rgba(185, 149, 107, 0.06) 3px, transparent 1px);
+    linear-gradient(rgb(185 149 107 / 6%) 3px, transparent 1px),
+    linear-gradient(90deg, rgb(185 149 107 / 6%) 3px, transparent 1px);
   background-size: 100px 100px;
   inset: 0;
 }
@@ -26,8 +26,8 @@
 .container {
   width: 1720px;
   height: 100%;
-  position: relative;
   margin: 0 auto;
+  position: relative;
 }
 /* Контент */
 
@@ -62,10 +62,16 @@
 /* Текст */
 .text {
   max-width: 40vw;
-  margin-bottom: 10vw;
+  margin-bottom: 2vw;
   font-family: MontserratRegular, sans-serif;
   font-size: 24px;
   font-weight: 400;
   line-height: 1.6;
   opacity: 0.9;
+}
+
+.buttonsWrapper {
+  display: flex;
+  gap: 2vw;
+  margin-bottom: 4vw;
 }

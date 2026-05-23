@@ -69,6 +69,7 @@ const Developer = ({ data }) => {
             src={`${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${data.image.url}`}
             fill
             alt="developer"
+            style={{ objectFit: "contain" }}
           />
         </div>
       </div>
