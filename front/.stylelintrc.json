@@ -6,6 +6,7 @@
     "custom-property-pattern": null,
     "no-empty-source": null,
     "comment-empty-line-before": null,
+    "block-no-empty": null,
     "order/properties-order": [
       [
         {
