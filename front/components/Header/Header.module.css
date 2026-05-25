@@ -20,9 +20,9 @@
 }
 
 .logo {
-  width: 60px;
-  height: 60px;
-  margin: 10px;
+  width: 3.3vw;
+  height: 3.3vw;
+  margin: 0.2vw 0;
   position: relative;
 }
 
@@ -34,6 +34,19 @@
 }
 
 @media (width >= 768px) and (width <= 1024px) {
+  .logo {
+    width: 60px;
+    height: 60px;
+    margin: 10px 0;
+    position: relative;
+  }
+
+  .menu {
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+    font-size: 18px;
+  }
 }
 
 @media (width <= 767px) {

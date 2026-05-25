@@ -103,7 +103,7 @@ const MainScreen = ({ data }) => {
       <div className={styles.overlay} />
 
       <div className={styles.container}>
-        <div className={styles.content}>
+        <div className={styles.grid}><div className={styles.content}>
           <h1 ref={titleRef} className={styles.title}>
             {data.companyName}
           </h1>
@@ -127,7 +127,7 @@ const MainScreen = ({ data }) => {
           </div>
         </div>
 
-        <MainCarousel ref={imageWrapperRef} />
+        <MainCarousel ref={imageWrapperRef} /></div>
         <div className={styles.infoWrapper}>
           <div className={styles.info}>
             <span className={styles.infoTitle}>10</span>

@@ -10,9 +10,6 @@
   overflow: hidden;
 }
 
-/* Картинка */
-
-/* Градієнт + затемнення */
 .overlay {
   position: absolute;
   z-index: 2;
@@ -29,40 +26,40 @@
   margin: 0 auto;
   position: relative;
 }
-/* Контент */
 
-.content {
-  height: fit-content;
-  position: absolute;
-  bottom: 80px;
-  left: 0;
-  z-index: 3;
-  color: #fff;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  height: 100svh;
 }
 
-/* Заголовок */
+.content {
+  padding-bottom: 80px;
+  z-index: 3;
+  color: #fff;
+  align-self: end;
+}
+
 .title {
   font-family: MontserratBold, sans-serif;
-  font-size: 96px;
+  font-size: 5vw;
   font-weight: 700;
   text-transform: uppercase;
 }
 
-/* Підзаголовок */
 .subtitle {
   margin-bottom: 2vw;
   font-family: MontserratBold, sans-serif;
-  font-size: 36px;
+  font-size: 1.9vw;
   font-weight: 700;
   color: var(--accent);
 }
 
-/* Текст */
 .text {
-  max-width: 50vw;
   margin-bottom: 2vw;
   font-family: MontserratRegular, sans-serif;
-  font-size: 24px;
+  font-size: 1.2vw;
   font-weight: 400;
   opacity: 0.9;
 }
@@ -87,38 +84,101 @@
 }
 
 .infoTitle {
-  font-size: 48px;
+  font-size: 2.5vw;
 }
 
 .infoSymbol {
-  font-size: 18px;
+  font-size: 1vw;
   color: var(--accent);
 }
 
 .infoText {
-  font-size: 15px;
+  font-size: 0.8vw;
   color: #a7a7a7;
 }
 
 @media (width >= 768px) and (width <= 1024px) {
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  .content {
+    padding-bottom: 50px;
+    align-self: start;
+    order: 2;
+  }
+
+  .title {
+    font-size: 78px;
+  }
+
+  .subtitle {
+    margin-bottom: 5vw;
+    font-size: 30px;
+  }
+
+  .text {
+    margin-bottom: 5vw;
+    font-size: 24px;
+  }
+
+  .buttonsWrapper {
+    display: flex;
+  }
+
+  .infoWrapper {
+    justify-content: center;
+    gap: 100px;
+    width: 100%;
+    bottom: 40px;
+  }
+
+  .info {
+    font-family: MontserratBold, sans-serif;
+    text-align: right;
+    color: #fff;
+  }
+
+  .infoTitle {
+    font-size: 36px;
+  }
+
+  .infoSymbol {
+    font-size: 20px;
+    color: var(--accent);
+  }
+
+  .infoText {
+    font-size: 18px;
+    color: #a7a7a7;
+  }
 }
 
 @media (width <= 767px) {
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  .content {
+    padding-bottom: 50px;
+    align-self: start;
+    order: 2;
+  }
+
   .title {
-    font-size: 56px;
+    font-size: 45px;
   }
 
-  /* Підзаголовок */
   .subtitle {
-    margin-bottom: 10vw;
-    font-size: 17px;
+    margin-bottom: 5vw;
+    font-size: 18px;
   }
 
-  /* Текст */
   .text {
-    max-width: 90%;
-    margin-bottom: 10vw;
-    font-size: 15px;
+    margin-bottom: 5vw;
+    font-size: 14px;
   }
 
   .buttonsWrapper {
