@@ -1,9 +1,14 @@
 :root {
   --textColor: #fff;
-  --background: #171f31;
-  --foreground: #171717;
   --accent: #b9956b;
+  --secondaryColor: #171f31;
   --border: 3px solid #b9956b;
+  --backgroundSecondary: #e8e8e8;
+  --backgroundGradient: linear-gradient(
+    90deg,
+    rgb(23 31 49 / 100%) 41%,
+    rgb(45 59 82 / 100%) 100%
+  );
 }
 
 html {
