@@ -45,20 +45,21 @@
   font-family: MontserratBold, sans-serif;
   font-size: 96px;
   font-weight: 700;
+  text-transform: uppercase;
 }
 
 /* Підзаголовок */
 .subtitle {
   margin-bottom: 2vw;
   font-family: MontserratBold, sans-serif;
-  font-size: 28px;
+  font-size: 36px;
   font-weight: 700;
   color: var(--accent);
 }
 
 /* Текст */
 .text {
-  max-width: 40vw;
+  max-width: 50vw;
   margin-bottom: 2vw;
   font-family: MontserratRegular, sans-serif;
   font-size: 24px;
