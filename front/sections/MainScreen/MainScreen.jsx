@@ -18,6 +18,9 @@ const MainScreen = ({ data }) => {
   const btn1Ref = useRef(null);
   const btn2Ref = useRef(null);
 
+  // ✅ NEW: refs для info блоків
+  const infoRefs = useRef([]);
+
   const [ready, setReady] = useState(true);
 
   useEffect(() => {
@@ -50,6 +53,7 @@ const MainScreen = ({ data }) => {
 
       gsap.from(imageWrapperRef.current, {
         scale: 1.1,
+        opacity: 0,
         duration: 1,
       });
 
@@ -76,12 +80,20 @@ const MainScreen = ({ data }) => {
           },
           "-=0.6",
         );
+
+      // 🔥 NEW ANIMATION: infoWrapper stagger
+      gsap.from(infoRefs.current, {
+        y: 60,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.2,
+        ease: "power3.out",
+        delay: 1.2,
+      });
     }, containerRef);
 
-    // 🔥 scroll reset ПІСЛЯ preloader
     window.scrollTo(0, 0);
 
-    // 🔥 ensure ScrollTrigger correct layout
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         if (window.ScrollTrigger) {
@@ -132,9 +144,14 @@ const MainScreen = ({ data }) => {
 
           <MainCarousel ref={imageWrapperRef} data={data.carousel} />
         </div>
+
         <div className={styles.infoWrapper}>
-          {data.info.map((item) => (
-            <div key={item.id} className={styles.info}>
+          {data.info.map((item, i) => (
+            <div
+              key={item.id}
+              ref={(el) => (infoRefs.current[i] = el)}
+              className={styles.info}
+            >
               <span className={styles.infoTitle}>{item.title}</span>
               <span className={styles.infoSymbol}>{item.symbol}</span>
               <p className={styles.infoText}>{item.text}</p>
