@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_components_info_main_screens",
+  "info": {
+    "displayName": "InfoMainScreen"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}

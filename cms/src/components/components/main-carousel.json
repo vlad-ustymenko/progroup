@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_components_main_carousels",
+  "info": {
+    "displayName": "MainCarousel"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  },
+  "config": {}
+}

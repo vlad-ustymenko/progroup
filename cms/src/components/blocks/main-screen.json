@@ -16,6 +16,32 @@
     "text": {
       "type": "text",
       "required": true
+    },
+    "header": {
+      "type": "component",
+      "component": "components.header",
+      "repeatable": true,
+      "required": true
+    },
+    "buttons": {
+      "type": "component",
+      "component": "components.button",
+      "repeatable": true,
+      "required": false
+    },
+    "carousel": {
+      "type": "component",
+      "component": "components.main-carousel",
+      "repeatable": true,
+      "required": true,
+      "min": 3,
+      "max": 3
+    },
+    "info": {
+      "type": "component",
+      "component": "components.info-main-screen",
+      "repeatable": true,
+      "required": false
     }
   },
   "config": {}

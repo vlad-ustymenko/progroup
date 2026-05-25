@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_components_headers",
+  "info": {
+    "displayName": "Header"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "link": {
+      "type": "string",
+      "default": "#",
+      "required": true
+    }
+  },
+  "config": {}
+}

@@ -60,9 +60,70 @@ export interface BlocksMainScreen extends Struct.ComponentSchema {
     displayName: 'MainScreen';
   };
   attributes: {
+    buttons: Schema.Attribute.Component<'components.button', true>;
+    carousel: Schema.Attribute.Component<'components.main-carousel', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 3;
+          min: 3;
+        },
+        number
+      >;
     companyName: Schema.Attribute.String & Schema.Attribute.Required;
     companySubname: Schema.Attribute.String & Schema.Attribute.Required;
+    header: Schema.Attribute.Component<'components.header', true> &
+      Schema.Attribute.Required;
+    info: Schema.Attribute.Component<'components.info-main-screen', true>;
     text: Schema.Attribute.Text & Schema.Attribute.Required;
+  };
+}
+
+export interface ComponentsButton extends Struct.ComponentSchema {
+  collectionName: 'components_components_buttons';
+  info: {
+    displayName: 'Button';
+  };
+  attributes: {
+    link: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'#'>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface ComponentsHeader extends Struct.ComponentSchema {
+  collectionName: 'components_components_headers';
+  info: {
+    displayName: 'Header';
+  };
+  attributes: {
+    link: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'#'>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface ComponentsInfoMainScreen extends Struct.ComponentSchema {
+  collectionName: 'components_components_info_main_screens';
+  info: {
+    displayName: 'InfoMainScreen';
+  };
+  attributes: {
+    symbol: Schema.Attribute.String;
+    text: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface ComponentsMainCarousel extends Struct.ComponentSchema {
+  collectionName: 'components_components_main_carousels';
+  info: {
+    displayName: 'MainCarousel';
+  };
+  attributes: {
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
   };
 }
 
@@ -74,6 +135,10 @@ declare module '@strapi/strapi' {
       'blocks.developer': BlocksDeveloper;
       'blocks.faq': BlocksFaq;
       'blocks.main-screen': BlocksMainScreen;
+      'components.button': ComponentsButton;
+      'components.header': ComponentsHeader;
+      'components.info-main-screen': ComponentsInfoMainScreen;
+      'components.main-carousel': ComponentsMainCarousel;
     }
   }
 }
