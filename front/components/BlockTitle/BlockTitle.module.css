@@ -1,0 +1,17 @@
+.titleWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1vw;
+  z-index: 10;
+}
+
+.line {
+  width: 2.5vw;
+  height: 0.1vw;
+  background-color: var(--secondaryColor);
+}
+
+.title {
+  font-family: MontserratMedium, sans-serif;
+}
