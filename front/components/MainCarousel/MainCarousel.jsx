@@ -7,15 +7,11 @@ import Image from "next/image";
 // import Arrow from "../Arrow/Arrow";
 
 export default function MainCarousel({ ref, data }) {
+  console.log(data);
   const [index, setIndex] = useState(0);
   const [viewWidth, setViewWidth] = useState(0);
   const cardsRef = useRef([]);
 
-  const list = [
-    { image: "/dna.jpg" },
-    { image: "/dna2.png" },
-    { image: "/main.jpg" },
-  ];
   // відслідковуємо ширину
   useEffect(() => {
     const updateWidth = () => setViewWidth(window.innerWidth);
@@ -52,8 +48,8 @@ export default function MainCarousel({ ref, data }) {
 
   // обчислюємо позицію для слайда
   const getPosition = useCallback(
-    (i) => (i - index + list.length) % list.length,
-    [index, list.length],
+    (i) => (i - index + data.length) % data.length,
+    [index, data.length],
   );
 
   // анімація при зміні index
@@ -75,11 +71,7 @@ export default function MainCarousel({ ref, data }) {
   }, [index, positions, getPosition]);
 
   const handleNext = () => {
-    setIndex((prev) => (prev + 1) % list.length);
-  };
-
-  const handlePrev = () => {
-    setIndex((prev) => (prev - 1 + list.length) % list.length);
+    setIndex((prev) => (prev + 1) % data.length);
   };
 
   // свайп

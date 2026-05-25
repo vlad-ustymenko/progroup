@@ -18,8 +18,8 @@
   width: 70%;
   height: 60%;
   border-radius: 1vw;
-  place-self: center start;
   overflow: hidden;
+  place-self: center start;
 }
 
 .image {
@@ -49,9 +49,9 @@
 
 .title {
   z-index: 2;
+  font-family: MontserratBold, sans-serif;
   font-size: 2.5vw;
   font-weight: 600;
-  font-family: MontserratBold, sans-serif;
   line-height: 1;
 }
 

@@ -17,8 +17,6 @@ const MainScreen = ({ data }) => {
   const imageWrapperRef = useRef(null);
   const btn1Ref = useRef(null);
   const btn2Ref = useRef(null);
-
-  // ✅ NEW: refs для info блоків
   const infoRefs = useRef([]);
 
   const [ready, setReady] = useState(true);
@@ -81,7 +79,6 @@ const MainScreen = ({ data }) => {
           "-=0.6",
         );
 
-      // 🔥 NEW ANIMATION: infoWrapper stagger
       gsap.from(infoRefs.current, {
         y: 60,
         opacity: 0,
