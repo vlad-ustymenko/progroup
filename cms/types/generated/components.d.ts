@@ -36,6 +36,7 @@ export interface BlocksDeveloper extends Struct.ComponentSchema {
     displayName: 'Developer';
   };
   attributes: {
+    blockTitle: Schema.Attribute.String & Schema.Attribute.Required;
     description: Schema.Attribute.RichText & Schema.Attribute.Required;
     image: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;

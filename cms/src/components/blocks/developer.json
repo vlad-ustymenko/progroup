@@ -21,6 +21,10 @@
         "images",
         "files"
       ]
+    },
+    "blockTitle": {
+      "type": "string",
+      "required": true
     }
   },
   "config": {}
