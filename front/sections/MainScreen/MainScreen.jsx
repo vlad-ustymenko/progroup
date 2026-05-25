@@ -20,14 +20,12 @@ const MainScreen = ({ data }) => {
 
   const [ready, setReady] = useState(true);
 
-  // 🔥 disable native scroll restore (ВАЖЛИВО)
   useEffect(() => {
     if ("scrollRestoration" in history) {
       history.scrollRestoration = "manual";
     }
   }, []);
 
-  // 🔥 STEP 2-3-4 GSAP pipeline
   useEffect(() => {
     if (!ready) return;
 
@@ -40,13 +38,14 @@ const MainScreen = ({ data }) => {
         opacity: 0,
         x: -40,
         duration: 0.8,
+        delay: 0.5,
       });
 
       gsap.from(btn2Ref.current, {
         opacity: 0,
         x: -40,
         duration: 0.8,
-        delay: 0.3,
+        delay: 0.8,
       });
 
       gsap.from(imageWrapperRef.current, {
@@ -96,7 +95,6 @@ const MainScreen = ({ data }) => {
 
   return (
     <div ref={containerRef} className={styles.main}>
-      {/* 🔥 PRELOADER */}
       {/* <Preloader setReady={setReady} ready={ready} /> */}
 
       <Header data={data.header} />
