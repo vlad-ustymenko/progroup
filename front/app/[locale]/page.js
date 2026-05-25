@@ -18,7 +18,20 @@ async function getData(path, locale) {
         blocks: {
           on: {
             "blocks.main-screen": {
-              populate: "*",
+              populate: {
+                header: { populate: "*" },
+                buttons: { populate: "*" },
+                info: {
+                  populate: "*",
+                },
+                carousel: {
+                  populate: {
+                    image: {
+                      fields: ["url"],
+                    },
+                  },
+                },
+              },
             },
             "blocks.about": { populate: "*" },
             "blocks.developer": {
@@ -116,9 +129,9 @@ function blockRendered(block, categories) {
       return <MainScreen key={block.id} data={block} />;
     // case "blocks.about":
     //   return <About key={block.id} data={block} />;
-    // case "blocks.developer":
-    //   return <Developer key={block.id} data={block} />;
-    // case "blocks.advantages":
+    case "blocks.developer":
+      return <Developer key={block.id} data={block} />;
+    case "blocks.advantages":
     //   return <Advantages key={block.id} data={block} />;
     // case "blocks.faq":
     //   return <FAQ key={block.id} data={block} categories={categories} />;

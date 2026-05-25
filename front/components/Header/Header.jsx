@@ -6,7 +6,7 @@ import MenuBtn from "../MenuBtn/MenuBtn";
 import Image from "next/image";
 import styles from "./Header.module.css";
 
-const Header = () => {
+const Header = ({ data }) => {
   const [scrolled, setScrolled] = useState(false);
   const aboutRef = useRef(null);
   const projectsRef = useRef(null);
@@ -40,18 +40,11 @@ const Header = () => {
         <Image src="/logo.svg" alt="" fill></Image>
       </div>
       <div className={styles.menu}>
-        <a href="#developer" className={styles.menuItem} ref={aboutRef}>
-          Про девелопера
-        </a>
-        <a href="#main" className={styles.menuItem} ref={projectsRef}>
-          Проєкти
-        </a>
-        <a href="#" className={styles.menuItem} ref={newsRef}>
-          Новини
-        </a>
-        <a href="#" className={styles.menuItem} ref={contactsRef}>
-          Контакти
-        </a>
+        {data.map((item) => (
+          <a href={item.link} className={styles.menuItem} key={item.id}>
+            {item.title}
+          </a>
+        ))}
         <MenuBtn></MenuBtn>
       </div>
     </div>

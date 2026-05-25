@@ -6,7 +6,7 @@ import styles from "./MainCarousel.module.css";
 import Image from "next/image";
 // import Arrow from "../Arrow/Arrow";
 
-export default function MainCarousel({ ref }) {
+export default function MainCarousel({ ref, data }) {
   const [index, setIndex] = useState(0);
   const [viewWidth, setViewWidth] = useState(0);
   const cardsRef = useRef([]);
@@ -94,16 +94,16 @@ export default function MainCarousel({ ref }) {
   return (
     <div className={styles.carousel} ref={ref}>
       <div className={styles.wrapper}>
-        {list.map((card, i) => (
+        {data.map((card, i) => (
           <div
             className={styles.card}
-            key={i}
+            key={card.id}
             ref={(el) => (cardsRef.current[i] = el)}
           >
             <Image
               className={styles.image}
               fill
-              src={card.image}
+              src={`${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${card.image.url}`}
               alt=""
             ></Image>
           </div>

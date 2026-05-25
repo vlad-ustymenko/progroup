@@ -18,7 +18,7 @@ const MainScreen = ({ data }) => {
   const btn1Ref = useRef(null);
   const btn2Ref = useRef(null);
 
-  const [ready, setReady] = useState(false);
+  const [ready, setReady] = useState(true);
 
   // 🔥 disable native scroll restore (ВАЖЛИВО)
   useEffect(() => {
@@ -97,52 +97,51 @@ const MainScreen = ({ data }) => {
   return (
     <div ref={containerRef} className={styles.main}>
       {/* 🔥 PRELOADER */}
-      <Preloader setReady={setReady} ready={ready} />
+      {/* <Preloader setReady={setReady} ready={ready} /> */}
 
-      <Header />
+      <Header data={data.header} />
       <div className={styles.overlay} />
 
       <div className={styles.container}>
-        <div className={styles.grid}><div className={styles.content}>
-          <h1 ref={titleRef} className={styles.title}>
-            {data.companyName}
-          </h1>
+        <div className={styles.grid}>
+          <div className={styles.content}>
+            <h1 ref={titleRef} className={styles.title}>
+              {data.companyName}
+            </h1>
 
-          <p ref={subtitleRef} className={styles.subtitle}>
-            {data.companySubname}
-          </p>
+            <p ref={subtitleRef} className={styles.subtitle}>
+              {data.companySubname}
+            </p>
 
-          <p ref={textRef} className={styles.text}>
-            {data.text}
-          </p>
+            <p ref={textRef} className={styles.text}>
+              {data.text}
+            </p>
 
-          <div className={styles.buttonsWrapper}>
-            <Button title="Переглянути проети" href="#" ref={btn1Ref} />
-            <Button
-              title="Отримати консультацію"
-              href="#"
-              primary
-              ref={btn2Ref}
-            />
+            <div className={styles.buttonsWrapper}>
+              <Button
+                title={data.buttons[0].title}
+                href={data.buttons[0].link}
+                ref={btn1Ref}
+              />
+              <Button
+                title={data.buttons[1].title}
+                href={data.buttons[1].link}
+                primary
+                ref={btn2Ref}
+              />
+            </div>
           </div>
+
+          <MainCarousel ref={imageWrapperRef} data={data.carousel} />
         </div>
-
-        <MainCarousel ref={imageWrapperRef} /></div>
         <div className={styles.infoWrapper}>
-          <div className={styles.info}>
-            <span className={styles.infoTitle}>10</span>
-            <span className={styles.infoSymbol}>+</span>
-            <p className={styles.infoText}>років досвіду</p>
-          </div>
-          <div className={styles.info}>
-            <span className={styles.infoTitle}>2</span>
-            <p className={styles.infoText}>міста</p>
-          </div>
-          <div className={styles.info}>
-            <span className={styles.infoTitle}>100</span>
-            <span className={styles.infoSymbol}>%</span>
-            <p className={styles.infoText}>власний будресурс</p>
-          </div>
+          {data.info.map((item) => (
+            <div key={item.id} className={styles.info}>
+              <span className={styles.infoTitle}>{item.title}</span>
+              <span className={styles.infoSymbol}>{item.symbol}</span>
+              <p className={styles.infoText}>{item.text}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>
