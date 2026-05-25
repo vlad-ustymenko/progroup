@@ -35,7 +35,7 @@ async function getData(path, locale) {
             },
             "blocks.about": { populate: "*" },
             "blocks.developer": {
-              fields: ["title", "description"],
+              fields: ["title", "description", "blockTitle"],
               populate: {
                 image: {
                   fields: ["url"],
