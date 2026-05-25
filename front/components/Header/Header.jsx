@@ -27,10 +27,12 @@ const Header = ({ data }) => {
       delay: 3.5,
     });
 
-    tl.from(aboutRef.current, { y: 50, opacity: 0 })
-      .from(projectsRef.current, { y: 50, opacity: 0 }, "-=0.6")
-      .from(newsRef.current, { y: 50, opacity: 0 }, "-=0.6")
-      .from(contactsRef.current, { y: 50, opacity: 0 }, "-=0.6");
+    gsap.from(`.${styles.menuItem}`, {
+      y: 50,
+      opacity: 0,
+      stagger: 0.15,
+      delay: 3.5,
+    });
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
