@@ -99,7 +99,7 @@ const Developer = ({ data }) => {
             ease: "power3.out",
             scrollTrigger: {
               trigger: el,
-              start: "top 85%",
+              start: "top 100%",
               toggleActions: "play reverse play reverse",
             },
           },
@@ -157,6 +157,9 @@ const Developer = ({ data }) => {
                 <p ref={addToTextRefs} className={styles.text}>
                   {children}
                 </p>
+              ),
+              ul: ({ children }) => (
+                <ul className={styles.textList}>{children}</ul>
               ),
               li: ({ children }) => (
                 <li ref={addToTextRefs} className={styles.text}>
