@@ -1,7 +1,7 @@
 .button {
   padding: 1.1vw 2.2vw;
   border: 1px solid var(--accent);
-  border-radius: 25px;
+  border-radius: 0.5vw;
   font-family: MontserratMedium, sans-serif;
   font-size: 0.95vw;
   text-align: center;
