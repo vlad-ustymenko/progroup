@@ -1,46 +1,54 @@
 .faq {
   width: 100%;
-  height: 100vh;
-  color: black;
-  background-color: white;
+  color: var(--secondaryColor);
+  background-color: var(--backgroundSecondary);
+  overflow: hidden;
+}
+
+.container {
+  width: 80%;
+  height: 100%;
+  padding: 5vw 0;
+  margin: 0 auto;
 }
 
 .title {
-  width: fit-content;
-  padding: 1vw 4vw;
-  margin: 2vw auto;
-  border-bottom: 3px solid var(--accent);
-  font-size: 2.1vw;
-  font-weight: 700;
-  text-align: center;
+  width: 100%;
+  margin: 3vw auto;
+  font-family: MontserratBold, sans-serif;
+  font-size: var(--titleFontSize);
 }
 
 .tabWrapper {
-  width: 90%;
-  padding: 1.5vw 1.5vw 0;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0 auto 1.5vw;
   margin-bottom: 1vw;
-  border: 3px solid black;
-  border-radius: 10px;
+  border-bottom: 1px solid black;
   cursor: pointer;
 }
 
 .tabTitleWrapper {
   display: grid;
-  align-items: flex-start;
+  align-items: center;
   grid-template-columns: 1fr 20px;
 }
 
 .tabTitle {
   margin-bottom: 1.5vw;
+  font-family: MontserratBold, sans-serif;
   font-size: 1.5vw;
-  font-weight: 700;
 }
 
 .tabDescription {
   display: grid;
   grid-template-rows: 0fr;
+  font-family: MontserratRegular, sans-serif;
   transition: 0.3s ease;
+}
+
+.open {
+  grid-template-rows: 1fr;
+  margin-bottom: 1.5vw;
 }
 
 .tabContent {
@@ -49,22 +57,202 @@
 }
 
 .activeTab {
+  margin-bottom: 1vw;
   color: var(--accent);
 }
 
-.open {
-  grid-template-rows: 1fr;
+.filters {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3vw;
+  width: 60%;
+  margin-bottom: 2vw;
+  margin-left: auto;
+  font-family: MontserratMedium, sans-serif;
+  font-size: 1.5vw;
+  font-weight: 600;
 }
 
-.filters {
-  display: flex;
-  justify-content: center;
-  gap: 1vw;
-  margin-bottom: 2vw;
-  font-size: 1.2vw;
-  font-weight: 600;
+.filter {
+  width: fit-content;
+  position: relative;
+  justify-self: end;
 }
 
 .activeFilter {
   color: var(--accent);
+}
+
+.activeFilter::after {
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--accent);
+  content: "";
+}
+
+.buttonBlock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2vw;
+  margin-top: 4vw;
+  border-radius: var(--borderRadius);
+  color: white;
+  background-color: var(--secondaryColor);
+}
+
+.textTitle {
+  margin-bottom: 1vw;
+  font-family: MontserratBold, sans-serif;
+  font-size: 1.5vw;
+}
+
+.textDescription {
+  font-family: MontserratRegular, sans-serif;
+  font-size: 1.1vw;
+}
+
+@media (width >= 768px) and (width <= 1024px) {
+  .container {
+    width: 90%;
+    padding: 50px 0;
+  }
+
+  .title {
+    margin: 30px auto;
+    font-size: var(--titleFontSizeTablet);
+  }
+
+  .tabTitle {
+    margin: 30px 0;
+    font-family: MontserratBold, sans-serif;
+    font-size: 22px;
+  }
+
+  .activeTab {
+    margin-bottom: 15px;
+  }
+
+  .tabContent {
+    font-size: 18px;
+  }
+
+  .filters {
+    gap: 20px;
+    width: 90%;
+    margin-bottom: 20px;
+    font-size: 22px;
+  }
+
+  .buttonBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 40px;
+    border-radius: var(--borderRadiusTablet);
+    background-color: var(--secondaryColor);
+  }
+
+  .textWrapper {
+    width: 100%;
+  }
+
+  .textTitle {
+    margin-bottom: 10px;
+    font-family: MontserratBold, sans-serif;
+    font-size: 22px;
+  }
+
+  .textDescription {
+    font-family: MontserratRegular, sans-serif;
+    font-size: 15px;
+  }
+
+  .open {
+    margin-bottom: 22px;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
+
+@media (width <= 767px) {
+  .container {
+    width: 90%;
+    padding: 50px 0;
+  }
+
+  .title {
+    margin: 30px auto;
+    font-size: var(--titleFontSizeMobile);
+  }
+
+  .tabTitle {
+    margin: 20px 0;
+    font-family: MontserratBold, sans-serif;
+    font-size: 18px;
+  }
+
+  .activeTab {
+    margin-bottom: 15px;
+  }
+
+  .tabContent {
+    font-size: 15px;
+  }
+
+  .open {
+    margin-bottom: 20px;
+  }
+
+  .filters {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 15px;
+    row-gap: 30px;
+  }
+
+  .filter {
+    justify-self: center;
+  }
+
+  .filters button:last-child {
+    grid-column: span 2;
+  }
+
+  .buttonBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 40px;
+    border-radius: var(--borderRadiusTablet);
+    background-color: var(--secondaryColor);
+  }
+
+  .textWrapper {
+    width: 100%;
+  }
+
+  .textTitle {
+    margin-bottom: 10px;
+    font-family: MontserratBold, sans-serif;
+    font-size: 20px;
+  }
+
+  .textDescription {
+    font-family: MontserratRegular, sans-serif;
+    font-size: 12px;
+  }
+
+  .button {
+    width: 100%;
+  }
 }
