@@ -3,12 +3,17 @@
   --accent: #b9956b;
   --secondaryColor: #171f31;
   --border: 3px solid #b9956b;
+  --borderRadius: 1.1vw;
+  --borderRadiusMobile: 10px;
   --backgroundSecondary: #e8e8e8;
   --backgroundGradient: linear-gradient(
     90deg,
     rgb(23 31 49 / 100%) 41%,
     rgb(45 59 82 / 100%) 100%
   );
+  --titleFontSize: 2.5vw;
+  --titleFontSizeMobile: 25px;
+  --titleFontSizeTablet: 30px;
 }
 
 html {
