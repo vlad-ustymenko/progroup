@@ -4,6 +4,7 @@ import styles from "./About.module.css";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import BlockTitle from "@/components/BlockTitle/BlockTitle";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,7 +14,7 @@ const About = ({ data }) => {
   useEffect(() => {
     if (!aboutRef.current) return;
 
-    const INNER_DELAY = 0.12; // 🔥 ТУТ ТИ КОНТРОЛЮЄШ ЗАТРИМКУ
+    const INNER_DELAY = 0.12;
 
     const ctx = gsap.context(() => {
       // 🔹 PIN
@@ -27,10 +28,10 @@ const About = ({ data }) => {
       // 🔹 LINE (scrub лишаємо)
       gsap.fromTo(
         ".line",
-        { scaleX: 0 },
+        { scaleY: 0 },
         {
-          scaleX: 1,
-          transformOrigin: "left center",
+          scaleY: 1,
+          transformOrigin: "top center",
           ease: "none",
           scrollTrigger: {
             trigger: aboutRef.current,
@@ -41,37 +42,6 @@ const About = ({ data }) => {
         },
       );
 
-      gsap.fromTo(
-        ".title",
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          ease: "power5.out",
-          scrollTrigger: {
-            trigger: aboutRef.current,
-            start: "top 80%",
-            toggleActions: "play reverse play reverse",
-          },
-        },
-      );
-      gsap.fromTo(
-        ".subtitle",
-        { opacity: 0, x: 50 },
-        {
-          opacity: 1,
-          x: 0,
-          delay: 0.3,
-          ease: "power5.out",
-          scrollTrigger: {
-            trigger: aboutRef.current,
-            start: "top 80%",
-            toggleActions: "play reverse play reverse",
-          },
-        },
-      );
-
-      // 🔥 POINTS CONFIG
       const points = [
         {
           inner: ".dot1 .dotInner",
@@ -85,14 +55,14 @@ const About = ({ data }) => {
           outer: ".dot2 .dotOut",
           text: ".text2",
           year: ".year2",
-          start: "39% top",
+          start: "29% top",
         },
         {
           inner: ".dot3 .dotInner",
           outer: ".dot3 .dotOut",
           text: ".text3",
           year: ".year3",
-          start: "73% top",
+          start: "55% top",
         },
       ];
 
@@ -161,59 +131,53 @@ const About = ({ data }) => {
 
   return (
     <div ref={aboutRef} className={styles.about} id="about">
-      <div className={`${styles.wrapper} wrapper`}>
-        <div className={styles.titleWrapper}>
+      <div className={`${styles.container} wrapper`}>
+        <div className={styles.content}>
+          <BlockTitle title="Досвід, який формує проєкти" white></BlockTitle>
           <h2 className={`${styles.title} title`}>{data.sectionTitle}</h2>
-          <h3 className={`${styles.subtitle} subtitle`}>
-            {data.sectionSubtitle}
-          </h3>
+
+          <div className={styles.contentWrapper}>
+            <span className={`${styles.line} line`}></span>
+
+            <div className={`${styles.dot} dot1`}>
+              <span className={`${styles.dotInner} dotInner`}></span>
+              <span className={`${styles.dotOut} dotOut`}></span>
+            </div>
+            <div className={`${styles.textWrapper} text1`}>
+              <p className={styles.year}>2015</p>
+              <p className={styles.role}>{data.role1}</p>
+              <p className={styles.text}>{data.role1text}</p>
+            </div>
+            <div className={`${styles.dot} dot2`}>
+              <span className={`${styles.dotInner} dotInner`}></span>
+              <span className={`${styles.dotOut} dotOut`}></span>
+            </div>
+            <div className={`${styles.textWrapper} text2`}>
+              <p className={styles.year}>2025</p>
+              <p className={styles.role}>{data.role2}</p>
+              <p className={styles.text}>{data.role2text}</p>
+            </div>
+            <div className={`${styles.dot} dot3`}>
+              <span className={`${styles.dotInner} dotInner`}></span>
+              <span className={`${styles.dotOut} dotOut`}></span>
+            </div>
+            <div className={`${styles.textWrapper} text3`}>
+              <p className={styles.year}>2026</p>
+              <p className={styles.role}>{data.role3}</p>
+              <p className={styles.text}>{data.role3text}</p>
+            </div>
+
+            {/* DOTS */}
+          </div>
         </div>
-
-        <Image src="/dna2.png" alt="about" fill className={styles.image} />
-        <div className={styles.overlay}></div>
-
-        <span className={`${styles.line} line`}></span>
-
-        {/* YEARS */}
-        <div className={styles.yearsWrapper}>
-          <p className={`${styles.year} year1`}>{data.year1}</p>
-          <p className={`${styles.year} year2`}>{data.year2}</p>
-          <p className={`${styles.year} year3`}>{data.year3}</p>
-        </div>
-
-        {/* CONTENT */}
-        <div className={styles.contentWrapper}>
-          <div className={`${styles.text} text1`}>
-            <p>{data.role1}</p>
-            <p>{data.role1text}</p>
-          </div>
-
-          <div className={`${styles.text} text2`}>
-            <p>{data.role2}</p>
-            <p>{data.role2text}</p>
-          </div>
-
-          <div className={`${styles.text} text3`}>
-            <p>{data.role3}</p>
-            <p>{data.role3text}</p>
-          </div>
-        </div>
-
-        {/* DOTS */}
-        <div className={styles.dotsWrapper}>
-          <div className={`${styles.dot} dot1`}>
-            <span className={`${styles.dotInner} dotInner`}></span>
-            <span className={`${styles.dotOut} dotOut`}></span>
-          </div>
-
-          <div className={`${styles.dot} dot2`}>
-            <span className={`${styles.dotInner} dotInner`}></span>
-            <span className={`${styles.dotOut} dotOut`}></span>
-          </div>
-
-          <div className={`${styles.dot} dot3`}>
-            <span className={`${styles.dotInner} dotInner`}></span>
-            <span className={`${styles.dotOut} dotOut`}></span>
+        <div className={styles.imageWrapper}>
+          <div className={styles.image}>
+            <Image
+              src="/dna.jpg"
+              fill
+              alt="developer"
+              style={{ objectFit: "cover" }}
+            />
           </div>
         </div>
       </div>
