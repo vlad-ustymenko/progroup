@@ -127,8 +127,8 @@ function blockRendered(block, categories) {
   switch (block.__component) {
     case "blocks.main-screen":
       return <MainScreen key={block.id} data={block} />;
-    // case "blocks.about":
-    //   return <About key={block.id} data={block} />;
+    case "blocks.about":
+      return <About key={block.id} data={block} />;
     case "blocks.developer":
       return <Developer key={block.id} data={block} />;
     case "blocks.advantages":
