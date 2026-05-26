@@ -6,13 +6,14 @@ export interface BlocksAbout extends Struct.ComponentSchema {
     displayName: 'About';
   };
   attributes: {
+    blockTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     role1: Schema.Attribute.String & Schema.Attribute.Required;
     role1text: Schema.Attribute.Text & Schema.Attribute.Required;
     role2: Schema.Attribute.String & Schema.Attribute.Required;
     role2text: Schema.Attribute.Text & Schema.Attribute.Required;
     role3: Schema.Attribute.String & Schema.Attribute.Required;
     role3text: Schema.Attribute.Text & Schema.Attribute.Required;
-    sectionSubtitle: Schema.Attribute.String & Schema.Attribute.Required;
     sectionTitle: Schema.Attribute.String & Schema.Attribute.Required;
     year1: Schema.Attribute.String & Schema.Attribute.Required;
     year2: Schema.Attribute.String & Schema.Attribute.Required;
@@ -50,7 +51,12 @@ export interface BlocksFaq extends Struct.ComponentSchema {
     displayName: 'FAQ';
   };
   attributes: {
+    blockTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    button: Schema.Attribute.Component<'components.button', false> &
+      Schema.Attribute.Required;
     faq_list: Schema.Attribute.Relation<'oneToMany', 'api::faq.faq'>;
+    infoText: Schema.Attribute.String & Schema.Attribute.Required;
+    infoTitle: Schema.Attribute.String & Schema.Attribute.Required;
     sectionTitle: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }

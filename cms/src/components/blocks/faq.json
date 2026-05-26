@@ -13,6 +13,24 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::faq.faq"
+    },
+    "blockTitle": {
+      "type": "string",
+      "required": true
+    },
+    "button": {
+      "type": "component",
+      "component": "components.button",
+      "repeatable": false,
+      "required": true
+    },
+    "infoText": {
+      "type": "string",
+      "required": true
+    },
+    "infoTitle": {
+      "type": "string",
+      "required": true
     }
   },
   "config": {}

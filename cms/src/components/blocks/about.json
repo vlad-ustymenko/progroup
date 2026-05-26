@@ -9,10 +9,6 @@
       "type": "string",
       "required": true
     },
-    "sectionSubtitle": {
-      "type": "string",
-      "required": true
-    },
     "year1": {
       "type": "string",
       "required": true
@@ -48,6 +44,18 @@
     "role3text": {
       "type": "text",
       "required": true
+    },
+    "blockTitle": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     }
   },
   "config": {}
