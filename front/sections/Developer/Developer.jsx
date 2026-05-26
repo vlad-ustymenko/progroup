@@ -34,7 +34,6 @@ const Developer = ({ data }) => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // 🔥 IMAGE
       gsap.fromTo(
         imageRef.current,
         { scale: 1.1, opacity: 0 },
@@ -46,12 +45,11 @@ const Developer = ({ data }) => {
           scrollTrigger: {
             trigger: imageRef.current,
             start: "top 85%",
-            toggleActions: "play reverse play reverse",
+            toggleActions: "play play play reverse",
           },
         },
       );
 
-      // 🔥 BLOCK TITLE
       gsap.fromTo(
         blockTitleRef.current,
         { x: -80, opacity: 0 },
@@ -63,12 +61,11 @@ const Developer = ({ data }) => {
           scrollTrigger: {
             trigger: blockTitleRef.current,
             start: "top 85%",
-            toggleActions: "play reverse play reverse",
+            toggleActions: "play play play reverse",
           },
         },
       );
 
-      // 🔥 TITLES (ReactMarkdown)
       titleRefs.current.forEach((el) => {
         gsap.fromTo(
           el,
@@ -81,13 +78,12 @@ const Developer = ({ data }) => {
             scrollTrigger: {
               trigger: el,
               start: "top 85%",
-              toggleActions: "play reverse play reverse",
+              toggleActions: "play play play reverse",
             },
           },
         );
       });
 
-      // 🔥 TEXTS
       textRefs.current.forEach((el) => {
         gsap.fromTo(
           el,
@@ -100,7 +96,7 @@ const Developer = ({ data }) => {
             scrollTrigger: {
               trigger: el,
               start: "top 100%",
-              toggleActions: "play reverse play reverse",
+              toggleActions: "play play play reverse",
             },
           },
         );

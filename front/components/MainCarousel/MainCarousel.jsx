@@ -7,7 +7,6 @@ import Image from "next/image";
 // import Arrow from "../Arrow/Arrow";
 
 export default function MainCarousel({ ref, data }) {
-  console.log(data);
   const [index, setIndex] = useState(0);
   const [viewWidth, setViewWidth] = useState(0);
   const cardsRef = useRef([]);

@@ -11,7 +11,6 @@ gsap.registerPlugin(ScrollTrigger);
 const About = ({ data }) => {
   const aboutRef = useRef(null);
 
-  // 🔥 NEW REFS
   const blockTitleRef = useRef(null);
   const titleRef = useRef(null);
   const imageRef = useRef(null);

@@ -3,6 +3,7 @@
   height: 100vh;
   color: var(--secondaryColor);
   background-color: var(--backgroundSecondary);
+  overflow: hidden;
 }
 
 .container {
@@ -80,6 +81,7 @@
   .imageWrapper {
     width: 50%;
     min-height: 400px;
+    border-radius: var(--borderRadiusTablet);
     place-self: center center;
   }
 
