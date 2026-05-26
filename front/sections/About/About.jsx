@@ -11,13 +11,17 @@ gsap.registerPlugin(ScrollTrigger);
 const About = ({ data }) => {
   const aboutRef = useRef(null);
 
+  // 🔥 NEW REFS
+  const blockTitleRef = useRef(null);
+  const titleRef = useRef(null);
+  const imageRef = useRef(null);
+
   useEffect(() => {
     if (!aboutRef.current) return;
 
     const INNER_DELAY = 0.12;
 
     const ctx = gsap.context(() => {
-      // 🔹 PIN
       ScrollTrigger.create({
         trigger: aboutRef.current,
         start: "top top",
@@ -25,7 +29,63 @@ const About = ({ data }) => {
         pin: ".wrapper",
       });
 
-      // 🔹 LINE (scrub лишаємо)
+      gsap.fromTo(
+        blockTitleRef.current,
+        {
+          x: -60,
+          opacity: 0,
+        },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: blockTitleRef.current,
+            start: "top 85%",
+            toggleActions: "play play play reverse",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        titleRef.current,
+        {
+          y: 40,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: "top 85%",
+            toggleActions: "play play play reverse",
+          },
+        },
+      );
+
+      gsap.fromTo(
+        imageRef.current,
+        {
+          scale: 1.1,
+          opacity: 0,
+        },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 1.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: imageRef.current,
+            start: "top 85%",
+            toggleActions: "play play play reverse",
+          },
+        },
+      );
+
       gsap.fromTo(
         ".line",
         { scaleY: 0 },
@@ -75,7 +135,6 @@ const About = ({ data }) => {
           },
         });
 
-        // 🔸 OUTER DOT (одразу)
         tl.fromTo(
           point.outer,
           { scale: 0 },
@@ -86,7 +145,6 @@ const About = ({ data }) => {
           },
         );
 
-        // 🔸 INNER DOT (ЗАТРИМКА КОНТРОЛЬОВАНА)
         tl.fromTo(
           point.inner,
           { scale: 0 },
@@ -95,10 +153,9 @@ const About = ({ data }) => {
             duration: 0.35,
             ease: "power2.out",
           },
-          INNER_DELAY, // 🔥 ОЦЕ ЗАМІНА delay
+          INNER_DELAY,
         );
 
-        // 🔥 TEXT
         tl.fromTo(
           point.text,
           { opacity: 0, y: 30 },
@@ -111,7 +168,6 @@ const About = ({ data }) => {
           INNER_DELAY,
         );
 
-        // 🔥 YEAR
         tl.fromTo(
           point.year,
           { opacity: 0, y: -20 },
@@ -133,8 +189,11 @@ const About = ({ data }) => {
     <div ref={aboutRef} className={styles.about} id="about">
       <div className={`${styles.container} wrapper`}>
         <div className={styles.content}>
-          <BlockTitle title="Досвід, який формує проєкти" white></BlockTitle>
-          <h2 className={`${styles.title} title`}>{data.sectionTitle}</h2>
+          <BlockTitle title={data.blockTitle} white ref={blockTitleRef} />
+
+          <h2 ref={titleRef} className={`${styles.title} title`}>
+            {data.sectionTitle}
+          </h2>
 
           <div className={styles.contentWrapper}>
             <span className={`${styles.line} line`}></span>
@@ -143,37 +202,41 @@ const About = ({ data }) => {
               <span className={`${styles.dotInner} dotInner`}></span>
               <span className={`${styles.dotOut} dotOut`}></span>
             </div>
+
             <div className={`${styles.textWrapper} text1`}>
-              <p className={styles.year}>2015</p>
+              <p className={`${styles.year} year1`}>2015</p>
               <p className={styles.role}>{data.role1}</p>
               <p className={styles.text}>{data.role1text}</p>
             </div>
+
             <div className={`${styles.dot} dot2`}>
               <span className={`${styles.dotInner} dotInner`}></span>
               <span className={`${styles.dotOut} dotOut`}></span>
             </div>
+
             <div className={`${styles.textWrapper} text2`}>
-              <p className={styles.year}>2025</p>
+              <p className={`${styles.year} year2`}>2025</p>
               <p className={styles.role}>{data.role2}</p>
               <p className={styles.text}>{data.role2text}</p>
             </div>
+
             <div className={`${styles.dot} dot3`}>
               <span className={`${styles.dotInner} dotInner`}></span>
               <span className={`${styles.dotOut} dotOut`}></span>
             </div>
+
             <div className={`${styles.textWrapper} text3`}>
-              <p className={styles.year}>2026</p>
+              <p className={`${styles.year} year3`}>2026</p>
               <p className={styles.role}>{data.role3}</p>
               <p className={styles.text}>{data.role3text}</p>
             </div>
-
-            {/* DOTS */}
           </div>
         </div>
-        <div className={styles.imageWrapper}>
+
+        <div ref={imageRef} className={styles.imageWrapper}>
           <div className={styles.image}>
             <Image
-              src="/dna.jpg"
+              src={`${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${data.image.url}`}
               fill
               alt="developer"
               style={{ objectFit: "cover" }}
