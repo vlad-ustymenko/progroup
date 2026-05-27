@@ -5,6 +5,18 @@
   },
   "options": {},
   "attributes": {
+    "blockTitle": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "subtitle": {
+      "type": "richtext",
+      "required": true
+    },
     "advantages_cards": {
       "type": "relation",
       "relation": "oneToMany",

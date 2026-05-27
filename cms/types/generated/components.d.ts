@@ -31,6 +31,9 @@ export interface BlocksAdvantages extends Struct.ComponentSchema {
       'oneToMany',
       'api::advantages-card.advantages-card'
     >;
+    blockTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    subtitle: Schema.Attribute.RichText & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
