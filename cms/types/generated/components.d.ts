@@ -27,7 +27,10 @@ export interface BlocksAdvantages extends Struct.ComponentSchema {
     displayName: 'Advantages';
   };
   attributes: {
-    new_cards: Schema.Attribute.Relation<'oneToMany', 'api::new-card.new-card'>;
+    advantages_cards: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::advantages-card.advantages-card'
+    >;
   };
 }
 
@@ -83,6 +86,17 @@ export interface BlocksMainScreen extends Struct.ComponentSchema {
       Schema.Attribute.Required;
     info: Schema.Attribute.Component<'components.info-main-screen', true>;
     text: Schema.Attribute.Text & Schema.Attribute.Required;
+  };
+}
+
+export interface ComponentsAdvantagesDetails extends Struct.ComponentSchema {
+  collectionName: 'components_components_advantages_details';
+  info: {
+    displayName: 'AdvantCardDetail';
+  };
+  attributes: {
+    text: Schema.Attribute.Text & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -142,6 +156,7 @@ declare module '@strapi/strapi' {
       'blocks.developer': BlocksDeveloper;
       'blocks.faq': BlocksFaq;
       'blocks.main-screen': BlocksMainScreen;
+      'components.advantages-details': ComponentsAdvantagesDetails;
       'components.button': ComponentsButton;
       'components.header': ComponentsHeader;
       'components.info-main-screen': ComponentsInfoMainScreen;

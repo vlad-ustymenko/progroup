@@ -5,10 +5,10 @@
   },
   "options": {},
   "attributes": {
-    "new_cards": {
+    "advantages_cards": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::new-card.new-card"
+      "target": "api::advantages-card.advantages-card"
     }
   },
   "config": {}

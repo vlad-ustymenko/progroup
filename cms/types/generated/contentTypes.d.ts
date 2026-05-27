@@ -430,6 +430,75 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAdvantagesCardAdvantagesCard
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'advantages_cards';
+  info: {
+    displayName: 'AdvantagesCard';
+    pluralName: 'advantages-cards';
+    singularName: 'advantages-card';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    advantCardDetail: Schema.Attribute.Component<
+      'components.advantages-details',
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    cardNumber: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    icon: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::advantages-card.advantages-card'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    subtitle: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFaqCategoryFaqCategory extends Struct.CollectionTypeSchema {
   collectionName: 'faq_categories';
   info: {
@@ -1130,6 +1199,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::advantages-card.advantages-card': ApiAdvantagesCardAdvantagesCard;
       'api::faq-category.faq-category': ApiFaqCategoryFaqCategory;
       'api::faq.faq': ApiFaqFaq;
       'api::home-page.home-page': ApiHomePageHomePage;

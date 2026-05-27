@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_components_advantages_details",
+  "info": {
+    "displayName": "AdvantCardDetail"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "text": {
+      "type": "text",
+      "required": true
+    }
+  },
+  "config": {}
+}
