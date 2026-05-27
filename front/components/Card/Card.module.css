@@ -1,36 +1,248 @@
 .card {
   width: 100%;
+  height: 100%;
   border-radius: 1vw;
   position: relative;
   background-color: var(--accent);
-  overflow: hidden;
+  transition: transform 1s;
+  cursor: pointer;
+  /* overflow: hidden; */
+  transform-style: preserve-3d;
 }
 
-.image {
+.active {
+  transform: rotateY(180deg);
+}
+
+.cardFace {
   width: 100%;
-  height: 50%;
-  object-fit: cover;
+  height: 100%;
+  padding: 1.5vw;
+  border-radius: var(--borderRadius);
+  position: absolute;
+  color: var(--secondaryColor);
+  backface-visibility: hidden;
 }
 
-.content {
-  padding: 2vw;
+.front {
+  width: 100%;
+  height: 100%;
+  background-color: #ebebeb;
 }
 
-.title {
+.back {
+  transform: rotateY(180deg);
+  background-color: var(--accent);
+}
+
+.cardHeaderWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 1vw;
   font-size: 1.5vw;
   font-weight: 600;
 }
 
-.subtitle {
+.icon {
+  width: 3vw;
+  height: 3vw;
+  color: var(--accent);
+}
+
+.cardHeaderNumber {
+  font-family: MontserratBold, sans-serif;
+  font-size: 5vw;
+  line-height: 0.8;
+  color: var(--accent);
+  opacity: 0.3;
+}
+
+.title {
+  padding-bottom: 1vw;
+  border-bottom: 1px solid var(--accent);
+  font-family: MontserratBold, sans-serif;
   font-size: 1.2vw;
+}
+
+.subtitle {
+  margin-top: 1vw;
+  font-family: MontserratRegular, sans-serif;
+  font-size: 1.1vw;
 }
 
 .button {
   width: 3vw;
   height: 3vw;
   position: absolute;
-  right: 2vw;
-  bottom: 2vw;
+  right: 1.5vw;
+  bottom: 1.5vw;
+  color: var(--accent);
   cursor: pointer;
+}
+
+.backContent {
+  padding-bottom: 1vw;
+  margin-bottom: 1vw;
+  border-bottom: 1px solid var(--secondaryColor);
+  color: white;
+}
+
+.backContent:last-of-type {
+  border-bottom: unset;
+}
+
+.backTitle {
+  padding-bottom: 0.5vw;
+  font-family: MontserratBold, sans-serif;
+  font-size: 1.2vw;
+}
+
+.backText {
+  font-family: MontserratRegular, sans-serif;
+  font-size: 1.1vw;
+}
+
+.backButton {
+  width: 3vw;
+  height: 3vw;
+  position: absolute;
+  right: 1.5vw;
+  bottom: 1.5vw;
+  color: var(--secondaryColor);
+  cursor: pointer;
+}
+
+@media (width >= 768px) and (width <= 1024px) {
+  .card {
+    border-radius: var(--borderRadiusTablet);
+  }
+
+  .cardFace {
+    padding: 40px;
+    border-radius: var(--borderRadiusTablet);
+  }
+
+  .icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .cardHeaderWrapper {
+    margin-bottom: 15px;
+  }
+
+  .cardHeaderNumber {
+    font-size: 60px;
+    line-height: 0.8;
+  }
+
+  .title {
+    padding-bottom: 20px;
+    font-size: 24px;
+  }
+
+  .subtitle {
+    margin-top: 20px;
+    font-family: MontserratRegular, sans-serif;
+    font-size: 20px;
+  }
+
+  .button {
+    width: 40px;
+    height: 40px;
+    right: 20px;
+    bottom: 20px;
+  }
+
+  .backContent {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+
+  .backTitle {
+    font-family: MontserratBold, sans-serif;
+    font-size: 24px;
+  }
+
+  .backText {
+    font-family: MontserratRegular, sans-serif;
+    font-size: 20px;
+  }
+
+  .backButton {
+    width: 40px;
+    height: 40px;
+    right: 20px;
+    bottom: 20px;
+  }
+}
+
+@media (width <= 767px) {
+  .card {
+    border-radius: var(--borderRadiusMobile);
+  }
+
+  .cardFace {
+    padding: 30px;
+    border-radius: var(--borderRadiusMobile);
+  }
+
+  .icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .cardHeaderWrapper {
+    margin-bottom: 15px;
+  }
+
+  .cardHeaderNumber {
+    font-size: 60px;
+    line-height: 0.8;
+  }
+
+  .title {
+    padding-bottom: 15px;
+    font-size: 20px;
+  }
+
+  .subtitle {
+    margin-top: 15px;
+  }
+
+  .subtitle {
+    margin-top: 15px;
+    font-family: MontserratRegular, sans-serif;
+    font-size: 17px;
+  }
+
+  .button {
+    width: 40px;
+    height: 40px;
+    right: 20px;
+    bottom: 20px;
+  }
+
+  .backContent {
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+  }
+
+  .backTitle {
+    font-family: MontserratBold, sans-serif;
+    font-size: 20px;
+  }
+
+  .backText {
+    font-family: MontserratRegular, sans-serif;
+    font-size: 17px;
+  }
+
+  .backButton {
+    width: 40px;
+    height: 40px;
+    right: 20px;
+    bottom: 20px;
+  }
 }
