@@ -1,29 +1,121 @@
 .advantages {
   width: 100%;
   height: 100vh;
-  padding: 5vw 0;
   color: black;
-  background-color: white;
+  overflow: hidden;
+}
+
+.container {
+  width: 80%;
+  height: 100%;
+  padding: 5vw 0;
+  margin: 0 auto;
+}
+
+.titleWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10vw;
+  margin-top: 2vw;
 }
 
 .title {
   margin-bottom: 2vw;
-  font-size: 2.1vw;
-  font-weight: 700;
-  text-align: center;
+  font-family: MontserratBold, sans-serif;
+  font-size: var(--titleFontSize);
 }
 
 .subtitle {
   margin-bottom: 2vw;
-  font-size: 1.9vw;
-  text-align: center;
+  font-family: MontserratMedium, sans-serif;
+  font-size: 1.4vw;
 }
 
 .cards {
   display: flex;
   justify-content: space-between;
-  gap: 3vw;
+  gap: 2vw;
   width: 100%;
-  height: 80%;
-  padding: 0 5vw;
+  height: 70%;
+}
+
+.cardItem {
+  width: 100%;
+  height: 100%;
+}
+
+@media (width >= 768px) and (width <= 1024px) {
+  .advantages {
+    height: fit-content;
+  }
+
+  .container {
+    width: 90%;
+    padding: 50px 0;
+  }
+
+  .titleWrapper {
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  .title {
+    margin-bottom: 2vw;
+    font-size: var(--titleFontSizeTablet);
+  }
+
+  .subtitle {
+    margin-bottom: 2vw;
+    font-size: 22px;
+  }
+
+  .cards {
+    flex-direction: column;
+  }
+
+  .cardItem {
+    height: 450px;
+  }
+}
+
+@media (width <= 767px) {
+  .advantages {
+    height: fit-content;
+  }
+
+  .container {
+    width: 90%;
+    padding: 50px 0;
+  }
+
+  .titleWrapper {
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  .title {
+    margin-bottom: unset;
+    font-size: var(--titleFontSizeMobile);
+  }
+
+  .subtitle {
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+
+  .cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    height: 70%;
+  }
+
+  .cardItem {
+    height: 470px;
+  }
 }
