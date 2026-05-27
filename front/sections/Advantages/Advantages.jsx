@@ -6,6 +6,8 @@ import Card from "@/components/Card/Card";
 import BlockTitle from "@/components/BlockTitle/BlockTitle";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import remarkBreaks from "remark-breaks";
+import ReactMarkdown from "react-markdown";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -77,16 +79,32 @@ const Advantages = ({ data }) => {
   return (
     <div ref={sectionRef} className={styles.advantages}>
       <div className={styles.container}>
-        <BlockTitle ref={blockTitleRef} title="Наш підхід" />
+        <BlockTitle ref={blockTitleRef} title={data.blockTitle} />
 
         <div className={styles.titleWrapper}>
           <h2 ref={titleRef} className={styles.title}>
-            Від ідеї до введення в експлуатацію
+            {data.title}
           </h2>
 
-          <p ref={subtitleRef} className={styles.subtitle}>
-            Ми будуємо не просто площу, а міцний фундамент вашого спокою
-          </p>
+          <ReactMarkdown
+            remarkPlugins={[remarkBreaks]}
+            components={{
+              p: ({ children }) => (
+                <p ref={subtitleRef} className={styles.subtitle}>
+                  {children}
+                </p>
+              ),
+              strong: ({ children }) => (
+                <span style={{ color: "var(--accent)" }}>{children}</span>
+              ),
+            }}
+          >
+            {data.subtitle}
+          </ReactMarkdown>
+
+          {/* <p ref={subtitleRef} className={styles.subtitle}>
+            {data.subtitle}
+          </p> */}
         </div>
 
         <div className={styles.cards}>
