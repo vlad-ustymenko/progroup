@@ -59,8 +59,8 @@ const FAQ = ({ data, categories }) => {
           ease: "power3.out",
           scrollTrigger: {
             trigger: blockTitleRef.current,
-            start: "top 90%",
-            toggleActions: "play reverse play reverse",
+            start: "top bottom",
+            toggleActions: "play none none reverse",
           },
         },
       );
@@ -75,8 +75,8 @@ const FAQ = ({ data, categories }) => {
           ease: "power3.out",
           scrollTrigger: {
             trigger: titleRef.current,
-            start: "top 85%",
-            toggleActions: "play reverse play reverse",
+            start: "top bottom",
+            toggleActions: "play none none reverse",
           },
         },
       );
@@ -92,8 +92,8 @@ const FAQ = ({ data, categories }) => {
           ease: "power3.out",
           scrollTrigger: {
             trigger: filtersRef.current,
-            start: "top 85%",
-            toggleActions: "play reverse play reverse",
+            start: "top bottom",
+            toggleActions: "play none none reverse",
           },
         },
       );
@@ -121,9 +121,6 @@ const FAQ = ({ data, categories }) => {
     return () => ctx.revert();
   }, []);
 
-  // =========================
-  // DYNAMIC TABS ANIMATION
-  // =========================
   useEffect(() => {
     if (!tabsRef.current) return;
 

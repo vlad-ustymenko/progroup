@@ -23,19 +23,25 @@ export default function MainCarousel({ ref, data }) {
   const positions = useMemo(() => {
     const configs = {
       mobile: [
+        { scale: 0.6, xPercent: -30, opacity: 0, zIndex: 3 },
         { scale: 0.6, xPercent: -30, opacity: 0.6, zIndex: 3 },
         { scale: 1, xPercent: 0, opacity: 1, zIndex: 5 },
         { scale: 0.6, xPercent: 30, opacity: 0.6, zIndex: 4 },
+        { scale: 0.6, xPercent: 30, opacity: 0, zIndex: 4 },
       ],
       desktop: [
+        { scale: 0.8, xPercent: -22, opacity: 0, zIndex: 4 },
         { scale: 0.8, xPercent: -22, opacity: 0.4, zIndex: 4 },
         { scale: 1, xPercent: 0, opacity: 1, zIndex: 5 },
         { scale: 0.8, xPercent: 22, opacity: 0.4, zIndex: 4 },
+        { scale: 0.8, xPercent: 22, opacity: 0, zIndex: 4 },
       ],
       tablet: [
+        { scale: 0.8, xPercent: -20, opacity: 0, zIndex: 4 },
         { scale: 0.8, xPercent: -20, opacity: 0.6, zIndex: 4 },
         { scale: 1, xPercent: 0, opacity: 1, zIndex: 5 },
         { scale: 0.8, xPercent: 20, opacity: 0.6, zIndex: 4 },
+        { scale: 0.8, xPercent: 20, opacity: 0, zIndex: 4 },
       ],
     };
     return viewWidth < 768

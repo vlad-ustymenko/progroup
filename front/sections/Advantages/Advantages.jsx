@@ -29,7 +29,7 @@ const Advantages = ({ data }) => {
         ease: "power3.out",
         scrollTrigger: {
           trigger: blockTitleRef.current,
-          start: "top 90%",
+          start: "top bottom",
           toggleActions: "play none none reverse",
         },
       });
@@ -41,7 +41,7 @@ const Advantages = ({ data }) => {
         ease: "power3.out",
         scrollTrigger: {
           trigger: titleRef.current,
-          start: "top 90%",
+          start: "top bottom",
           toggleActions: "play none none reverse",
         },
       });
@@ -53,7 +53,7 @@ const Advantages = ({ data }) => {
         ease: "power3.out",
         scrollTrigger: {
           trigger: subtitleRef.current,
-          start: "top 90%",
+          start: "top bottom",
           toggleActions: "play none none reverse",
         },
       });
@@ -66,7 +66,7 @@ const Advantages = ({ data }) => {
           ease: "power3.out",
           scrollTrigger: {
             trigger: el,
-            start: "top 90%",
+            start: "top bottom",
             toggleActions: "play none none reverse",
           },
         });

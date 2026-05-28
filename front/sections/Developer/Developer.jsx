@@ -44,8 +44,8 @@ const Developer = ({ data }) => {
           ease: "power3.out",
           scrollTrigger: {
             trigger: imageRef.current,
-            start: "top 85%",
-            toggleActions: "play play play reverse",
+            start: "top bottom",
+            toggleActions: "play none none reverse",
           },
         },
       );
@@ -60,8 +60,8 @@ const Developer = ({ data }) => {
           ease: "power3.out",
           scrollTrigger: {
             trigger: blockTitleRef.current,
-            start: "top 85%",
-            toggleActions: "play play play reverse",
+            start: "top bottom",
+            toggleActions: "play none none reverse",
           },
         },
       );
@@ -77,8 +77,8 @@ const Developer = ({ data }) => {
             ease: "power3.out",
             scrollTrigger: {
               trigger: el,
-              start: "top 85%",
-              toggleActions: "play play play reverse",
+              start: "top bottom",
+              toggleActions: "play none none reverse",
             },
           },
         );
@@ -96,7 +96,7 @@ const Developer = ({ data }) => {
             scrollTrigger: {
               trigger: el,
               start: "top 100%",
-              toggleActions: "play play play reverse",
+              toggleActions: "play none none reverse",
             },
           },
         );
