@@ -7,6 +7,7 @@ import About from "@/sections/About/About";
 import Developer from "@/sections/Developer/Developer";
 import Advantages from "@/sections/Advantages/Advantages";
 import FAQ from "@/sections/FAQ/FAQ";
+import Projects from "@/sections/Projects/Projects";
 
 async function getData(path, locale) {
   const baseUrl = process.env.STRAPI_BASE_URL;
@@ -73,6 +74,30 @@ async function getData(path, locale) {
                 button: { populate: "*" },
               },
             },
+            "blocks.projects": {
+              populate: {
+                projects: {
+                  fields: [
+                    "title",
+                    "rank",
+                    "address",
+                    "floors",
+                    "apartments",
+                    "year",
+                    "role",
+                  ],
+                  populate: {
+                    images: {
+                      fields: ["url"],
+                    },
+                    project_category: {
+                      fields: ["title", "slug"],
+                    },
+                  },
+                },
+                // button: { populate: "*" },
+              },
+            },
             // "blocks.roadmap": { populate: "*" },
             // "blocks.menu": { populate: "*" },
             // "blocks.modal": { populate: "*" },
@@ -131,7 +156,7 @@ async function getCategories(path, locale) {
 
 // ===== Рендер блоку =====
 
-function blockRendered(block, categories) {
+function blockRendered(block, faqCategories, projectCategories) {
   switch (block.__component) {
     case "blocks.main-screen":
       return <MainScreen key={block.id} data={block} />;
@@ -142,7 +167,11 @@ function blockRendered(block, categories) {
     case "blocks.advantages":
       return <Advantages key={block.id} data={block} />;
     case "blocks.faq":
-      return <FAQ key={block.id} data={block} categories={categories} />;
+      return <FAQ key={block.id} data={block} categories={faqCategories} />;
+    case "blocks.projects":
+      return (
+        <Projects key={block.id} data={block} categories={projectCategories} />
+      );
   }
 }
 
@@ -151,7 +180,15 @@ function blockRendered(block, categories) {
 export default async function Home({ params }) {
   const { locale } = await params;
   const strapiData = await getData(process.env.HOME_URL, locale);
-  const categories = await getCategories(process.env.CATEGORIES_URL, locale);
+  const faqCategories = await getCategories(
+    process.env.FAQ_CATEGORIES_URL,
+    locale,
+  );
+
+  const projectCategories = await getCategories(
+    process.env.PROJECT_CATEGORIES_URL,
+    locale,
+  );
 
   if (!strapiData) {
     notFound();
@@ -161,8 +198,11 @@ export default async function Home({ params }) {
 
   return (
     <>
-      {blocks.map((block) => blockRendered(block, categories))}
-      {/* <FAQ /> */}
+      {blocks.map((block) =>
+        blockRendered(block, faqCategories, projectCategories),
+      )}
+
+      {/* <Projects></Projects> */}
     </>
     // <>
     //   <MainScreen />
