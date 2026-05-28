@@ -34,8 +34,8 @@
       "component": "components.main-carousel",
       "repeatable": true,
       "required": true,
-      "min": 3,
-      "max": 3
+      "min": 5,
+      "max": 5
     },
     "info": {
       "type": "component",

@@ -78,8 +78,8 @@ export interface BlocksMainScreen extends Struct.ComponentSchema {
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<
         {
-          max: 3;
-          min: 3;
+          max: 5;
+          min: 5;
         },
         number
       >;
@@ -89,6 +89,18 @@ export interface BlocksMainScreen extends Struct.ComponentSchema {
       Schema.Attribute.Required;
     info: Schema.Attribute.Component<'components.info-main-screen', true>;
     text: Schema.Attribute.Text & Schema.Attribute.Required;
+  };
+}
+
+export interface BlocksProjects extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_projects';
+  info: {
+    displayName: 'Projects';
+  };
+  attributes: {
+    blockTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    projects: Schema.Attribute.Relation<'oneToMany', 'api::project.project'>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -159,6 +171,7 @@ declare module '@strapi/strapi' {
       'blocks.developer': BlocksDeveloper;
       'blocks.faq': BlocksFaq;
       'blocks.main-screen': BlocksMainScreen;
+      'blocks.projects': BlocksProjects;
       'components.advantages-details': ComponentsAdvantagesDetails;
       'components.button': ComponentsButton;
       'components.header': ComponentsHeader;
