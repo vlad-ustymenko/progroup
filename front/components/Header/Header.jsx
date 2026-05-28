@@ -38,9 +38,9 @@ const Header = ({ data }) => {
   }, []);
   return (
     <div className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
-      <div className={styles.logo}>
+      <a href="#" className={styles.logo}>
         <Image src="/logo.svg" alt="" fill></Image>
-      </div>
+      </a>
       <div className={styles.menu}>
         {data.map((item) => (
           <a href={item.link} className={styles.menuItem} key={item.id}>
