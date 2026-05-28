@@ -35,7 +35,6 @@ const Projects = ({ data, categories }) => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // 🔵 BLOCK TITLE (зліва направо + opacity)
       gsap.from(blockTitleRef.current, {
         x: -60,
         opacity: 0,
@@ -48,7 +47,6 @@ const Projects = ({ data, categories }) => {
         },
       });
 
-      // 🔵 TITLE (зліва направо)
       gsap.from(titleRef.current, {
         x: -80,
         opacity: 0,
@@ -61,7 +59,6 @@ const Projects = ({ data, categories }) => {
         },
       });
 
-      // 🔵 FILTERS (stagger зліва направо)
       gsap.from(filtersRef.current?.children, {
         x: -30,
         opacity: 0,
@@ -75,7 +72,6 @@ const Projects = ({ data, categories }) => {
         },
       });
 
-      // 🔵 SWIPER (знизу вгору)
       gsap.from(swiperContainerRef.current, {
         y: 80,
         opacity: 0,
@@ -88,7 +84,6 @@ const Projects = ({ data, categories }) => {
         },
       });
 
-      // 🔵 NAVIGATION (знизу вгору)
       gsap.from(navigationRef.current, {
         y: 60,
         opacity: 0,
