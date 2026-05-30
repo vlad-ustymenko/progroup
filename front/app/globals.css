@@ -13,8 +13,8 @@
     rgb(45 59 82 / 100%) 100%
   );
   --titleFontSize: 2.5vw;
-  --titleFontSizeMobile: 25px;
-  --titleFontSizeTablet: 30px;
+  --titleFontSizeMobile: 6.5vw;
+  --titleFontSizeTablet: 4vw;
   --containerPadding: 5vw 0;
   --containerPaddingTablet: 12vw 0;
   --containerPaddingMobile: 18vw 0;
