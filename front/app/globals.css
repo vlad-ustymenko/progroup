@@ -15,6 +15,9 @@
   --titleFontSize: 2.5vw;
   --titleFontSizeMobile: 25px;
   --titleFontSizeTablet: 30px;
+  --containerPadding: 5vw 0;
+  --containerPaddingTablet: 12vw 0;
+  --containerPaddingMobile: 18vw 0;
 }
 
 html {
