@@ -4,7 +4,7 @@ const PUBLIC_FILE = /\.(.*)$/;
 const DEFAULT_LOCALE = "uk";
 const SUPPORTED_LOCALES = ["uk", "en"];
 
-export function middleware(request) {
+export function proxy(request) {
   const { pathname } = request.nextUrl;
 
   // Пропускаємо _next, api, файли
@@ -24,15 +24,21 @@ export function middleware(request) {
 
   if (pathnameIsLocale) {
     const response = NextResponse.next();
+
     response.cookies.set("NEXT_LOCALE", firstSegment, {
       maxAge: 60 * 60 * 24 * 365, // 1 рік
+      path: "/",
     });
+
     return response;
   }
 
-  // Якщо корінь '/' — редірект на локаль з cookie або за замовчуванням
-  if (pathname === "/" || !pathnameIsLocale) {
-    const locale = localeCookie || DEFAULT_LOCALE;
-    return NextResponse.redirect(new URL(`/${locale}`, request.url));
-  }
+  // Якщо немає локалі в URL
+  const locale = localeCookie || DEFAULT_LOCALE;
+
+  return NextResponse.redirect(new URL(`/${locale}${pathname}`, request.url));
 }
+
+export const config = {
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+};
