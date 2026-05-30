@@ -89,8 +89,8 @@
 .pagination {
   display: flex;
   align-items: center;
-  gap: 0.2vw;
   justify-content: center;
+  gap: 0.2vw;
   width: unset !important;
 }
 
