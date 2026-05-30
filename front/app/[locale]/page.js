@@ -8,6 +8,7 @@ import Developer from "@/sections/Developer/Developer";
 import Advantages from "@/sections/Advantages/Advantages";
 import FAQ from "@/sections/FAQ/FAQ";
 import Projects from "@/sections/Projects/Projects";
+import News from "@/sections/News/News";
 
 async function getData(path, locale) {
   const baseUrl = process.env.STRAPI_BASE_URL;
@@ -202,7 +203,7 @@ export default async function Home({ params }) {
         blockRendered(block, faqCategories, projectCategories),
       )}
 
-      {/* <Projects></Projects> */}
+      <News></News>
     </>
     // <>
     //   <MainScreen />
