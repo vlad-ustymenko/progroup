@@ -3,7 +3,7 @@ const nextConfig = {
   allowedDevOrigins: ["192.168.31.239"],
   images: {
     formats: ["image/avif", "image/webp"],
-    domains: ["localhost"],
+    // domains: ["localhost"],
     remotePatterns: [
       {
         protocol: "http",
