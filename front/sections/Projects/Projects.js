@@ -177,14 +177,7 @@ const Projects = ({ data, categories }) => {
                           <p className={styles.runk}>{children}</p>
                         ),
                         strong: ({ children }) => (
-                          <span
-                            style={{
-                              color: "var(--accent)",
-                              fontFamily: "MontserratBold, sans-serif",
-                            }}
-                          >
-                            {children}
-                          </span>
+                          <span className={styles.strong}>{children}</span>
                         ),
                       }}
                     >
@@ -211,11 +204,7 @@ const Projects = ({ data, categories }) => {
                           ),
                           strong: ({ children }) => (
                             <span
-                              style={{
-                                color: "var(--accent)",
-                                fontFamily: "MontserratBold, sans-serif",
-                                fontSize: "3vw",
-                              }}
+                              className={` ${styles.strong} ${styles.strongFloors}`}
                             >
                               {children}
                             </span>
@@ -233,11 +222,7 @@ const Projects = ({ data, categories }) => {
                           ),
                           strong: ({ children }) => (
                             <span
-                              style={{
-                                color: "var(--accent)",
-                                fontFamily: "MontserratBold, sans-serif",
-                                fontSize: "3vw",
-                              }}
+                              className={` ${styles.strong} ${styles.strongApartments}`}
                             >
                               {children}
                             </span>
@@ -256,11 +241,7 @@ const Projects = ({ data, categories }) => {
                         ),
                         strong: ({ children }) => (
                           <span
-                            style={{
-                              color: "var(--accent)",
-                              fontFamily: "MontserratBold, sans-serif",
-                              fontSize: "2vw",
-                            }}
+                            className={`${styles.strong} ${styles.strongYear}`}
                           >
                             {children}
                           </span>
@@ -277,15 +258,7 @@ const Projects = ({ data, categories }) => {
                           <p className={styles.role}>{children}</p>
                         ),
                         strong: ({ children }) => (
-                          <span
-                            style={{
-                              color: "var(--accent)",
-                              fontFamily: "MontserratBold, sans-serif",
-                              fontSize: "1vw",
-                            }}
-                          >
-                            {children}
-                          </span>
+                          <span className={styles.strong}>{children}</span>
                         ),
                       }}
                     >
@@ -322,7 +295,9 @@ const Projects = ({ data, categories }) => {
                         cardSwiperRef.current[project.id]?.slidePrev()
                       }
                     >
-                      <FaChevronLeft />
+                      <FaChevronLeft
+                        className={`${styles.icon} ${styles.iconLeft}`}
+                      />
                     </button>
 
                     <button
@@ -331,7 +306,9 @@ const Projects = ({ data, categories }) => {
                         cardSwiperRef.current[project.id]?.slideNext()
                       }
                     >
-                      <FaChevronRight />
+                      <FaChevronRight
+                        className={`${styles.icon} ${styles.iconRight}`}
+                      />
                     </button>
                   </Swiper>
                 </div>
