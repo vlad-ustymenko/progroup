@@ -115,12 +115,12 @@ const Projects = ({ data, categories }) => {
     <div className={styles.projects} id="projects" ref={sectionRef}>
       <div className={styles.container}>
         <div ref={blockTitleRef}>
-          <BlockTitle title="Projects" white />
+          <BlockTitle title={data.blockTitle} white />
         </div>
 
         <div className={styles.titleWrapper}>
           <h2 className={styles.title} ref={titleRef}>
-            Наші проєкти
+            {data.title}
           </h2>
 
           <div className={styles.filters} ref={filtersRef}>

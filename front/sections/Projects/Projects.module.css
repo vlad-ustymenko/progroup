@@ -433,16 +433,6 @@
 @media (width <= 375px) {
   .swiper {
     min-height: 60vh;
-    border-radius: var(--borderRadiusMobile);
-  }
-
-  .cardContent {
-    padding: 5vw;
-    order: 2;
-  }
-
-  .title {
-    font-size: var(--titleFontSizeMobile);
   }
 
   .text {
@@ -451,18 +441,11 @@
 
   .runk,
   .address {
-    margin-top: 1.5vw;
     font-size: 3vw;
   }
 
   .role {
-    margin-top: 3vw;
     font-size: 3vw;
-  }
-
-  .strong {
-    font-family: MontserratBold, sans-serif;
-    color: var(--accent);
   }
 
   .strongFloors {
@@ -474,14 +457,6 @@
   }
 
   .navigation {
-    gap: 5vw;
     margin-top: 5vw;
-  }
-
-  .navBtn {
-    width: 8vw;
-    height: 8vw;
-    color: white;
-    cursor: pointer;
   }
 }
