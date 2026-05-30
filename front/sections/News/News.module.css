@@ -89,13 +89,14 @@
 .pagination {
   display: flex;
   align-items: center;
+  gap: 0.2vw;
   justify-content: center;
   width: unset !important;
 }
 
 .pagination :global(.swiper-pagination-bullet) {
-  width: 10px;
-  height: 10px;
+  width: 0.7vw;
+  height: 0.7vw;
   background: #092942;
   opacity: 1;
 }
@@ -162,6 +163,11 @@
     width: 5vw;
     height: 5vw;
   }
+
+  .pagination :global(.swiper-pagination-bullet) {
+    width: 2vw;
+    height: 2vw;
+  }
 }
 
 @media (width <= 767px) {
@@ -221,6 +227,11 @@
   .navBtn {
     width: 8vw;
     height: 8vw;
+  }
+
+  .pagination :global(.swiper-pagination-bullet) {
+    width: 3vw;
+    height: 3vw;
   }
 }
 
