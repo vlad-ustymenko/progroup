@@ -118,6 +118,16 @@ async function getData(path, locale) {
                 // button: { populate: "*" },
               },
             },
+            "blocks.footer": {
+              populate: {
+                developerInfo: {
+                  populate: "*",
+                },
+                faqInfo: {
+                  populate: "*",
+                },
+              },
+            },
             // "blocks.roadmap": { populate: "*" },
             // "blocks.menu": { populate: "*" },
             // "blocks.modal": { populate: "*" },
@@ -194,6 +204,8 @@ function blockRendered(block, faqCategories, projectCategories) {
       );
     case "blocks.news":
       return <News key={block.id} data={block} />;
+    case "blocks.footer":
+      return <Footer key={block.id} data={block} />;
   }
 }
 
@@ -224,7 +236,7 @@ export default async function Home({ params }) {
         blockRendered(block, faqCategories, projectCategories),
       )}
 
-      <Footer></Footer>
+      {/* <Footer></Footer> */}
     </>
     // <>
     //   <MainScreen />
