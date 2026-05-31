@@ -1,0 +1,278 @@
+.footer {
+  width: 100%;
+  color: white;
+  background: var(--backgroundGradient);
+}
+
+.container {
+  width: 80%;
+  height: 100%;
+  padding: 3vw 0;
+  margin: 0 auto;
+}
+
+.contentWrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 5vw;
+  padding-bottom: 2vw;
+  border-bottom: 0.1vw solid var(--accent);
+}
+
+.logo {
+  display: block;
+  width: 8vw;
+  height: 4vw;
+  position: relative;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  color: var(--accent);
+}
+
+.developerInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: MontserratRegular, sans-serif;
+  font-size: 1vw;
+}
+
+.address {
+  font-style: normal;
+}
+
+.mainInfo {
+  display: flex;
+  justify-content: space-between;
+  gap: 5vw;
+}
+
+.title {
+  margin-bottom: 1vw;
+  font-family: MontserratBold, sans-serif;
+  font-size: 1.4vw;
+  color: var(--accent);
+}
+
+.text {
+  display: block;
+  margin-bottom: 0.5vw;
+  font-family: MontserratRegular, sans-serif;
+  font-size: 1vw;
+}
+
+.text:hover {
+  color: var(--accent);
+}
+
+.copyrightWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 2vw;
+}
+
+.copyright {
+  font-family: MontserratRegular, sans-serif;
+  font-size: 1vw;
+  color: gray;
+}
+
+.socialsWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1vw;
+}
+
+.social {
+  width: 2vw;
+  height: 2vw;
+  /* color: var(--accent); */
+}
+
+.social:hover {
+  color: var(--accent);
+}
+
+@media (width >= 768px) and (width <= 1024px) {
+  .container {
+    width: 90%;
+    height: 100%;
+    padding: 8vw 0;
+    margin: 0 auto;
+  }
+
+  .contentWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10vw;
+    padding-bottom: 5vw;
+  }
+
+  .logo {
+    display: block;
+    width: 30vw;
+    height: 15vw;
+    position: relative;
+  }
+
+  .developerInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5vw;
+    font-family: MontserratRegular, sans-serif;
+    font-size: 4vw;
+  }
+
+  .address {
+    margin-bottom: 0 !important;
+    line-height: 1.2;
+    font-style: normal;
+  }
+
+  .mainInfo {
+    display: flex;
+    justify-content: space-between;
+    gap: 1vw;
+  }
+
+  .title {
+    margin-bottom: 3vw;
+    font-size: 4vw;
+  }
+
+  .text {
+    display: block;
+    margin-bottom: 3vw;
+    font-family: MontserratRegular, sans-serif;
+    font-size: 4vw;
+  }
+
+  .text:hover {
+    color: white;
+  }
+
+  .copyrightWrapper {
+    flex-direction: column;
+    gap: 5vw;
+    padding-top: 5vw;
+  }
+
+  .copyright {
+    font-family: MontserratRegular, sans-serif;
+    font-size: 4vw;
+    color: gray;
+    align-self: flex-start;
+  }
+
+  .socialsWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8vw;
+  }
+
+  .social {
+    width: 12vw;
+    height: 12vw;
+  }
+
+  .social:hover {
+    color: white;
+  }
+}
+
+@media (width <= 767px) {
+  .container {
+    width: 90%;
+    height: 100%;
+    padding: 8vw 0;
+    margin: 0 auto;
+  }
+
+  .contentWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10vw;
+    padding-bottom: 5vw;
+  }
+
+  .logo {
+    display: block;
+    width: 30vw;
+    height: 15vw;
+    position: relative;
+  }
+
+  .developerInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5vw;
+    font-family: MontserratRegular, sans-serif;
+    font-size: 4vw;
+  }
+
+  .address {
+    margin-bottom: 0 !important;
+    line-height: 1.2;
+    font-style: normal;
+  }
+
+  .mainInfo {
+    display: flex;
+    justify-content: space-between;
+    gap: 1vw;
+  }
+
+  .title {
+    margin-bottom: 3vw;
+    font-size: 4vw;
+  }
+
+  .text {
+    display: block;
+    margin-bottom: 3vw;
+    font-family: MontserratRegular, sans-serif;
+    font-size: 4vw;
+  }
+
+  .text:hover {
+    color: white;
+  }
+
+  .copyrightWrapper {
+    flex-direction: column;
+    gap: 5vw;
+    padding-top: 5vw;
+  }
+
+  .copyright {
+    font-family: MontserratRegular, sans-serif;
+    font-size: 4vw;
+    color: gray;
+    align-self: flex-start;
+  }
+
+  .socialsWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8vw;
+  }
+
+  .social {
+    width: 12vw;
+    height: 12vw;
+    /* color: var(--accent); */
+  }
+
+  .social:hover {
+    color: white;
+  }
+}
