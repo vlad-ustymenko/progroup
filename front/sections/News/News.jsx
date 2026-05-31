@@ -13,43 +13,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const News = () => {
-  const cards = [
-    {
-      image: "/dna2.png",
-      cardTitle: "Будинок майбутнього з ProGroup",
-      cardDescription:
-        "Для нас проєкт не закінчується на порозі під’їзду. Ми створюємо екосистему, де кожен метр працює на ваш комфорт",
-    },
-    {
-      image: "/dna2.png",
-      cardTitle: "Будинок майбутнього з ProGroup",
-      cardDescription:
-        "Для нас проєкт не закінчується на порозі під’їзду. Ми створюємо екосистему, де кожен метр працює на ваш комфорт",
-    },
-    {
-      image: "/dna2.png",
-      cardTitle: "Будинок майбутнього з ProGroup",
-      cardDescription:
-        "Для нас проєкт не закінчується на порозі під’їзду. Ми створюємо екосистему, де кожен метр працює на ваш комфорт",
-    },
-    {
-      image: "/dna2.png",
-      cardTitle: "Будинок майбутнього з ProGroup",
-      cardDescription:
-        "Для нас проєкт не закінчується на порозі під’їзду. Ми створюємо екосистему, де кожен метр працює на ваш комфорт",
-    },
-    {
-      image: "/dna2.png",
-      cardTitle: "Будинок майбутнього з ProGroup",
-      cardDescription:
-        "Для нас проєкт не закінчується на порозі під’їзду. Ми створюємо екосистему, де кожен метр працює на ваш комфорт",
-    },
-  ];
-
+const News = ({ data }) => {
   const mainSwiperRef = useRef(null);
 
-  // refs для анімацій
   const sectionRef = useRef(null);
   const blockTitleRef = useRef(null);
   const titleRef = useRef(null);
@@ -117,11 +83,11 @@ const News = () => {
     <div className={styles.news} ref={sectionRef}>
       <div className={styles.container}>
         <div ref={blockTitleRef}>
-          <BlockTitle title="Новини" />
+          <BlockTitle title={data.blockTitle} />
         </div>
 
         <div ref={titleRef} className={styles.title}>
-          Будь в курсі подій та пропозицій
+          {data.title}
         </div>
 
         <div className={styles.swiperContainer} ref={swiperContainerRef}>
@@ -148,7 +114,7 @@ const News = () => {
             }}
             className={styles.swiper}
           >
-            {cards.map((card, index) => (
+            {data.news_cards.map((card, index) => (
               <SwiperSlide key={index}>
                 <div
                   className={styles.card}
@@ -157,17 +123,17 @@ const News = () => {
                   <div className={styles.imageWrapper}>
                     <Image
                       className={styles.image}
-                      src={card.image}
+                      src={`${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${card.image.url}`}
                       alt=""
                       fill
                     />
                   </div>
 
                   <div className={styles.contentWrapper}>
-                    <div className={styles.cardTitle}>{card.cardTitle}</div>
+                    <div className={styles.cardTitle}>{card.title}</div>
 
                     <div className={styles.cardDescription}>
-                      {card.cardDescription}
+                      {card.description}
                     </div>
 
                     <div className={styles.button}>більше</div>
@@ -178,19 +144,21 @@ const News = () => {
           </Swiper>
         </div>
 
-        <div className={styles.navigation} ref={navigationRef}>
-          <FaChevronLeft
-            className={styles.navBtn}
-            onClick={() => mainSwiperRef.current?.slidePrev()}
-          />
+        {data.news_cards.length > 3 && (
+          <div className={styles.navigation} ref={navigationRef}>
+            <FaChevronLeft
+              className={styles.navBtn}
+              onClick={() => mainSwiperRef.current?.slidePrev()}
+            />
 
-          <div className={`custom-pagination2 ${styles.pagination}`} />
+            <div className={`custom-pagination2 ${styles.pagination}`} />
 
-          <FaChevronRight
-            className={styles.navBtn}
-            onClick={() => mainSwiperRef.current?.slideNext()}
-          />
-        </div>
+            <FaChevronRight
+              className={styles.navBtn}
+              onClick={() => mainSwiperRef.current?.slideNext()}
+            />
+          </div>
+        )}
       </div>
     </div>
   );
