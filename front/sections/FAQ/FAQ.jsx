@@ -149,7 +149,7 @@ const FAQ = ({ data, categories }) => {
   }, [activeCategory]);
 
   return (
-    <div ref={sectionRef} className={styles.faq}>
+    <div ref={sectionRef} className={styles.faq} id="faq">
       <div className={styles.container}>
         <BlockTitle ref={blockTitleRef} title={data.blockTitle}></BlockTitle>
 

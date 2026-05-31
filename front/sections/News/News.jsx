@@ -80,7 +80,7 @@ const News = ({ data }) => {
   }, []);
 
   return (
-    <div className={styles.news} ref={sectionRef}>
+    <div className={styles.news} ref={sectionRef} id="news">
       <div className={styles.container}>
         <div ref={blockTitleRef}>
           <BlockTitle title={data.blockTitle} />
