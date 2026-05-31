@@ -66,8 +66,8 @@
 }
 
 .filters {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: flex-end;
   gap: 3vw;
   width: 60%;
   margin-bottom: 2vw;
@@ -220,6 +220,7 @@
   }
 
   .filters {
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     width: 100%;
