@@ -67,6 +67,52 @@ export interface BlocksFaq extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksFooter extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_footers';
+  info: {
+    displayName: 'Footer';
+  };
+  attributes: {
+    address: Schema.Attribute.RichText &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Address'>;
+    addressLink: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'#'>;
+    copyright: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Copyright text'>;
+    developerInfo: Schema.Attribute.Component<
+      'components.footer-developer-info',
+      true
+    > &
+      Schema.Attribute.Required;
+    developerTitle: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Developer Title'>;
+    facebookLink: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'#'>;
+    faqInfo: Schema.Attribute.Component<
+      'components.footer-developer-info',
+      true
+    > &
+      Schema.Attribute.Required;
+    faqTitle: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Faq Title'>;
+    instagramLink: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'#'>;
+    telegramLink: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'#'>;
+    time: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Time'>;
+  };
+}
+
 export interface BlocksMainScreen extends Struct.ComponentSchema {
   collectionName: 'components_blocks_main_screens';
   info: {
@@ -148,6 +194,21 @@ export interface ComponentsButton extends Struct.ComponentSchema {
   };
 }
 
+export interface ComponentsFooterDeveloperInfo extends Struct.ComponentSchema {
+  collectionName: 'components_components_footer_developer_infos';
+  info: {
+    displayName: 'footerInfoLinks';
+  };
+  attributes: {
+    link: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'#'>;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Title'>;
+  };
+}
+
 export interface ComponentsHeader extends Struct.ComponentSchema {
   collectionName: 'components_components_headers';
   info: {
@@ -190,11 +251,13 @@ declare module '@strapi/strapi' {
       'blocks.advantages': BlocksAdvantages;
       'blocks.developer': BlocksDeveloper;
       'blocks.faq': BlocksFaq;
+      'blocks.footer': BlocksFooter;
       'blocks.main-screen': BlocksMainScreen;
       'blocks.news': BlocksNews;
       'blocks.projects': BlocksProjects;
       'components.advantages-details': ComponentsAdvantagesDetails;
       'components.button': ComponentsButton;
+      'components.footer-developer-info': ComponentsFooterDeveloperInfo;
       'components.header': ComponentsHeader;
       'components.info-main-screen': ComponentsInfoMainScreen;
       'components.main-carousel': ComponentsMainCarousel;

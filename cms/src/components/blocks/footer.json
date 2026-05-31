@@ -1,0 +1,67 @@
+{
+  "collectionName": "components_blocks_footers",
+  "info": {
+    "displayName": "Footer"
+  },
+  "options": {},
+  "attributes": {
+    "address": {
+      "type": "richtext",
+      "required": true,
+      "default": "Address"
+    },
+    "addressLink": {
+      "type": "text",
+      "default": "#",
+      "required": true
+    },
+    "time": {
+      "type": "string",
+      "default": "Time",
+      "required": true
+    },
+    "developerTitle": {
+      "type": "string",
+      "default": "Developer Title",
+      "required": true
+    },
+    "faqTitle": {
+      "type": "string",
+      "default": "Faq Title",
+      "required": true
+    },
+    "copyright": {
+      "type": "string",
+      "default": "Copyright text",
+      "required": true
+    },
+    "instagramLink": {
+      "type": "string",
+      "default": "#",
+      "required": true
+    },
+    "telegramLink": {
+      "type": "string",
+      "default": "#",
+      "required": true
+    },
+    "facebookLink": {
+      "type": "string",
+      "default": "#",
+      "required": true
+    },
+    "developerInfo": {
+      "type": "component",
+      "component": "components.footer-developer-info",
+      "repeatable": true,
+      "required": true
+    },
+    "faqInfo": {
+      "type": "component",
+      "component": "components.footer-developer-info",
+      "repeatable": true,
+      "required": true
+    }
+  },
+  "config": {}
+}

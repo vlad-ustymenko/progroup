@@ -29,7 +29,8 @@
         "blocks.advantages",
         "blocks.faq",
         "blocks.projects",
-        "blocks.news"
+        "blocks.news",
+        "blocks.footer"
       ]
     }
   }
