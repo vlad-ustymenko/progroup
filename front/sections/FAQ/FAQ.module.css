@@ -34,9 +34,13 @@
 }
 
 .tabTitle {
-  margin-bottom: 1.5vw;
+  padding-bottom: 1.5vw;
   font-family: MontserratBold, sans-serif;
   font-size: 1.5vw;
+}
+
+.tabTitle:hover {
+  color: var(--accent);
 }
 
 .tabDescription {
@@ -57,7 +61,7 @@
 }
 
 .activeTab {
-  margin-bottom: 1vw;
+  padding-bottom: 1vw;
   color: var(--accent);
 }
 
@@ -76,7 +80,12 @@
 .filter {
   width: fit-content;
   position: relative;
+  transition: color 0.3s ease;
   justify-self: end;
+}
+
+.filter:hover {
+  color: var(--accent);
 }
 
 .activeFilter {
@@ -127,13 +136,13 @@
   }
 
   .tabTitle {
-    margin: 30px 0;
+    padding: 30px 0;
     font-family: MontserratBold, sans-serif;
     font-size: 22px;
   }
 
   .activeTab {
-    margin-bottom: 15px;
+    padding-bottom: 15px;
   }
 
   .tabContent {
@@ -193,13 +202,13 @@
   }
 
   .tabTitle {
-    margin: 20px 0;
+    padding: 20px 0;
     font-family: MontserratBold, sans-serif;
     font-size: 18px;
   }
 
   .activeTab {
-    margin-bottom: 15px;
+    padding-bottom: 15px;
   }
 
   .tabContent {

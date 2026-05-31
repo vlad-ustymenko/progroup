@@ -23,7 +23,6 @@
 }
 
 .icon__left.open {
-  background-color: var(--accent);
   rotate: 135deg;
 }
 
@@ -42,7 +41,6 @@
 }
 
 .icon__right.open {
-  background-color: var(--accent);
   rotate: -135deg;
 }
 

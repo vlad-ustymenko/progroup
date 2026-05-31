@@ -115,7 +115,7 @@ const News = ({ data }) => {
             className={styles.swiper}
           >
             {data.news_cards.map((card, index) => (
-              <SwiperSlide key={index}>
+              <SwiperSlide key={index} className={styles.swiperSlide}>
                 <div
                   className={styles.card}
                   ref={(el) => (cardsRef.current[index] = el)}
@@ -147,14 +147,14 @@ const News = ({ data }) => {
         {data.news_cards.length > 3 && (
           <div className={styles.navigation} ref={navigationRef}>
             <FaChevronLeft
-              className={styles.navBtn}
+              className={`${styles.navBtn} ${styles.navBtnLeft}`}
               onClick={() => mainSwiperRef.current?.slidePrev()}
             />
 
             <div className={`custom-pagination2 ${styles.pagination}`} />
 
             <FaChevronRight
-              className={styles.navBtn}
+              className={`${styles.navBtn} ${styles.navBtnRight}`}
               onClick={() => mainSwiperRef.current?.slideNext()}
             />
           </div>

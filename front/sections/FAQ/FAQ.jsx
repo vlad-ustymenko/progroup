@@ -111,7 +111,7 @@ const FAQ = ({ data, categories }) => {
           ease: "power3.out",
           scrollTrigger: {
             trigger: buttonBlockRef.current,
-            start: "top 90%",
+            start: "top bottom",
             toggleActions: "play none none reverse",
           },
         },
@@ -140,7 +140,7 @@ const FAQ = ({ data, categories }) => {
         ease: "power3.out",
         scrollTrigger: {
           trigger: tabsRef.current,
-          start: "top 85%",
+          start: "top bottom",
           end: "bottom 20%",
           toggleActions: "play none none reverse",
         },

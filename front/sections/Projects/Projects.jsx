@@ -320,14 +320,14 @@ const Projects = ({ data, categories }) => {
         {filteredData.length > 1 && (
           <div className={styles.navigation} ref={navigationRef}>
             <FaChevronLeft
-              className={styles.navBtn}
+              className={`${styles.navBtn} ${styles.navBtnLeft}`}
               onClick={() => mainSwiperRef.current?.slidePrev()}
             />
 
             <div className={`custom-pagination ${styles.pagination}`} />
 
             <FaChevronRight
-              className={styles.navBtn}
+              className={`${styles.navBtn} ${styles.navBtnRight}`}
               onClick={() => mainSwiperRef.current?.slideNext()}
             />
           </div>

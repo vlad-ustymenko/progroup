@@ -8,10 +8,20 @@
   text-transform: uppercase;
   color: white;
   background-color: transparent;
+  transition: background-color 0.5s;
+}
+
+.button:hover {
+  background-color: #a37b48;
+  /* transform: scale(2); */
 }
 
 .primary {
   background-color: var(--accent);
+}
+
+.primary:hover {
+  background-color: #a37b48;
 }
 
 @media (width >= 768px) and (width <= 1024px) {
@@ -20,6 +30,14 @@
     border-radius: var(--borderRadiusTablet);
     font-size: 18px;
   }
+
+  .button:hover {
+    background-color: transparent;
+  }
+
+  .primary:hover {
+    background-color: var(--accent);
+  }
 }
 
 @media (width <= 767px) {
@@ -27,5 +45,13 @@
     padding: 15px 40px;
     border-radius: var(--borderRadiusMobile);
     font-size: 15px;
+  }
+
+  .button:hover {
+    background-color: transparent;
+  }
+
+  .primary:hover {
+    background-color: var(--accent);
   }
 }

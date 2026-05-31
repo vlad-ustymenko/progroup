@@ -28,6 +28,11 @@
   width: 100%;
   height: 100%;
   background-color: #ebebeb;
+  transition: background-color 0.3s ease-in;
+}
+
+.front:hover {
+  background-color: #d8d8d8;
 }
 
 .back {
@@ -176,6 +181,10 @@
     right: 20px;
     bottom: 20px;
   }
+
+  .front:hover {
+    background-color: #ebebeb;
+  }
 }
 
 @media (width <= 767px) {
@@ -240,5 +249,9 @@
     height: 40px;
     right: 20px;
     bottom: 20px;
+  }
+
+  .front:hover {
+    background-color: #ebebeb;
   }
 }
