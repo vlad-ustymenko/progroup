@@ -112,7 +112,7 @@ const FAQ = ({ data, categories }) => {
           scrollTrigger: {
             trigger: buttonBlockRef.current,
             start: "top 90%",
-            toggleActions: "play reverse play reverse",
+            toggleActions: "play none none reverse",
           },
         },
       );
@@ -142,7 +142,7 @@ const FAQ = ({ data, categories }) => {
           trigger: tabsRef.current,
           start: "top 85%",
           end: "bottom 20%",
-          toggleActions: "play reverse play reverse",
+          toggleActions: "play none none reverse",
         },
       },
     );
