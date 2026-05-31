@@ -92,6 +92,26 @@ export interface BlocksMainScreen extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksNews extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_news';
+  info: {
+    displayName: 'News';
+  };
+  attributes: {
+    blockTitle: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Block title'>;
+    news_cards: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::news-card.news-card'
+    >;
+    subtitle: Schema.Attribute.String & Schema.Attribute.DefaultTo<'Subtitle'>;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Title'>;
+  };
+}
+
 export interface BlocksProjects extends Struct.ComponentSchema {
   collectionName: 'components_blocks_projects';
   info: {
@@ -171,6 +191,7 @@ declare module '@strapi/strapi' {
       'blocks.developer': BlocksDeveloper;
       'blocks.faq': BlocksFaq;
       'blocks.main-screen': BlocksMainScreen;
+      'blocks.news': BlocksNews;
       'blocks.projects': BlocksProjects;
       'components.advantages-details': ComponentsAdvantagesDetails;
       'components.button': ComponentsButton;

@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_blocks_news",
+  "info": {
+    "displayName": "News"
+  },
+  "options": {},
+  "attributes": {
+    "blockTitle": {
+      "type": "string",
+      "default": "Block title",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "default": "Title",
+      "required": true
+    },
+    "subtitle": {
+      "type": "string",
+      "default": "Subtitle"
+    },
+    "news_cards": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::news-card.news-card"
+    }
+  },
+  "config": {}
+}
