@@ -99,6 +99,24 @@ async function getData(path, locale) {
                 // button: { populate: "*" },
               },
             },
+            "blocks.news": {
+              populate: {
+                news_cards: {
+                  fields: [
+                    "title",
+                    "description",
+                    "titleMore",
+                    "descriptionMore",
+                  ],
+                  populate: {
+                    image: {
+                      fields: ["url"],
+                    },
+                  },
+                },
+                // button: { populate: "*" },
+              },
+            },
             // "blocks.roadmap": { populate: "*" },
             // "blocks.menu": { populate: "*" },
             // "blocks.modal": { populate: "*" },
@@ -173,6 +191,8 @@ function blockRendered(block, faqCategories, projectCategories) {
       return (
         <Projects key={block.id} data={block} categories={projectCategories} />
       );
+    case "blocks.news":
+      return <News key={block.id} data={block} />;
   }
 }
 
@@ -203,7 +223,7 @@ export default async function Home({ params }) {
         blockRendered(block, faqCategories, projectCategories),
       )}
 
-      <News></News>
+      {/* <News></News> */}
     </>
     // <>
     //   <MainScreen />
