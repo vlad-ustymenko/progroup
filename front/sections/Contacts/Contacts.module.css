@@ -1,0 +1,241 @@
+.contacts {
+  background: var(--backgroundGradient);
+}
+
+.container {
+  width: 80%;
+  height: 100%;
+  padding: 3vw 0;
+  margin: 0 auto;
+}
+
+.contentWrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3vw;
+  padding-top: var(--wrapperPadding);
+  color: white;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+  margin-bottom: 1vw;
+}
+
+.icon {
+  width: 2vw;
+  height: 2vw;
+  color: var(--accent);
+}
+
+.text {
+  font-family: MontserratRegular, sans-serif;
+  font-size: 1.3vw;
+}
+
+.mapWrapper {
+  display: block;
+  width: 90%;
+  height: 400px;
+  margin-top: 3vw;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.title {
+  width: 100%;
+  margin: 2vw auto;
+  font-family: MontserratBold, sans-serif;
+  font-size: var(--titleFontSize);
+}
+
+.contactsItems {
+  display: flex;
+  margin: 0 0 2.5vw;
+}
+
+.contactsItemsWrapper {
+  margin: 0 0 0 1.7vw;
+  font-size: 2vw;
+  font-style: normal;
+}
+
+.contactsItemsTitle {
+  margin: 0 0 1vw;
+}
+
+.contactsItemsSubtitle {
+  font-size: 1.5vw;
+  color: grey;
+}
+
+.contactsItemsSubtitle:hover {
+  color: white;
+}
+
+.socialList {
+  display: flex;
+  gap: 2vw;
+  padding: 0 0 0 3.5vw;
+  list-style: none;
+}
+
+.socialLink {
+  display: grid;
+  width: 3vw;
+  height: 3vw;
+  border-radius: 50%;
+  position: relative;
+  color: black;
+  background: white;
+  place-items: center;
+}
+
+.socialLink:hover {
+  background: var(--secondAccent);
+}
+
+.socialImage,
+.icon {
+  width: 2vw;
+  height: 2vw;
+}
+
+@media (width >= 768px) and (width <= 1024px) {
+  .container {
+    padding: 4vw;
+  }
+
+  .contacts {
+    grid-template-columns: 1fr;
+    padding-top: var(--wrapperPaddingMobile);
+  }
+
+  .title {
+    margin: 0 0 3vw;
+    font-size: 4vw;
+  }
+
+  .contactsItems {
+    display: flex;
+    margin: 0 0 3vw;
+  }
+
+  .contactsItems:nth-child(3) {
+    margin: 0 0 6vw;
+  }
+
+  .contactsItems:nth-child(4) {
+    margin: 0 0 6vw;
+  }
+
+  .contactsItemsWrapper {
+    margin: 0 0 0 4vw;
+    font-size: 4vw;
+  }
+
+  .contactsItemsTitle {
+    margin: 0 0 2vw;
+  }
+
+  .contactsItemsSubtitle {
+    font-size: 3.5vw;
+  }
+
+  .contactsItemsSubtitle:hover {
+    color: grey;
+  }
+
+  .socialList {
+    justify-content: center;
+    gap: 5vw;
+    width: 100%;
+    padding: unset;
+  }
+
+  .socialLink {
+    width: 8vw;
+    height: 8vw;
+  }
+
+  .socialLink:hover {
+    background: white;
+  }
+
+  .socialImage,
+  .icon {
+    width: 4vw;
+    height: 4vw;
+  }
+}
+
+@media (width <= 767px) {
+  .container {
+    padding: 5vw;
+  }
+
+  .contacts {
+    grid-template-columns: 1fr;
+    padding-top: var(--wrapperPaddingMobile);
+  }
+
+  .title {
+    margin: 0 0 3vw;
+    font-size: 5vw;
+  }
+
+  .contactsItems {
+    display: flex;
+    margin: 0 0 3vw;
+  }
+
+  .contactsItems:nth-child(3) {
+    margin: 0 0 10vw;
+  }
+
+  .contactsItems:nth-child(4) {
+    margin: 0 0 10vw;
+  }
+
+  .contactsItemsWrapper {
+    margin: 0 0 0 4vw;
+    font-size: 6vw;
+  }
+
+  .contactsItemsTitle {
+    margin: 0 0 2vw;
+  }
+
+  .contactsItemsSubtitle {
+    font-size: 5vw;
+  }
+
+  .contactsItemsSubtitle:hover {
+    color: grey;
+  }
+
+  .socialList {
+    justify-content: center;
+    gap: 5vw;
+    width: 100%;
+    padding: unset;
+  }
+
+  .socialLink {
+    width: 12vw;
+    height: 12vw;
+  }
+
+  .socialLink:hover {
+    background: white;
+  }
+
+  .socialImage,
+  .icon {
+    width: 7vw;
+    height: 7vw;
+  }
+}

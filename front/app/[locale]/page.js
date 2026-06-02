@@ -10,6 +10,7 @@ import FAQ from "@/sections/FAQ/FAQ";
 import Projects from "@/sections/Projects/Projects";
 import News from "@/sections/News/News";
 import Footer from "@/sections/Footer/Footer";
+import Contacts from "@/sections/Contacts/Contacts";
 
 async function getData(path, locale) {
   const baseUrl = process.env.STRAPI_BASE_URL;
@@ -236,7 +237,7 @@ export default async function Home({ params }) {
         blockRendered(block, faqCategories, projectCategories),
       )}
 
-      {/* <Footer></Footer> */}
+      <Contacts></Contacts>
     </>
     // <>
     //   <MainScreen />
