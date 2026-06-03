@@ -18,22 +18,28 @@ const Contacts = () => {
         <div className={styles.contentWrapper}>
           <div>
             <div className={styles.title}>Зв'яжіться з нами</div>
-            <a href="mailto:info@pro-group.ua" className={styles.content}>
+            <div className={styles.content}>
               <IoIosMail className={styles.icon} />
-              <div className={styles.text}>info@pro-group.ua</div>
-            </a>
-            <a href="tel:+380440000000" className={styles.content}>
+              <a href="mailto:info@pro-group.ua" className={styles.text}>
+                info@pro-group.ua
+              </a>
+            </div>
+            <div className={styles.content}>
               <AiFillPhone className={styles.icon} />
-              <div className={styles.text}>+38 (044) 000-00-00</div>
-            </a>
-            <a
-              href="https://www.google.com.ua/maps/place/PRO-GROUP/@50.433745,30.3703793,13.5z/data=!4m6!3m5!1s0x40d4cbec77bcb20d:0xbf46f52bac4ab343!8m2!3d50.4367781!4d30.3561404!16s%2Fg%2F11y3l11_hb?hl=ru&entry=ttu&g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D"
-              target="_blank"
-              className={styles.content}
-            >
+              <a href="tel:+380440000000" className={styles.text}>
+                +38 (044) 000-00-00
+              </a>
+            </div>
+            <div className={styles.content}>
               <IoLocationSharp className={styles.icon} />
-              <div className={styles.text}>Київ, вул. Хрещатик, 1</div>
-            </a>
+              <a
+                href="https://www.google.com.ua/maps/place/PRO-GROUP/@50.433745,30.3703793,13.5z/data=!4m6!3m5!1s0x40d4cbec77bcb20d:0xbf46f52bac4ab343!8m2!3d50.4367781!4d30.3561404!16s%2Fg%2F11y3l11_hb?hl=ru&entry=ttu&g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                className={styles.text}
+              >
+                Київ, вул. Хрещатик, 1
+              </a>
+            </div>
             <div className={styles.content}>
               <MdOutlineAccessTimeFilled className={styles.icon} />
               <div className={styles.text}>Пн–Пт: 9:00–18:00</div>
