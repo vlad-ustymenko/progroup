@@ -1,0 +1,62 @@
+{
+  "collectionName": "components_blocks_contacts",
+  "info": {
+    "displayName": "Contacts"
+  },
+  "options": {},
+  "attributes": {
+    "blockTitle": {
+      "type": "string",
+      "default": "Block title",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "default": "Title",
+      "required": true
+    },
+    "email": {
+      "type": "string",
+      "default": "Email",
+      "required": true
+    },
+    "phone": {
+      "type": "string",
+      "default": "Phone",
+      "required": true
+    },
+    "address": {
+      "type": "richtext",
+      "required": true,
+      "default": "Address"
+    },
+    "time": {
+      "type": "string",
+      "default": "Time",
+      "required": true
+    },
+    "formInput": {
+      "type": "component",
+      "component": "components.form-input",
+      "repeatable": true,
+      "required": true
+    },
+    "inputCommentTitle": {
+      "type": "string",
+      "default": "ВАШЕ ПИТАННЯ",
+      "required": true
+    },
+    "inputCommentPlaceholder": {
+      "type": "string",
+      "default": "Розкажіть, що вас цікавть...",
+      "required": true
+    },
+    "department": {
+      "type": "component",
+      "component": "components.form-department",
+      "repeatable": true,
+      "required": true
+    }
+  },
+  "config": {}
+}

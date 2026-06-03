@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_components_form_departments",
+  "info": {
+    "displayName": "FormDepartment"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "title",
+      "required": true
+    }
+  },
+  "config": {}
+}

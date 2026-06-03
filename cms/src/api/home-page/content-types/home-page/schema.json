@@ -30,7 +30,8 @@
         "blocks.faq",
         "blocks.projects",
         "blocks.news",
-        "blocks.footer"
+        "blocks.footer",
+        "blocks.contacts"
       ]
     }
   }

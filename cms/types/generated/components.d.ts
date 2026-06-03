@@ -37,6 +37,43 @@ export interface BlocksAdvantages extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksContacts extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_contacts';
+  info: {
+    displayName: 'Contacts';
+  };
+  attributes: {
+    address: Schema.Attribute.RichText &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Address'>;
+    blockTitle: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Block title'>;
+    department: Schema.Attribute.Component<'components.form-department', true> &
+      Schema.Attribute.Required;
+    email: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Email'>;
+    formInput: Schema.Attribute.Component<'components.form-input', true> &
+      Schema.Attribute.Required;
+    inputCommentPlaceholder: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'\u0420\u043E\u0437\u043A\u0430\u0436\u0456\u0442\u044C, \u0449\u043E \u0432\u0430\u0441 \u0446\u0456\u043A\u0430\u0432\u0442\u044C...'>;
+    inputCommentTitle: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'\u0412\u0410\u0428\u0415 \u041F\u0418\u0422\u0410\u041D\u041D\u042F'>;
+    phone: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Phone'>;
+    time: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Time'>;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Title'>;
+  };
+}
+
 export interface BlocksDeveloper extends Struct.ComponentSchema {
   collectionName: 'components_blocks_developers';
   info: {
@@ -209,6 +246,42 @@ export interface ComponentsFooterDeveloperInfo extends Struct.ComponentSchema {
   };
 }
 
+export interface ComponentsFormDepartment extends Struct.ComponentSchema {
+  collectionName: 'components_components_form_departments';
+  info: {
+    displayName: 'FormDepartment';
+  };
+  attributes: {
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'title'>;
+  };
+}
+
+export interface ComponentsFormInput extends Struct.ComponentSchema {
+  collectionName: 'components_components_form_inputs';
+  info: {
+    displayName: 'formInput';
+  };
+  attributes: {
+    error: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Error'>;
+    label: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Label'>;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Name'>;
+    pattern: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Pattern'>;
+    placeholder: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Placeholder'>;
+  };
+}
+
 export interface ComponentsHeader extends Struct.ComponentSchema {
   collectionName: 'components_components_headers';
   info: {
@@ -249,6 +322,7 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'blocks.about': BlocksAbout;
       'blocks.advantages': BlocksAdvantages;
+      'blocks.contacts': BlocksContacts;
       'blocks.developer': BlocksDeveloper;
       'blocks.faq': BlocksFaq;
       'blocks.footer': BlocksFooter;
@@ -258,6 +332,8 @@ declare module '@strapi/strapi' {
       'components.advantages-details': ComponentsAdvantagesDetails;
       'components.button': ComponentsButton;
       'components.footer-developer-info': ComponentsFooterDeveloperInfo;
+      'components.form-department': ComponentsFormDepartment;
+      'components.form-input': ComponentsFormInput;
       'components.header': ComponentsHeader;
       'components.info-main-screen': ComponentsInfoMainScreen;
       'components.main-carousel': ComponentsMainCarousel;

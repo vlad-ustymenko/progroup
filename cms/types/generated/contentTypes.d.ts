@@ -610,6 +610,7 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
         'blocks.projects',
         'blocks.news',
         'blocks.footer',
+        'blocks.contacts',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{

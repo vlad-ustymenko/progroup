@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_components_form_inputs",
+  "info": {
+    "displayName": "formInput"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "default": "Label",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "default": "Name",
+      "required": true
+    },
+    "placeholder": {
+      "type": "string",
+      "default": "Placeholder",
+      "required": true
+    },
+    "pattern": {
+      "type": "string",
+      "default": "Pattern",
+      "required": true
+    },
+    "error": {
+      "type": "string",
+      "default": "Error",
+      "required": true
+    }
+  },
+  "config": {}
+}
