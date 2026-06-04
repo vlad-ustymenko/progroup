@@ -8,26 +8,29 @@ import { IoLocationSharp } from "react-icons/io5";
 import { MdOutlineAccessTimeFilled } from "react-icons/md";
 import { AiFillPhone } from "react-icons/ai";
 import BlockTitle from "../../components/BlockTitle/BlockTitle";
+import remarkBreaks from "remark-breaks";
+import ReactMarkdown from "react-markdown";
 import styles from "./Contacts.module.css";
 
-const Contacts = () => {
+const Contacts = ({ data }) => {
+  console.log(data);
   return (
     <section className={styles.contacts}>
       <div className={styles.container}>
-        <BlockTitle title="Contacts" white></BlockTitle>
+        <BlockTitle title={data.blockTitle} white></BlockTitle>
         <div className={styles.contentWrapper}>
           <div>
-            <div className={styles.title}>Зв'яжіться з нами</div>
+            <div className={styles.title}>{data.title}</div>
             <div className={styles.content}>
               <IoIosMail className={styles.icon} />
-              <a href="mailto:info@pro-group.ua" className={styles.text}>
-                info@pro-group.ua
+              <a href={`mailto:info@${data.email}`} className={styles.text}>
+                {data.email}
               </a>
             </div>
             <div className={styles.content}>
               <AiFillPhone className={styles.icon} />
-              <a href="tel:+380440000000" className={styles.text}>
-                +38 (044) 000-00-00
+              <a href={`tel:${data.phone}`} className={styles.text}>
+                {data.phone}
               </a>
             </div>
             <div className={styles.content}>
@@ -37,12 +40,14 @@ const Contacts = () => {
                 target="_blank"
                 className={styles.text}
               >
-                Київ, вул. Хрещатик, 1
+                <ReactMarkdown remarkPlugins={[remarkBreaks]}>
+                  {data.address}
+                </ReactMarkdown>
               </a>
             </div>
             <div className={styles.content}>
               <MdOutlineAccessTimeFilled className={styles.icon} />
-              <div className={styles.text}>Пн–Пт: 9:00–18:00</div>
+              <div className={styles.text}>{data.time}</div>
             </div>
             <div className={styles.mapWrapper}>
               <a
@@ -61,7 +66,14 @@ const Contacts = () => {
               </a>
             </div>
           </div>
-          <ContactsForm />
+          <ContactsForm
+            departments={data.department}
+            formInputs={data.formInput}
+            inputCommentTitle={data.inputCommentTitle}
+            inputCommentPlaceholder={data.inputCommentPlaceholder}
+            mainError={data.mainError}
+            button={data.button}
+          />
         </div>
       </div>
     </section>

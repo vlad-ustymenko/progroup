@@ -105,137 +105,47 @@
 }
 
 @media (width >= 768px) and (width <= 1024px) {
-  .container {
-    padding: 4vw;
-  }
-
-  .contacts {
-    grid-template-columns: 1fr;
-    padding-top: var(--wrapperPaddingMobile);
-  }
-
-  .title {
-    margin: 0 0 3vw;
-    font-size: 4vw;
-  }
-
-  .contactsItems {
-    display: flex;
-    margin: 0 0 3vw;
-  }
-
-  .contactsItems:nth-child(3) {
-    margin: 0 0 6vw;
-  }
-
-  .contactsItems:nth-child(4) {
-    margin: 0 0 6vw;
-  }
-
-  .contactsItemsWrapper {
-    margin: 0 0 0 4vw;
-    font-size: 4vw;
-  }
-
-  .contactsItemsTitle {
-    margin: 0 0 2vw;
-  }
-
-  .contactsItemsSubtitle {
-    font-size: 3.5vw;
-  }
-
-  .contactsItemsSubtitle:hover {
-    color: grey;
-  }
-
-  .socialList {
-    justify-content: center;
-    gap: 5vw;
-    width: 100%;
-    padding: unset;
-  }
-
-  .socialLink {
-    width: 8vw;
-    height: 8vw;
-  }
-
-  .socialLink:hover {
-    background: white;
-  }
-
-  .socialImage,
-  .icon {
-    width: 4vw;
-    height: 4vw;
-  }
 }
 
 @media (width <= 767px) {
   .container {
-    padding: 5vw;
+    width: 90%;
+    padding: 50px 0;
   }
 
-  .contacts {
+  .contentWrapper {
     grid-template-columns: 1fr;
-    padding-top: var(--wrapperPaddingMobile);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 3vw;
+    padding-top: var(--wrapperPadding);
+  }
+
+  .content {
+    display: flex;
+    align-items: center;
+    gap: 5vw;
+    margin-bottom: 5vw;
   }
 
   .title {
-    margin: 0 0 3vw;
-    font-size: 5vw;
+    margin: 5vw auto;
+    font-size: var(--titleFontSizeMobile);
   }
 
-  .contactsItems {
-    display: flex;
-    margin: 0 0 3vw;
+  .text {
+    font-size: 4vw;
   }
 
-  .contactsItems:nth-child(3) {
-    margin: 0 0 10vw;
-  }
-
-  .contactsItems:nth-child(4) {
-    margin: 0 0 10vw;
-  }
-
-  .contactsItemsWrapper {
-    margin: 0 0 0 4vw;
-    font-size: 6vw;
-  }
-
-  .contactsItemsTitle {
-    margin: 0 0 2vw;
-  }
-
-  .contactsItemsSubtitle {
-    font-size: 5vw;
-  }
-
-  .contactsItemsSubtitle:hover {
-    color: grey;
-  }
-
-  .socialList {
-    justify-content: center;
-    gap: 5vw;
-    width: 100%;
-    padding: unset;
-  }
-
-  .socialLink {
-    width: 12vw;
-    height: 12vw;
-  }
-
-  .socialLink:hover {
-    background: white;
-  }
-
-  .socialImage,
   .icon {
-    width: 7vw;
-    height: 7vw;
+    width: 5vw;
+    height: 5vw;
+    color: var(--accent);
+  }
+
+  .mapWrapper {
+    width: 100%;
+    height: 400px;
+    margin-top: 3vw;
+    border-radius: var(--borderRadiusMobile);
   }
 }
