@@ -9,6 +9,15 @@
       "type": "string",
       "default": "title",
       "required": true
+    },
+    "slug": {
+      "type": "string",
+      "default": "slug",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
     }
   },
   "config": {}

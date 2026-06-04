@@ -49,6 +49,9 @@ export interface BlocksContacts extends Struct.ComponentSchema {
     blockTitle: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Block title'>;
+    button: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'button'>;
     department: Schema.Attribute.Component<'components.form-department', true> &
       Schema.Attribute.Required;
     email: Schema.Attribute.String &
@@ -62,6 +65,9 @@ export interface BlocksContacts extends Struct.ComponentSchema {
     inputCommentTitle: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'\u0412\u0410\u0428\u0415 \u041F\u0418\u0422\u0410\u041D\u041D\u042F'>;
+    mainError: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Main error title'>;
     phone: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Phone'>;
@@ -252,6 +258,10 @@ export interface ComponentsFormDepartment extends Struct.ComponentSchema {
     displayName: 'FormDepartment';
   };
   attributes: {
+    email: Schema.Attribute.Email & Schema.Attribute.Required;
+    slug: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'slug'>;
     title: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'title'>;

@@ -20,14 +20,14 @@
       "default": "Placeholder",
       "required": true
     },
-    "pattern": {
-      "type": "string",
-      "default": "Pattern",
-      "required": true
-    },
     "error": {
       "type": "string",
       "default": "Error",
+      "required": true
+    },
+    "pattern": {
+      "type": "string",
+      "default": "Pattern",
       "required": true
     }
   },
