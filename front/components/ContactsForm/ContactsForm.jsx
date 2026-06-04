@@ -7,7 +7,14 @@ import ArrowIcon from "../ArrowIcon/ArrowIcon";
 import Button from "../Button/Button";
 import styles from "./ContactsForm.module.css";
 
-const ContactsForm = () => {
+const ContactsForm = ({
+  departments,
+  formInputs,
+  inputCommentTitle,
+  inputCommentPlaceholder,
+  mainError,
+  button,
+}) => {
   const [departmentOpen, setDepartmentOpen] = useState(false);
   const [activeCheckbox, setActiveCheckbox] = useState(false);
   const [checkboxRequire, setCheckboxRequire] = useState(false);
@@ -30,7 +37,10 @@ const ContactsForm = () => {
       });
 
       mask.on("accept", () => {
-        setValue("phoneContact", mask.value, { shouldValidate: true });
+        setValue("phoneContact", mask.value, {
+          shouldValidate: true,
+          shouldDirty: true,
+        });
       });
 
       return () => mask.destroy();
@@ -48,19 +58,27 @@ const ContactsForm = () => {
       .replace(/(^[^@]*@[^@]*)@.*/, "$1");
   };
 
-  const departments = [
-    { title: "Відділ продажів", slug: "sales", mail: "sales@pro-group.ua" },
-    {
-      title: "Технічний відділ",
-      slug: "technical",
-      mail: "technical@pro-group.ua",
-    },
-    {
-      title: "Бухгалтерія",
-      slug: "accounting",
-      mail: "accounting@pro-group.ua",
-    },
-  ];
+  const isValidPhone = (value) =>
+    /^\+38 \(\d{3}\) \d{3}-\d{2}-\d{2}$/.test(value);
+
+  const isValidName = (value) => /^[\p{L}\s]+$/u.test(value);
+
+  const isValidEmail = (value) =>
+    /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value);
+
+  // const departments = [
+  //   { title: "Відділ продажів", slug: "sales", mail: "sales@pro-group.ua" },
+  //   {
+  //     title: "Технічний відділ",
+  //     slug: "technical",
+  //     mail: "technical@pro-group.ua",
+  //   },
+  //   {
+  //     title: "Бухгалтерія",
+  //     slug: "accounting",
+  //     mail: "accounting@pro-group.ua",
+  //   },
+  // ];
 
   const onSubmit = async (data) => {
     const selectedDepartment = departments.find(
@@ -105,64 +123,98 @@ const ContactsForm = () => {
     }
   };
 
-  const formFields = useMemo(
-    () => [
-      {
-        name: "nameContact",
-        label: "ВАШЕ ІМ’Я",
-        placeholder: "ВАШЕ ІМ’Я",
-        pattern: /^[\p{L}\s]+$/u,
-        error: "Тільки букви",
-      },
-      {
-        name: "emailContact",
-        label: "Email",
-        placeholder: "Email",
-        pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-        error: "*Невірний формат email",
-      },
-      {
-        name: "phoneContact",
-        label: "phone",
-        placeholder: "phone",
-        ref: phoneInputRef,
-        pattern: /^\+38 \(\d{3}\) \d{3}-\d{2}-\d{2}$/,
-        error: "*Некоректний номер",
-      },
-    ],
-    [],
-  );
+  const getRules = (field) => {
+    const cmsError = field.error;
+
+    switch (field.name) {
+      case "nameContact":
+        return {
+          required: `${mainError}`,
+          validate: (v) => isValidName(v) || cmsError,
+        };
+
+      case "emailContact":
+        return {
+          required: `${mainError}`,
+          validate: (v) => isValidEmail(v) || cmsError,
+        };
+
+      case "phoneContact":
+        return {
+          required: `${mainError}`,
+          validate: (v) => isValidPhone(v) || cmsError,
+        };
+
+      default:
+        return {
+          required: `${mainError}`,
+        };
+    }
+  };
+
+  // const formFields = useMemo(
+  //   () => [
+  //     {
+  //       name: "nameContact",
+  //       label: "ВАШЕ ІМ’Я",
+  //       placeholder: "ВАШЕ ІМ’Я",
+  //       pattern: /^[\p{L}\s]+$/u,
+  //       error: "Тільки букви",
+  //     },
+  //     {
+  //       name: "emailContact",
+  //       label: "Email",
+  //       placeholder: "Email",
+  //       pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+  //       error: "*Невірний формат email",
+  //     },
+  //     {
+  //       name: "phoneContact",
+  //       label: "phone",
+  //       placeholder: "phone",
+  //       ref: phoneInputRef,
+  //       pattern: /^\+38 \(\d{3}\) \d{3}-\d{2}-\d{2}$/,
+  //       error: "*Некоректний номер",
+  //     },
+  //   ],
+  //   [],
+  // );
+
+  const sanitizeComment = (value) => {
+    return value
+      .replace(/[<>]/g, "") // блокує < >
+      .replace(/<\/?[^>]+(>|$)/g, ""); // блокує HTML теги
+  };
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       {/* INPUTS */}
-      {formFields.map(({ name, placeholder, label, pattern, error, ref }) => (
-        <div key={name} className={styles.formWrapper}>
-          <label className={styles.formLabel}>{label}</label>
+      {formInputs.map((field) => (
+        <div key={field.id} className={styles.formWrapper}>
+          <label className={styles.formLabel}>{field.label}</label>
 
           <div className={styles.formInputWrapper}>
             <Controller
-              name={name}
+              name={field.name}
               control={control}
               defaultValue=""
-              rules={{
-                required: "*Це поле обов’язкове",
-                pattern: { value: pattern, message: error },
-              }}
+              rules={getRules(field)}
               render={({ field }) => (
                 <input
                   {...field}
-                  ref={ref}
+                  ref={
+                    field.name === "phoneContact" ? phoneInputRef : undefined
+                  }
                   className={styles.formInputField}
-                  placeholder={placeholder}
+                  placeholder={field.placeholder}
                   onChange={(e) => {
                     let value = e.target.value;
 
-                    if (name === "nameContact") {
+                    if (field.name === "nameContact") {
                       value = value.replace(/[^\p{L}\s]/gu, "");
                     }
 
-                    if (name === "emailContact") {
+                    if (field.name === "emailContact") {
                       value = normalizeEmail(value);
                     }
 
@@ -172,9 +224,9 @@ const ContactsForm = () => {
               )}
             />
 
-            {errors[name] && (
+            {errors[field.name] && (
               <span className={styles.requiredSpan}>
-                {errors[name].message}
+                {errors[field.name].message}
               </span>
             )}
           </div>
@@ -240,24 +292,32 @@ const ContactsForm = () => {
 
       {/* COMMENT */}
       <div className={styles.formWrapper}>
-        <label className={styles.formLabel}>comment</label>
+        <label className={styles.formLabel}>{inputCommentTitle}</label>
 
         <Controller
           name="commentContact"
           control={control}
           defaultValue=""
+          rules={{
+            validate: (value) =>
+              !/[<>]/.test(value) || "Символи < > заборонені",
+          }}
           render={({ field }) => (
             <textarea
               {...field}
               className={styles.formInputField}
-              placeholder="comment"
+              placeholder={inputCommentPlaceholder}
+              onChange={(e) => {
+                const value = sanitizeComment(e.target.value);
+                field.onChange(value);
+              }}
             />
           )}
         />
       </div>
 
       {/* BUTTON */}
-      <Button title="send" primary submit className={styles.formButton} />
+      <Button title={button} primary submit className={styles.formButton} />
     </form>
   );
 };

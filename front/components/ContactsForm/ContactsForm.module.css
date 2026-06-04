@@ -149,7 +149,7 @@ textarea.formInputField {
   right: 0;
   bottom: -1.5vw;
   /* font-size: 1.3vw; */
-  color: red;
+  color: var(--accent);
 }
 
 .textRequire {
@@ -214,9 +214,7 @@ textarea.formInputField {
   }
 
   .formButton {
-    padding: 4vw 8vw;
-    border-radius: 1.5vw;
-    font-size: 4vw;
+    width: 100%;
   }
 
   .personalDataWrapper {
@@ -240,7 +238,7 @@ textarea.formInputField {
   }
 
   .checkboxRequire {
-    border: 0.5vw solid red;
+    border: 0.5vw solid var(--accent);
   }
 
   .requiredSpan {
@@ -260,7 +258,7 @@ textarea.formInputField {
 
 @media (width <= 767px) {
   .form {
-    padding: 6vw;
+    padding: unset;
     border-radius: 3vw;
   }
 
@@ -269,7 +267,7 @@ textarea.formInputField {
   }
 
   .formLabel {
-    margin: 0 0 3vw;
+    margin: 0 0 1vw;
     font-size: 4vw;
   }
 
@@ -280,20 +278,35 @@ textarea.formInputField {
     left: 2vw;
   }
 
+  .dropdownList {
+    border-radius: var(--borderRadiusMobile);
+  }
+
+  .dropdownItem:last-child {
+    padding-top: 0;
+  }
+
+  .dropdownItem:first-child {
+    padding-bottom: 0;
+  }
+
+  .dropdownItem {
+    font-size: 4vw;
+    padding: 4vw;
+  }
+
   .formInputField {
-    padding: 2vw 2vw 2vw 9vw;
+    padding: 2vw 4vw 2vw 4vw;
     border-radius: 3vw;
-    font-size: 6vw;
+    font-size: 4vw;
+  }
+
+  .formInputField:-webkit-autofill {
+    font-size: 4vw;
   }
 
   textarea.formInputField {
     height: clamp(50vw, 30vw, 90vw);
-  }
-
-  .formButton {
-    padding: 5vw 10vw;
-    border-radius: 1.5vw;
-    font-size: 5vw;
   }
 
   .personalDataWrapper {
@@ -322,7 +335,7 @@ textarea.formInputField {
 
   .requiredSpan {
     right: 0;
-    bottom: -5vw;
+    bottom: -6vw;
     font-size: 4vw;
   }
 
