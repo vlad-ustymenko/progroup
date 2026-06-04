@@ -129,6 +129,17 @@ async function getData(path, locale) {
                 },
               },
             },
+
+            "blocks.contacts": {
+              populate: {
+                formInput: {
+                  populate: "*",
+                },
+                department: {
+                  populate: "*",
+                },
+              },
+            },
             // "blocks.roadmap": { populate: "*" },
             // "blocks.menu": { populate: "*" },
             // "blocks.modal": { populate: "*" },
@@ -205,6 +216,8 @@ function blockRendered(block, faqCategories, projectCategories) {
       );
     case "blocks.news":
       return <News key={block.id} data={block} />;
+    case "blocks.contacts":
+      return <Contacts key={block.id} data={block} />;
     case "blocks.footer":
       return <Footer key={block.id} data={block} />;
   }
@@ -237,7 +250,7 @@ export default async function Home({ params }) {
         blockRendered(block, faqCategories, projectCategories),
       )}
 
-      <Contacts></Contacts>
+      {/* <Contacts></Contacts> */}
     </>
     // <>
     //   <MainScreen />
