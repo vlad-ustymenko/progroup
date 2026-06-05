@@ -22,7 +22,7 @@
 
 .swiper {
   width: 100%;
-  height: 60vh;
+  /* height: 60vh; */
   border-radius: var(--borderRadius);
   overflow: hidden;
 }
@@ -268,18 +268,19 @@
   }
 
   .swiper {
-    min-height: 62vh;
+    /* min-height: 62vh; */
     border-radius: var(--borderRadiusMobile);
   }
 
   .card {
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: 1fr;
     border-radius: var(--borderRadiusMobile);
     color: white;
   }
 
   .swiperCard {
+    height: 25vh;
     border-top-left-radius: var(--borderRadiusMobile) var(--borderRadiusMobile);
     border-top-right-radius: var(--borderRadiusMobile) var(--borderRadiusMobile);
     border-bottom-right-radius: unset;
@@ -387,7 +388,7 @@
   }
 
   .swiper {
-    min-height: 62vh;
+    /* min-height: 62vh; */
     border-radius: var(--borderRadiusMobile);
   }
 
@@ -484,8 +485,15 @@
 }
 
 @media (width <= 375px) {
-  .swiper {
-    min-height: 60vh;
+  /* .swiperWrapper {
+    height: 20vh;
+  } */
+
+  .card {
+    grid-template-columns: 1fr;
+    grid-template-rows: 25vh 1fr;
+    border-radius: var(--borderRadiusMobile);
+    color: white;
   }
 
   .text {
