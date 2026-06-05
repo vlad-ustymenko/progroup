@@ -3,7 +3,6 @@
   flex-direction: column;
   align-items: center;
   padding: 2vw;
-  border-radius: 1vw;
   color: white;
 }
 
@@ -15,9 +14,9 @@
 .formLabel {
   display: block;
   margin: 0 0 0.7vw;
+  font-family: MontserratMedium, sans-serif;
   font-size: 1.3vw;
   font-weight: 800;
-  font-family: MontserratMedium, sans-serif;
 }
 
 .formInputWrapper {
@@ -39,13 +38,12 @@
 } */
 
 .formInputField {
-  font-family: MontserratRegular, sans-serif;
-  font-size: 0.9vw;
-  border-radius: var(--borderRadius);
-  border: 1px solid white;
   width: 100%;
-  padding: 0.7vw 0.7vw 0.7vw 0.7vw;
+  padding: 0.7vw;
+  border: 1px solid white;
+  border-radius: var(--borderRadius);
   border-radius: 1rem;
+  font-family: MontserratRegular, sans-serif;
   font-size: 1vw;
   color: var(--secondAccent);
   background: var(--background);
@@ -53,9 +51,9 @@
 
 .formInputField:-webkit-autofill {
   font-size: 0.9vw;
+  background-clip: text !important;
   caret-color: var(--accent) !important;
   -webkit-text-fill-color: white !important;
-  -webkit-background-clip: text !important;
 }
 
 textarea.formInputField {
@@ -79,34 +77,34 @@ textarea.formInputField {
 
 .dropdownInputWrapper {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
 }
 
 .dropdownList {
+  width: 100%;
+  border: 1px solid white;
+  border-radius: var(--borderRadius);
   position: absolute;
   top: calc(100% + 10px);
   left: 0;
-  width: 100%;
   z-index: 100;
-  border: 1px solid white;
-  border-radius: var(--borderRadius);
-  overflow: hidden;
   background: var(--backgroundGradient);
+  overflow: hidden;
 }
 
 .dropdownItem {
+  padding: 0.7vw;
   font-family: MontserratRegular, sans-serif;
   font-size: 1vw;
-  padding: 0.7vw;
-  cursor: pointer;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .dropdownItem:hover {
-  background: var(--accent);
   color: white;
+  background: var(--accent);
 }
 
 .icon {
@@ -143,11 +141,11 @@ textarea.formInputField {
 }
 
 .requiredSpan {
-  font-family: MontserratRegular, sans-serif;
-  font-size: 0.8vw;
   position: absolute;
   right: 0;
   bottom: -1.5vw;
+  font-family: MontserratRegular, sans-serif;
+  font-size: 0.8vw;
   /* font-size: 1.3vw; */
   color: var(--accent);
 }
@@ -183,38 +181,51 @@ textarea.formInputField {
 
 @media (width >= 768px) and (width <= 1024px) {
   .form {
-    padding: 5vw;
-    border-radius: 3vw;
+    padding: unset;
   }
 
   .formWrapper {
-    margin: 0 0 6vw;
+    margin: 0 0 3vw;
   }
 
   .formLabel {
-    margin: 0 0 3vw;
+    margin: 0 0 1vw;
+    font-size: 3vw;
+  }
+
+  .dropdownList {
+    border-radius: var(--borderRadiusMobile);
+  }
+
+  .dropdownItem {
+    padding: 4vw;
     font-size: 4vw;
   }
 
-  .formIcon {
-    width: 4vw;
-    height: 4vw;
-    top: 2vw;
-    left: 2vw;
+  .dropdownItem:last-child {
+    padding-top: 0;
+  }
+
+  .dropdownItem:first-child {
+    padding-bottom: 0;
   }
 
   .formInputField {
-    padding: 2vw 2vw 2vw 9vw;
-    border-radius: 3vw;
-    font-size: 4vw;
+    padding: 2vw 4vw;
+    border-radius: var(--borderRadiusTablet);
+    font-size: 2.5vw;
+  }
+
+  .formInputField::placeholder {
+    font-size: 2.5vw;
+  }
+
+  .formInputField:-webkit-autofill {
+    font-size: 2.5vw;
   }
 
   textarea.formInputField {
-    height: 20vw;
-  }
-
-  .formButton {
-    width: 100%;
+    height: clamp(50vw, 30vw, 90vw);
   }
 
   .personalDataWrapper {
@@ -238,13 +249,13 @@ textarea.formInputField {
   }
 
   .checkboxRequire {
-    border: 0.5vw solid var(--accent);
+    border: 0.5vw solid red;
   }
 
   .requiredSpan {
     right: 0;
-    bottom: -5vw;
-    font-size: 4vw;
+    bottom: -4vw;
+    font-size: 2vw;
   }
 
   .active {
@@ -252,7 +263,7 @@ textarea.formInputField {
   }
 
   .personalDataText {
-    font-size: 4vw;
+    font-size: 2vw;
   }
 }
 
@@ -271,15 +282,13 @@ textarea.formInputField {
     font-size: 4vw;
   }
 
-  .formIcon {
-    width: 5vw;
-    height: 5vw;
-    top: 2vw;
-    left: 2vw;
-  }
-
   .dropdownList {
     border-radius: var(--borderRadiusMobile);
+  }
+
+  .dropdownItem {
+    padding: 4vw;
+    font-size: 4vw;
   }
 
   .dropdownItem:last-child {
@@ -290,14 +299,13 @@ textarea.formInputField {
     padding-bottom: 0;
   }
 
-  .dropdownItem {
+  .formInputField {
+    padding: 2vw 4vw;
+    border-radius: 3vw;
     font-size: 4vw;
-    padding: 4vw;
   }
 
-  .formInputField {
-    padding: 2vw 4vw 2vw 4vw;
-    border-radius: 3vw;
+  .formInputField::placeholder {
     font-size: 4vw;
   }
 
@@ -336,7 +344,7 @@ textarea.formInputField {
   .requiredSpan {
     right: 0;
     bottom: -6vw;
-    font-size: 4vw;
+    font-size: 3.5vw;
   }
 
   .active {

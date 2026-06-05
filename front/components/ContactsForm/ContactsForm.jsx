@@ -187,26 +187,27 @@ const ContactsForm = ({
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+    <form id="form" className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       {/* INPUTS */}
-      {formInputs.map((field) => (
-        <div key={field.id} className={styles.formWrapper}>
-          <label className={styles.formLabel}>{field.label}</label>
+      {formInputs.map((input) => (
+        <div key={input.id} className={styles.formWrapper}>
+          <label className={styles.formLabel}>{input.label}</label>
 
           <div className={styles.formInputWrapper}>
             <Controller
-              name={field.name}
+              name={input.name}
               control={control}
               defaultValue=""
-              rules={getRules(field)}
+              rules={getRules(input)}
               render={({ field }) => (
                 <input
                   {...field}
                   ref={
                     field.name === "phoneContact" ? phoneInputRef : undefined
                   }
+                  type={field.name === "phoneContact" ? "tel" : undefined}
                   className={styles.formInputField}
-                  placeholder={field.placeholder}
+                  placeholder={input.placeholder}
                   onChange={(e) => {
                     let value = e.target.value;
 
@@ -224,9 +225,9 @@ const ContactsForm = ({
               )}
             />
 
-            {errors[field.name] && (
+            {errors[input.name] && (
               <span className={styles.requiredSpan}>
-                {errors[field.name].message}
+                {errors[input.name].message}
               </span>
             )}
           </div>
