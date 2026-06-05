@@ -2,7 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { ModalProvider } from "@/Context/ModalContext";
 import Modal from "../components/Modal/Modal";
 import { MenuProvider } from "@/Context/MenuContext";
-import Menu from "../components/Menu/Menu";
+
 import UTMCookieSaver from "@/components/UTMCookieSaver/UTMCookieSaver";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -46,7 +46,7 @@ export default function RootLayout({ children }) {
         <ModalProvider>
           <MenuProvider>
             {children}
-            <Menu />
+
             <Modal />
           </MenuProvider>
         </ModalProvider>

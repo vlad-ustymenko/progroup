@@ -10,6 +10,7 @@ import FAQ from "@/sections/FAQ/FAQ";
 import Projects from "@/sections/Projects/Projects";
 import News from "@/sections/News/News";
 import Footer from "@/sections/Footer/Footer";
+import Menu from "@/components/Menu/Menu";
 import Contacts from "@/sections/Contacts/Contacts";
 
 async function getData(path, locale) {
@@ -24,6 +25,7 @@ async function getData(path, locale) {
             "blocks.main-screen": {
               populate: {
                 header: { populate: "*" },
+                menu: { populate: "*" },
                 buttons: { populate: "*" },
                 info: {
                   populate: "*",
@@ -244,11 +246,17 @@ export default async function Home({ params }) {
 
   const { blocks } = strapiData;
 
+  const menuData = strapiData.blocks.find(
+    (item) => item.__component === "blocks.main-screen",
+  )?.menu;
+
   return (
     <>
       {blocks.map((block) =>
         blockRendered(block, faqCategories, projectCategories),
       )}
+
+      <Menu data={menuData}></Menu>
 
       {/* <Contacts></Contacts> */}
     </>
