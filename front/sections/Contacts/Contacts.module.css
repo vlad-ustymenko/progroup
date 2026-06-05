@@ -1,5 +1,6 @@
 .contacts {
   background: var(--backgroundGradient);
+  overflow: hidden;
 }
 
 .container {
@@ -41,8 +42,8 @@
   height: 400px;
   margin-top: 3vw;
   border-radius: 10px;
-  overflow: hidden;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .title {
@@ -105,18 +106,58 @@
 }
 
 @media (width >= 768px) and (width <= 1024px) {
+  .container {
+    width: 90%;
+    padding: var(--containerPaddingTablet);
+  }
+
+  .contentWrapper {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 10vw;
+    padding-top: var(--wrapperPadding);
+  }
+
+  .content {
+    display: flex;
+    align-items: center;
+    gap: 5vw;
+    margin-bottom: 2vw;
+  }
+
+  .title {
+    margin: 5vw auto;
+    font-size: var(--titleFontSizeTablet);
+  }
+
+  .text {
+    font-size: 3vw;
+  }
+
+  .icon {
+    width: 5vw;
+    height: 5vw;
+    color: var(--accent);
+  }
+
+  .mapWrapper {
+    width: 100%;
+    height: 38vh;
+    margin-top: 3vw;
+    border-radius: var(--borderRadiusTablet);
+  }
 }
 
 @media (width <= 767px) {
   .container {
     width: 90%;
-    padding: 50px 0;
+    padding: var(--containerPaddingMobile);
   }
 
   .contentWrapper {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, 1fr);
-    gap: 3vw;
+    gap: 4vw;
     padding-top: var(--wrapperPadding);
   }
 
@@ -144,7 +185,7 @@
 
   .mapWrapper {
     width: 100%;
-    height: 400px;
+    height: 300px;
     margin-top: 3vw;
     border-radius: var(--borderRadiusMobile);
   }
