@@ -42,6 +42,12 @@
       "component": "components.info-main-screen",
       "repeatable": true,
       "required": false
+    },
+    "menu": {
+      "type": "component",
+      "component": "components.header",
+      "repeatable": true,
+      "required": true
     }
   },
   "config": {}

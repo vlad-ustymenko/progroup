@@ -177,6 +177,8 @@ export interface BlocksMainScreen extends Struct.ComponentSchema {
     header: Schema.Attribute.Component<'components.header', true> &
       Schema.Attribute.Required;
     info: Schema.Attribute.Component<'components.info-main-screen', true>;
+    menu: Schema.Attribute.Component<'components.header', true> &
+      Schema.Attribute.Required;
     text: Schema.Attribute.Text & Schema.Attribute.Required;
   };
 }
