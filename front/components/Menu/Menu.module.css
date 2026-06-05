@@ -9,7 +9,7 @@
   top: 100%;
   left: 0;
   z-index: 6;
-  font-family: MariupolMedium, sans-serif;
+  font-family: MontserratBold, sans-serif;
   color: white;
   background: var(--secondaryColor);
   transition: 0.75s cubic-bezier(0.71, 0.01, 0.24, 0.99);
