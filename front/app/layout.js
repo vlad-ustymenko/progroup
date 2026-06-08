@@ -46,7 +46,6 @@ export default function RootLayout({ children }) {
         <ModalProvider>
           <MenuProvider>
             {children}
-
             <Modal />
           </MenuProvider>
         </ModalProvider>

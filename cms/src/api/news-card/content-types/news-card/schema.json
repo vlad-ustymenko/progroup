@@ -47,13 +47,12 @@
       "required": true
     },
     "descriptionMore": {
-      "type": "text",
+      "type": "richtext",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "default": "Description more",
       "required": true
     },
     "image": {

@@ -663,14 +663,13 @@ export interface ApiNewsCardNewsCard extends Struct.CollectionTypeSchema {
         maxLength: 115;
       }> &
       Schema.Attribute.DefaultTo<'description'>;
-    descriptionMore: Schema.Attribute.Text &
+    descriptionMore: Schema.Attribute.RichText &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
-      }> &
-      Schema.Attribute.DefaultTo<'Description more'>;
+      }>;
     image: Schema.Attribute.Media<'images'> &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
