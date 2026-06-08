@@ -19,7 +19,7 @@ const MainScreen = ({ data }) => {
   const btn2Ref = useRef(null);
   const infoRefs = useRef([]);
 
-  const [ready, setReady] = useState(true);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     if ("scrollRestoration" in history) {
@@ -104,7 +104,7 @@ const MainScreen = ({ data }) => {
 
   return (
     <div ref={containerRef} className={styles.main}>
-      {/* <Preloader setReady={setReady} ready={ready} /> */}
+      <Preloader setReady={setReady} ready={ready} />
 
       <Header data={data.header} />
       <div className={styles.overlay} />

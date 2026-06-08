@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Pagination } from "swiper/modules";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import ReactMarkdown from "react-markdown";
+import { useModal } from "@/Context/ModalContext";
 import remarkBreaks from "remark-breaks";
 
 import gsap from "gsap";
@@ -20,6 +21,7 @@ import BlockTitle from "@/components/BlockTitle/BlockTitle";
 gsap.registerPlugin(ScrollTrigger);
 
 const Projects = ({ data, categories }) => {
+  const { openModal } = useModal();
   const [activeCategory, setActiveCategory] = useState("all");
 
   const mainSwiperRef = useRef(null);
@@ -165,7 +167,7 @@ const Projects = ({ data, categories }) => {
             className={styles.swiper}
           >
             {filteredData.map((project) => (
-              <SwiperSlide key={project.id}>
+              <SwiperSlide key={project.id} onClick={() => openModal(project)}>
                 <div className={styles.card}>
                   <div className={styles.cardContent}>
                     <p className={styles.title}>{project.title}</p>

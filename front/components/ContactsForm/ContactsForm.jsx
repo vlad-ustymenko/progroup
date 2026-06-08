@@ -6,6 +6,7 @@ import { useForm, Controller } from "react-hook-form";
 import ArrowIcon from "../ArrowIcon/ArrowIcon";
 import Button from "../Button/Button";
 import styles from "./ContactsForm.module.css";
+import { useModal } from "@/Context/ModalContext";
 
 const ContactsForm = ({
   departments,
@@ -15,10 +16,11 @@ const ContactsForm = ({
   mainError,
   button,
 }) => {
+  const { openModal, setSending, setIsForm } = useModal();
   const [departmentOpen, setDepartmentOpen] = useState(false);
   const [activeCheckbox, setActiveCheckbox] = useState(false);
   const [checkboxRequire, setCheckboxRequire] = useState(false);
-  const [sending, setSending] = useState(false);
+  // const [sending, setSending] = useState(false);
 
   const phoneInputRef = useRef(null);
 
@@ -85,42 +87,51 @@ const ContactsForm = ({
       (item) => item.slug === data.department,
     );
 
-    const departmentMail = selectedDepartment?.mail;
+    const departmentMail = selectedDepartment?.email;
 
-    console.log({
-      ...data,
-      departmentMail, // 👈 ОЦЕ ТИ І ХОТІВ
-    });
+    // console.log({
+    //   ...data,
+    //   departmentMail, // 👈 ОЦЕ ТИ І ХОТІВ
+    // });
 
-    if (!activeCheckbox) {
-      setCheckboxRequire(true);
-      return;
-    }
+    setSending(true);
+    setIsForm(true);
+    openModal({ ...data, departmentMail });
 
-    try {
-      setSending(true);
-
-      const response = await fetch("/api/sendMail", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: data.nameContact,
-          email: data.emailContact,
-          phone: data.phoneContact,
-          comment: data.commentContact,
-          department: data.department,
-          departmentMail, // 👈 ТУТ ВЖЕ Є MAIL
-        }),
-      });
-
-      if (response.ok) {
-        reset();
-        setActiveCheckbox(false);
-        setDepartmentOpen(false);
-      }
-    } finally {
+    setTimeout(() => {
       setSending(false);
-    }
+    }, 5000);
+    reset();
+
+    // if (!activeCheckbox) {
+    //   setCheckboxRequire(true);
+    //   return;
+    // }
+
+    // try {
+    //   setSending(true);
+
+    //   const response = await fetch("/api/sendMail", {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify({
+    //       name: data.nameContact,
+    //       email: data.emailContact,
+    //       phone: data.phoneContact,
+    //       comment: data.commentContact,
+    //       department: data.department,
+    //       departmentMail, // 👈 ТУТ ВЖЕ Є MAIL
+    //     }),
+    //   });
+
+    //   if (response.ok) {
+    //     reset();
+    //     setActiveCheckbox(false);
+    //     setDepartmentOpen(false);
+    //   }
+    // } finally {
+    //   setSending(false);
+    // }
   };
 
   const getRules = (field) => {

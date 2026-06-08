@@ -9,6 +9,8 @@
   left: 0;
   z-index: 999;
   background: rgb(0 0 0 / 70%);
+  transition: all 0.5s ease;
+  overflow-y: auto;
 }
 
 .wrapper {
@@ -23,14 +25,37 @@
 }
 
 .imageWrapper {
-  width: 100%;
+  flex: 1;
   position: relative;
 }
 
 .modalContent {
+  flex: 1;
+  padding: 2vw;
+  color: black;
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* ключове */
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  object-fit: cover;
+}
+/* 
+.modalContent {
   width: 100%;
   padding: 2vw;
   color: black;
+} */
+
+.description {
+  overflow-y: auto;
+  flex: 1;
+  padding-right: 10px;
 }
 
 .title {

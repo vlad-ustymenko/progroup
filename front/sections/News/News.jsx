@@ -7,6 +7,7 @@ import { Pagination } from "swiper/modules";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import Image from "next/image";
 import styles from "./News.module.css";
+import { useModal } from "@/Context/ModalContext";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -14,6 +15,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const News = ({ data }) => {
+  const { openModal } = useModal();
   const mainSwiperRef = useRef(null);
 
   const sectionRef = useRef(null);
@@ -119,6 +121,7 @@ const News = ({ data }) => {
                 <div
                   className={styles.card}
                   ref={(el) => (cardsRef.current[index] = el)}
+                  onClick={() => openModal(card)}
                 >
                   <div className={styles.imageWrapper}>
                     <Image

@@ -25,6 +25,14 @@
   margin-bottom: 1vw;
 }
 
+.content:hover {
+  color: var(--accent);
+}
+
+.content.last:hover {
+  color: white;
+}
+
 .icon {
   width: 2vw;
   height: 2vw;

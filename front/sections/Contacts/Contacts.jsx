@@ -151,7 +151,10 @@ const Contacts = ({ data }) => {
               </a>
             </div>
 
-            <div ref={addToContentRefs} className={styles.content}>
+            <div
+              ref={addToContentRefs}
+              className={`${styles.content} ${styles.last}`}
+            >
               <MdOutlineAccessTimeFilled className={styles.icon} />
               <div className={styles.text}>{data.time}</div>
             </div>
