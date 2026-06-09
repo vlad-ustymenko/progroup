@@ -17,6 +17,7 @@
   font-family: MontserratMedium, sans-serif;
   font-size: 1.3vw;
   font-weight: 800;
+  cursor: pointer;
 }
 
 .formInputWrapper {
@@ -27,15 +28,6 @@
   font-family: MontserratRegular, sans-serif;
   font-size: 0.9vw;
 }
-
-/* .formIcon {
-  width: 1.7vw;
-  height: 1.7vw;
-  position: absolute;
-  top: 0.7vw;
-  left: 0.7vw;
-  color: hsl(0deg 0% 62%);
-} */
 
 .formInputField {
   width: 100%;

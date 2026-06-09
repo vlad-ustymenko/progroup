@@ -202,7 +202,9 @@ const ContactsForm = ({
       {/* INPUTS */}
       {formInputs.map((input) => (
         <div key={input.id} className={styles.formWrapper}>
-          <label className={styles.formLabel}>{input.label}</label>
+          <label className={styles.formLabel} htmlFor={input.name}>
+            {input.label}
+          </label>
 
           <div className={styles.formInputWrapper}>
             <Controller
@@ -212,6 +214,7 @@ const ContactsForm = ({
               rules={getRules(input)}
               render={({ field }) => (
                 <input
+                  id={input.name}
                   {...field}
                   ref={
                     field.name === "phoneContact" ? phoneInputRef : undefined
