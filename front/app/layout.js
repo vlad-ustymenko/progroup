@@ -13,6 +13,12 @@ const MontserratBold = localFont({
   variable: "--font-montserrat",
 });
 
+const MontserratSemiBold = localFont({
+  src: "../public/fonts/Montserrat-SemiBold.ttf",
+  weight: "700",
+  variable: "--font-montserrat",
+});
+
 const MontserratMedium = localFont({
   src: "../public/fonts/Montserrat-Medium.ttf",
   weight: "600",
@@ -40,7 +46,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${MontserratRegular.variable} ${MontserratMedium.variable} ${MontserratBold.variable}`}
+        className={`${MontserratRegular.variable} ${MontserratMedium.variable} ${MontserratSemiBold.variable} ${MontserratBold.variable}`}
       >
         <UTMCookieSaver />
         <ModalProvider>

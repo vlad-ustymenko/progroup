@@ -38,6 +38,7 @@
 
 .cardContent {
   padding: 2vw;
+  cursor: pointer;
 }
 
 .infoWrapper {

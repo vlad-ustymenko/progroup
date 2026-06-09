@@ -1,10 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
-import { Pagination } from "swiper/modules";
-import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import ReactMarkdown from "react-markdown";
 import { useModal } from "@/Context/ModalContext";
 import remarkBreaks from "remark-breaks";
@@ -12,8 +9,11 @@ import remarkBreaks from "remark-breaks";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 
 import styles from "./Projects.module.css";
 import BlockTitle from "@/components/BlockTitle/BlockTitle";
@@ -21,7 +21,7 @@ import BlockTitle from "@/components/BlockTitle/BlockTitle";
 gsap.registerPlugin(ScrollTrigger);
 
 const Projects = ({ data, categories }) => {
-  const { openModal } = useModal();
+  const { openModal, setIsProject } = useModal();
   const [activeCategory, setActiveCategory] = useState("all");
 
   const mainSwiperRef = useRef(null);
@@ -167,9 +167,15 @@ const Projects = ({ data, categories }) => {
             className={styles.swiper}
           >
             {filteredData.map((project) => (
-              <SwiperSlide key={project.id} onClick={() => openModal(project)}>
+              <SwiperSlide key={project.id}>
                 <div className={styles.card}>
-                  <div className={styles.cardContent}>
+                  <div
+                    className={styles.cardContent}
+                    onClick={() => {
+                      setIsProject(true);
+                      openModal(project);
+                    }}
+                  >
                     <p className={styles.title}>{project.title}</p>
 
                     <ReactMarkdown

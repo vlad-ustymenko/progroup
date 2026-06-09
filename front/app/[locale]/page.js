@@ -90,6 +90,7 @@ async function getData(path, locale) {
                     "apartments",
                     "year",
                     "role",
+                    "descriptionMore",
                   ],
                   populate: {
                     images: {
