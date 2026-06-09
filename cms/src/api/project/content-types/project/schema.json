@@ -95,6 +95,15 @@
         }
       },
       "required": true
+    },
+    "descriptionMore": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
     }
   }
 }
