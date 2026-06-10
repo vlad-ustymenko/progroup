@@ -66,6 +66,17 @@
       "type": "string",
       "default": "Main error title",
       "required": true
+    },
+    "loaderText": {
+      "type": "string",
+      "default": "Sending",
+      "required": true
+    },
+    "socialIcons": {
+      "type": "component",
+      "component": "components.footer-developer-info",
+      "repeatable": true,
+      "required": true
     }
   },
   "config": {}

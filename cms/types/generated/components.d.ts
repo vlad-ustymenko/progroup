@@ -65,12 +65,20 @@ export interface BlocksContacts extends Struct.ComponentSchema {
     inputCommentTitle: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'\u0412\u0410\u0428\u0415 \u041F\u0418\u0422\u0410\u041D\u041D\u042F'>;
+    loaderText: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Sending'>;
     mainError: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Main error title'>;
     phone: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Phone'>;
+    socialIcons: Schema.Attribute.Component<
+      'components.footer-developer-info',
+      true
+    > &
+      Schema.Attribute.Required;
     time: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Time'>;
