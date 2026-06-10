@@ -5,27 +5,15 @@ import styles from "./Preloader.module.css";
 
 const Preloader = ({ setReady, ready }) => {
   useEffect(() => {
-    const html = document.documentElement;
     const body = document.body;
 
-    // 🔥 lock scroll одразу
-    html.style.overflow = "hidden";
-    body.style.overflow = "hidden";
-
-    window.scrollTo(0, 0);
-
-    // 🔥 імітація завантаження (можеш замінити на video onEnded)
     const timer = setTimeout(() => {
-      html.style.overflow = "";
-      body.style.overflow = "";
-
       setReady(true);
+      document.body.classList.add("unlocked");
     }, 3000);
 
     return () => {
       clearTimeout(timer);
-      html.style.overflow = "";
-      body.style.overflow = "";
     };
   }, []);
 
