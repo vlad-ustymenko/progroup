@@ -67,7 +67,6 @@ a {
   color: inherit;
 }
 
-/* IMAGES */
 img,
 svg,
 video {
@@ -75,7 +74,6 @@ video {
   max-width: 100%;
 }
 
-/* FORM ELEMENTS */
 button,
 input,
 textarea,
@@ -86,22 +84,23 @@ select {
   outline: none;
 }
 
-/* BUTTON */
 button {
   cursor: pointer;
 }
 
-/* TAP HIGHLIGHT (mobile) */
 :focus,
 :active {
   outline: none;
   -webkit-tap-highlight-color: transparent;
 }
 
-/* SELECTION */
 ::selection {
   color: var(--bg-primary, #fff);
   background: var(--color-primary, #000);
+}
+
+::-webkit-scrollbar {
+  width: 0;
 }
 
 @media (width >= 768px) and (width <= 1024px) {

@@ -1,11 +1,11 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import { ModalProvider } from "@/Context/ModalContext";
-import Modal from "../components/Modal/Modal";
 import { MenuProvider } from "@/Context/MenuContext";
-
+import Modal from "@/components/Modal/Modal";
 import UTMCookieSaver from "@/components/UTMCookieSaver/UTMCookieSaver";
-import localFont from "next/font/local";
 import "./globals.css";
+
+import localFont from "next/font/local";
 
 const MontserratBold = localFont({
   src: "../public/fonts/Montserrat-Bold.ttf",
@@ -45,10 +45,23 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        {/* 🔥 CRITICAL: scroll reset BEFORE React loads */}
+        <Script id="scroll-reset" strategy="beforeInteractive">
+          {`
+            if ('scrollRestoration' in history) {
+              history.scrollRestoration = 'manual';
+            }
+            window.scrollTo(0, 0);
+          `}
+        </Script>
+      </head>
+
       <body
         className={`${MontserratRegular.variable} ${MontserratMedium.variable} ${MontserratSemiBold.variable} ${MontserratBold.variable}`}
       >
         <UTMCookieSaver />
+
         <ModalProvider>
           <MenuProvider>
             {children}
