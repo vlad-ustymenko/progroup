@@ -15,6 +15,8 @@ const ContactsForm = ({
   inputCommentPlaceholder,
   mainError,
   button,
+  socialIcons,
+  loaderText,
 }) => {
   const { openModal, setSending, setIsForm } = useModal();
   const [departmentOpen, setDepartmentOpen] = useState(false);
@@ -96,7 +98,7 @@ const ContactsForm = ({
 
     setSending(true);
     setIsForm(true);
-    openModal({ ...data, departmentMail });
+    openModal({ ...data, departmentMail, loaderText, socialIcons });
 
     setTimeout(() => {
       setSending(false);

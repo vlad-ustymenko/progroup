@@ -141,6 +141,7 @@ async function getData(path, locale) {
                 department: {
                   populate: "*",
                 },
+                socialIcons: { populate: "*" },
               },
             },
             // "blocks.roadmap": { populate: "*" },

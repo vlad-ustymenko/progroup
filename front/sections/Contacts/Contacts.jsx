@@ -185,6 +185,8 @@ const Contacts = ({ data }) => {
               inputCommentPlaceholder={data.inputCommentPlaceholder}
               mainError={data.mainError}
               button={data.button}
+              socialIcons={data.socialIcons}
+              loaderText={data.loaderText}
             />
           </div>
         </div>
