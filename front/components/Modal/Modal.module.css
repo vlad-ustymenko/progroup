@@ -28,10 +28,10 @@
 
 .wrapper {
   display: flex;
-  gap: 20px;
+  gap: 1.6vw;
   width: 70vw;
   height: 70vh;
-  border-radius: 10px;
+  border-radius: var(--borderRadius);
   position: relative;
   background: white;
   overflow: hidden;
@@ -45,18 +45,21 @@
 }
 
 .modalContent {
-  font-family: MontserratRegular, sans-serif;
-  flex: 1;
-  min-height: 0; /* 🔥 критично */
-  color: black;
   display: flex;
+  flex: 1;
   flex-direction: column;
-  overflow-y: auto;
+  min-height: 0; /* 🔥 критично */
   margin: 3vw 3vw 2vw 2vw;
+  font-family: MontserratRegular, sans-serif;
+  color: black;
+  overflow-y: auto;
 }
+
 .swiperCard {
   width: 100%;
   height: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
 .image {
@@ -74,7 +77,7 @@
 
 .description {
   flex: 1;
-  padding-right: 10px;
+  padding-right: 0.5vw;
   margin-bottom: 1vw;
 }
 
@@ -88,20 +91,21 @@
 }
 
 .title {
-  font-family: MontserratBold, sans-serif;
   margin-bottom: 1vw;
+  font-family: MontserratBold, sans-serif;
   font-size: 2vw;
   color: var(--accent);
 }
 
 .closeButton {
-  position: absolute;
   width: 1.8vw;
   height: 1.8vw;
-  top: 10px;
-  right: 10px;
+  position: absolute;
+  top: 0.7vw;
+  right: 0.7vw;
   cursor: pointer;
   fill: var(--secondaryColor);
+  z-index: 3;
 }
 
 .modalContent::-webkit-scrollbar {
@@ -109,19 +113,12 @@
 }
 
 .modalContent::-webkit-scrollbar-thumb {
-  background: var(--accent);
   border-radius: 10px;
+  background: var(--accent);
 }
 
 .modalContent::-webkit-scrollbar-track {
   background: transparent;
-}
-
-.swiperCard {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
 }
 
 .cardNav {
@@ -167,4 +164,246 @@
 
 .cardNext {
   right: 20px;
+}
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4vw;
+  width: fit-content;
+  height: fit-content;
+  padding: 4vw;
+  border-radius: 1.5vw;
+  position: relative;
+  background-color: white;
+}
+
+.formContent {
+  font-family: MontserratRegular, sans-serif;
+  font-size: 1.5vw;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.socialWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2vw;
+}
+
+.socialTitle {
+  font-family: MontserratBold, sans-serif;
+  font-size: 2vw;
+}
+
+.socialIcons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2vw;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5vw;
+  height: 5vw;
+  padding: 0.5vw;
+  border-radius: 50%;
+  background-color: var(--background);
+  fill: var(--secondaryColor);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.socialLink:hover {
+  fill: var(--accent);
+}
+
+@media (width >= 768px) and (width <= 1024px) {
+  .wrapper {
+    flex-direction: column;
+    gap: 0;
+    width: 80vw;
+    border-radius: var(--borderRadiusTablet);
+  }
+
+  .modalContent {
+    flex-direction: column;
+    margin: 4vw 3vw 4vw 4vw;
+  }
+
+  .title {
+    margin-bottom: 2vw;
+    font-size: 5vw;
+  }
+
+  .description {
+    font-size: 3vw;
+    padding-right: 1vw;
+    margin-bottom: 2vw;
+  }
+
+  .strong {
+    font-size: 4vw;
+  }
+
+  .imageWrapper {
+    flex: unset;
+    min-height: 35vh;
+  }
+
+  .closeButton {
+    width: 6vw;
+    height: 6vw;
+    top: 2vw;
+    right: 2vw;
+    fill: white;
+    border-radius: 50%;
+    background-color: rgb(0 0 0 / 70%);
+  }
+
+  .cardNav {
+    width: 7vw;
+    height: 7vw;
+  }
+
+  .icon {
+    width: 4vw;
+    height: 4vw;
+  }
+
+  .formWrapper {
+    gap: 4vw;
+    max-width: 80vw;
+    padding: 4vw;
+    border-radius: var(--borderRadiusMobile);
+  }
+
+  .formContent {
+    font-size: 3vw;
+    line-height: 1.2;
+  }
+
+  .socialWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5vw;
+  }
+
+  .socialTitle {
+    font-family: MontserratBold, sans-serif;
+    font-size: 4vw;
+  }
+
+  .socialIcons {
+    gap: 5vw;
+  }
+
+  .socialLink {
+    width: 10vw;
+    height: 10vw;
+    padding: 0.5vw;
+  }
+
+  .socialLink:hover {
+    fill: var(--secondaryColor);
+  }
+}
+
+@media (width <= 767px) {
+  .wrapper {
+    flex-direction: column;
+    gap: 0;
+    width: 80vw;
+    border-radius: var(--borderRadiusMobile);
+  }
+
+  .modalContent {
+    flex-direction: column;
+    margin: 5vw 3vw 5vw 5vw;
+  }
+
+  .title {
+    margin-bottom: 1vw;
+    font-size: 7vw;
+  }
+
+  .description {
+    font-size: 4vw;
+    padding-right: 1vw;
+    margin-bottom: 5vw;
+  }
+
+  .strong {
+    font-size: 5vw;
+  }
+
+  .imageWrapper {
+    flex: unset;
+    min-height: 25vh;
+  }
+
+  .closeButton {
+    width: 8vw;
+    height: 8vw;
+    top: 2.5vw;
+    right: 2.5vw;
+    fill: white;
+    border-radius: 50%;
+    background-color: rgb(0 0 0 / 70%);
+  }
+
+  .cardNav {
+    width: 10vw;
+    height: 10vw;
+  }
+
+  .icon {
+    width: 6vw;
+    height: 6vw;
+  }
+
+  .formWrapper {
+    gap: 4vw;
+    max-width: 80vw;
+    padding: 4vw;
+    border-radius: var(--borderRadiusMobile);
+  }
+
+  .formContent {
+    font-size: 4vw;
+    line-height: 1.2;
+  }
+
+  .socialWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5vw;
+  }
+
+  .socialTitle {
+    font-family: MontserratBold, sans-serif;
+    font-size: 5vw;
+  }
+
+  .socialIcons {
+    gap: 5vw;
+  }
+
+  .socialLink {
+    width: 15vw;
+    height: 15vw;
+    padding: 0.5vw;
+  }
+
+  .socialLink:hover {
+    fill: var(--secondaryColor);
+  }
 }

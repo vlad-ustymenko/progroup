@@ -11,11 +11,17 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import {
+  BiLogoInstagramAlt,
+  BiLogoFacebookSquare,
+  BiLogoTelegram,
+} from "react-icons/bi";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 
 const Modal = () => {
   const cardSwiperRef = useRef({});
-  const { isOpen, data, closeModal, sending, isform, isProject } = useModal();
+  const { isOpen, data, closeModal, sending, isform, isProject, socialIcons } =
+    useModal();
   useEffect(() => {
     document.documentElement.style.overflow = isOpen ? "hidden" : "";
     const handleKeyDown = (e) => {
@@ -41,17 +47,34 @@ const Modal = () => {
         onClick={closeModal}
       >
         {sending ? (
-          <Loader></Loader>
+          <Loader title={data.loaderText}></Loader>
         ) : (
-          <div className={styles.wrapper} onClick={(e) => e.stopPropagation()}>
-            <div className={styles.imageWrapper}>
-              {/* <Image className={styles.image} src={data.image} alt="" fill></Image> */}
+          <div className={styles.formWrapper}>
+            <h2 className={styles.title}>Заявку надіслано</h2>
+            <p className={styles.formContent}>
+              Дякуємо Вам!
+              <br /> Найближчим часом наш менеджер зв'яжеться з Вами.
+            </p>
+            <div className={styles.socialWrapper}>
+              <h3 className={styles.socialTitle}>Ми в соцмережах</h3>
+              <ul className={styles.socialIcons}>
+                <li>
+                  <a href={data.socialIcons[0].link}>
+                    <BiLogoInstagramAlt className={styles.socialLink} />
+                  </a>
+                </li>
+                <li>
+                  <a href={data.socialIcons[1].link}>
+                    <BiLogoFacebookSquare className={styles.socialLink} />
+                  </a>
+                </li>
+                <li>
+                  <a href={data.socialIcons[2].link}>
+                    <BiLogoTelegram className={styles.socialLink} />
+                  </a>
+                </li>
+              </ul>
             </div>
-            <div className={styles.modalContent}>
-              <h2 className={styles.title}>qwd</h2>
-              <p className={styles.description}>qwd</p>
-            </div>
-
             <IoClose className={styles.closeButton} onClick={closeModal} />
           </div>
         )}
