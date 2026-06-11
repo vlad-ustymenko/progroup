@@ -40,7 +40,7 @@
       "default": "#",
       "required": true
     },
-    "telegramLink": {
+    "youTubeLink": {
       "type": "string",
       "default": "#",
       "required": true
@@ -61,6 +61,11 @@
       "component": "components.footer-developer-info",
       "repeatable": true,
       "required": true
+    },
+    "policy": {
+      "type": "richtext",
+      "required": true,
+      "default": "Policy"
     }
   },
   "config": {}

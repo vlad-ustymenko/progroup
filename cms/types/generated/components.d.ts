@@ -155,12 +155,15 @@ export interface BlocksFooter extends Struct.ComponentSchema {
     instagramLink: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'#'>;
-    telegramLink: Schema.Attribute.String &
+    policy: Schema.Attribute.RichText &
       Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'#'>;
+      Schema.Attribute.DefaultTo<'Policy'>;
     time: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Time'>;
+    youTubeLink: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'#'>;
   };
 }
 
