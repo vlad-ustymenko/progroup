@@ -14,6 +14,7 @@ export const ModalProvider = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isform, setIsForm] = useState(false);
   const [isProject, setIsProject] = useState(false);
+  const [isPolicy, setIsPolicy] = useState(false);
   const [sending, setSending] = useState(false);
 
   const openModal = (modalData) => {
@@ -27,6 +28,7 @@ export const ModalProvider = ({ children }) => {
     setIsForm(false);
     setSending(false);
     setIsProject(false);
+    setIsPolicy(false);
   };
 
   return (
@@ -37,7 +39,9 @@ export const ModalProvider = ({ children }) => {
         setSending,
         setIsForm,
         setIsProject,
+        setIsPolicy,
         isProject,
+        isPolicy,
         data,
         isOpen,
         sending,

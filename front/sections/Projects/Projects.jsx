@@ -87,7 +87,7 @@ const Projects = ({ data, categories }) => {
       });
 
       gsap.from(navigationRef.current, {
-        y: 60,
+        y: 40,
         opacity: 0,
         duration: 1,
         ease: "power3.out",

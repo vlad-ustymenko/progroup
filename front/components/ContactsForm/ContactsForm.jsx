@@ -148,8 +148,8 @@ const ContactsForm = ({
 
       case "emailContact":
         return {
-          required: `${mainError}`,
-          validate: (v) => isValidEmail(v) || cmsError,
+          // required: `${mainError}`,
+          validate: (v) => !v || isValidEmail(v) || cmsError,
         };
 
       case "phoneContact":
@@ -252,13 +252,13 @@ const ContactsForm = ({
 
       {/* DEPARTMENT */}
       <div className={styles.formWrapper}>
-        <label className={styles.formLabel}>ВІДДІЛ</label>
+        <label className={styles.formLabel}>Проєкт:</label>
 
         <Controller
           name="department"
           control={control}
           defaultValue=""
-          rules={{ required: "*Оберіть відділ" }}
+          rules={{ required: "*Оберіть проєкт" }}
           render={({ field }) => {
             const selectedDepartment = departments.find(
               (item) => item.slug === field.value,
@@ -270,7 +270,7 @@ const ContactsForm = ({
                   className={`${styles.formInputField} ${styles.dropdownInputWrapper}`}
                   onClick={() => setDepartmentOpen((prev) => !prev)}
                 >
-                  {selectedDepartment?.title || "Оберіть відділ"}
+                  {selectedDepartment?.title || "Оберіть проєкт"}
 
                   <ArrowIcon
                     open={departmentOpen}

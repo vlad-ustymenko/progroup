@@ -49,6 +49,7 @@
   border-radius: var(--borderRadius);
   position: relative;
   overflow: hidden;
+  /* height: 12vw; */
 }
 
 .contentWrapper {
@@ -66,8 +67,13 @@
 }
 
 .cardDescription {
+  display: -webkit-box;
   font-family: MontserratRegular, sans-serif;
   font-size: 1.2vw;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
 }
 
 .button {

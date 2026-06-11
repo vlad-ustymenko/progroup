@@ -37,6 +37,20 @@
   overflow: hidden;
 }
 
+.policyWrapper {
+  width: 70vw;
+  height: 70vh;
+  padding: 3vw;
+  border-radius: var(--borderRadius);
+  position: relative;
+  background: white;
+}
+
+.policy {
+  height: 100%;
+  overflow-y: auto;
+}
+
 .imageWrapper {
   flex: 1;
   min-width: 0;
@@ -103,21 +117,24 @@
   position: absolute;
   top: 0.7vw;
   right: 0.7vw;
+  z-index: 3;
   cursor: pointer;
   fill: var(--secondaryColor);
-  z-index: 3;
 }
 
-.modalContent::-webkit-scrollbar {
+.modalContent::-webkit-scrollbar,
+.policy::-webkit-scrollbar {
   width: 6px;
 }
 
-.modalContent::-webkit-scrollbar-thumb {
+.modalContent::-webkit-scrollbar-thumb,
+.policy::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background: var(--accent);
 }
 
-.modalContent::-webkit-scrollbar-track {
+.modalContent::-webkit-scrollbar-track,
+.policy::-webkit-scrollbar-track {
   background: transparent;
 }
 
@@ -215,13 +232,38 @@
   padding: 0.5vw;
   border-radius: 50%;
   background-color: var(--background);
-  fill: var(--secondaryColor);
   cursor: pointer;
+  fill: var(--secondaryColor);
   -webkit-tap-highlight-color: transparent;
 }
 
 .socialLink:hover {
   fill: var(--accent);
+}
+
+.list {
+  padding-right: 1vw;
+  margin-bottom: 1vw;
+}
+
+.listItem {
+  margin: 0.2vw 0 0 2vw;
+  position: relative;
+}
+
+.listItem:first-of-type {
+  margin-top: 0;
+}
+
+.listItem::before {
+  width: 0.5vw;
+  height: 0.5vw;
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  left: -1.5vw;
+  background-color: var(--accent);
+  content: "";
 }
 
 @media (width >= 768px) and (width <= 1024px) {
@@ -243,9 +285,9 @@
   }
 
   .description {
-    font-size: 3vw;
     padding-right: 1vw;
     margin-bottom: 2vw;
+    font-size: 3vw;
   }
 
   .strong {
@@ -260,11 +302,11 @@
   .closeButton {
     width: 6vw;
     height: 6vw;
+    border-radius: 50%;
     top: 2vw;
     right: 2vw;
-    fill: white;
-    border-radius: 50%;
     background-color: rgb(0 0 0 / 70%);
+    fill: white;
   }
 
   .cardNav {
@@ -335,9 +377,9 @@
   }
 
   .description {
-    font-size: 4vw;
     padding-right: 1vw;
     margin-bottom: 5vw;
+    font-size: 4vw;
   }
 
   .strong {
@@ -352,11 +394,11 @@
   .closeButton {
     width: 8vw;
     height: 8vw;
+    border-radius: 50%;
     top: 2.5vw;
     right: 2.5vw;
-    fill: white;
-    border-radius: 50%;
     background-color: rgb(0 0 0 / 70%);
+    fill: white;
   }
 
   .cardNav {

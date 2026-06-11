@@ -46,7 +46,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        {/* 🔥 CRITICAL: scroll reset BEFORE React loads */}
         <Script id="scroll-reset" strategy="beforeInteractive">
           {`
             if ('scrollRestoration' in history) {
