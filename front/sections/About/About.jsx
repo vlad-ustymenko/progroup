@@ -203,7 +203,7 @@ const About = ({ data }) => {
             </div>
 
             <div className={`${styles.textWrapper} text1`}>
-              <p className={`${styles.year} year1`}>2015</p>
+              <p className={`${styles.year} year1`}>{data.year1}</p>
               <p className={styles.role}>{data.role1}</p>
               <p className={styles.text}>{data.role1text}</p>
             </div>
@@ -214,7 +214,7 @@ const About = ({ data }) => {
             </div>
 
             <div className={`${styles.textWrapper} text2`}>
-              <p className={`${styles.year} year2`}>2025</p>
+              <p className={`${styles.year} year2`}>{data.year2}</p>
               <p className={styles.role}>{data.role2}</p>
               <p className={styles.text}>{data.role2text}</p>
             </div>
@@ -225,7 +225,7 @@ const About = ({ data }) => {
             </div>
 
             <div className={`${styles.textWrapper} text3`}>
-              <p className={`${styles.year} year3`}>2026</p>
+              <p className={`${styles.year} year3`}>{data.year3}</p>
               <p className={styles.role}>{data.role3}</p>
               <p className={styles.text}>{data.role3text}</p>
             </div>
